@@ -42,13 +42,12 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Repositories\Implementations\ProductRepo.cs" />
     <Compile Include="Repositories\Interfaces\IProductListRepo.cs" />
     <Compile Include="Repositories\Interfaces\IProductRepo.cs" />
     <Compile Include="Repositories\Interfaces\IRepo.cs" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Repositories\Implementations\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <ProjectReference Include="..\Domain\DomainLayer.csproj">
       <Project>{df18fc9f-47e0-4e18-a52a-250e1b6949b4}</Project>
