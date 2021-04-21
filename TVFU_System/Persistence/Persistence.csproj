@@ -41,12 +41,18 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Data\IData.cs" />
+    <Compile Include="Data\TextFileWriter.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repositories\Implementations\ProductRepo.cs" />
     <Compile Include="Repositories\Interfaces\IProductRepo.cs" />
     <Compile Include="Repositories\Interfaces\IRepo.cs" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <None Include="Data\TextFile.ini">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Domain\DomainLayer.csproj">
       <Project>{df18fc9f-47e0-4e18-a52a-250e1b6949b4}</Project>

@@ -1,6 +1,6 @@
 ﻿using System;
 using System.ComponentModel;
-using Application.EventArgs;
+using DomainLayer.EventArgs;
 
 namespace Application.ViewModels
 {

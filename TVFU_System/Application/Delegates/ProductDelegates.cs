@@ -1,4 +1,4 @@
-﻿using Application.EventArgs;
+﻿using DomainLayer.EventArgs;
 
 namespace Application.Delegates
 {

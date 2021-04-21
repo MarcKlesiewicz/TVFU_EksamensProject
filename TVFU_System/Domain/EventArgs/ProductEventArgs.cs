@@ -1,4 +1,4 @@
-﻿namespace Application.EventArgs
+﻿namespace DomainLayer.EventArgs
 {
     public class ProductEventArgs : System.EventArgs
     {

@@ -1,6 +1,6 @@
 ﻿using Persistence.Repositories.Interfaces;
 using Application.ViewModels;
-using Application.EventArgs;
+using DomainLayer.EventArgs;
 using Application.Commands;
 using Application.Delegates;
 using System.Windows.Input;
@@ -22,36 +22,20 @@ namespace Application.Controllers
 
         public event ProductEventHandler NewProductChange;
 
-        public ProductListController()
+        public ProductListController(IProductRepo productRepo)
         {
             CreateProductCommand = new CreateProductCmd(CreateProduct);
+            _productRepository = productRepo;
         }
 
         public void CreateProduct(object parameter)
         {
             CurrentProductVM = new ProductViewModel();
             ProductEventArgs productValues = OnNewProductRequested();
-            _productRepository.Add(productValues);
-        }
-
-        public void ChangeProduct(object parameter)
-        {
-            var oldObj = (parameter as ProductViewModel);
-            var newObj = (parameter as ProductViewModel);
-            CurrentProductVM = newObj;
-            ProductEventArgs productValues = OnNewProductRequested();
-
-            //_productRepository.Add(productValues);
-            //ProductEventArgs productValues = OnNewProductRequested();
             if (productValues != null)
             {
-                _productRepository.Update(productValues);
+                _productRepository.Add(productValues);
             }
-            else
-            {
-                CurrentProductListVM.ViewModels.Find(s => s.Id == CurrentProductVM.Id).Name = oldObj.Name;
-            }
-            CurrentProductVM = null;
         }
 
         protected ProductEventArgs OnNewProductRequested()
@@ -66,16 +50,34 @@ namespace Application.Controllers
             return result;
         }
 
-        protected ProductEventArgs OnProductChange(ProductViewModel parameter)
+        public void ChangeProduct(object parameter)
         {
-            ProductEventArgs result = null;
-            ProductEventHandler newProductChange = NewProductChange;
-            if (newProductChange != null)
+            var oldObj = (parameter as ProductViewModel);
+            var newObj = (parameter as ProductViewModel);
+            CurrentProductVM = newObj;
+            ProductEventArgs productValues = OnNewProductRequested();
+
+            if (productValues != null)
             {
-                ProductEventArgs args = null;
-                result = newProductChange(this, args);
+                _productRepository.Update(productValues);
             }
-            return result;
+            else
+            {
+                CurrentProductListVM.ViewModels.Find(s => s.Id == CurrentProductVM.Id).Name = oldObj.Name;
+            }
+            CurrentProductVM = null;
         }
+
+        //protected ProductEventArgs OnProductChange(ProductViewModel parameter)
+        //{
+        //    ProductEventArgs result = null;
+        //    ProductEventHandler newProductChange = NewProductChange;
+        //    if (newProductChange != null)
+        //    {
+        //        ProductEventArgs args = null;
+        //        result = newProductChange(this, args);
+        //    }
+        //    return result;
+        //}
     }
 }
