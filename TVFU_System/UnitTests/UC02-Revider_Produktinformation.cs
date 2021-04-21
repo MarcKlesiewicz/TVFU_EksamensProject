@@ -24,11 +24,13 @@ namespace UnitTests
 
         ProductListController controller;
         IProductRepo repo;
+        TextFileWriter dataWriter;
 
         [TestInitialize]
-        public void init()
+        public void Init()
         {
-
+            dataWriter = new TextFileWriter();
+            repo = new ProductRepo(dataWriter);
         }
         /// <summary>
         ///Gets or sets the test context which provides
@@ -62,16 +64,22 @@ namespace UnitTests
         public void NewProductChange()
         {
             //Arrange
+            
             controller = new ProductListController(repo);
 
-            //Act
-            controller.NewProductChange += NewProductRequestedHandlerNotNull;
-            controller.ChangeProduct(null);
+                //Act
+            controller.NewProductRequested += NewProductRequestedHandlerNotNull;
+            controller.CreateProduct(null);
+            var obj = controller.CurrentProductVM;
+            controller.NewProductRequested -= NewProductRequestedHandlerNotNull;
+            controller.NewProductRequested += _NewProductRequestedHandlerNotNull;
+            controller.ChangeProduct(obj);
+
 
             //Assert
             using (StreamReader reader = new StreamReader(@"Data\TextFile.ini"))
             {
-                Assert.AreEqual(true, reader.EndOfStream);
+                Assert.AreEqual(obj.Id.ToString() + ":Anders Hej", reader.ReadLine());
             }
         }
 
@@ -84,6 +92,12 @@ namespace UnitTests
         private ProductEventArgs NewProductRequestedHandlerNotNull(object sender, ProductEventArgs args)
         {
             ProductEventArgs result = new ProductEventArgs() { Name = "Anders Fogh" };
+            return result;
+        }
+
+        private ProductEventArgs _NewProductRequestedHandlerNotNull(object sender, ProductEventArgs args)
+        {
+            ProductEventArgs result = new ProductEventArgs() { Name = "Anders Hej" };
             return result;
         }
     }

@@ -26,6 +26,7 @@ namespace Application.Controllers
         {
             CreateProductCommand = new CreateProductCmd(CreateProduct);
             _productRepository = productRepo;
+            CurrentProductListVM = new ProductListViewModel();
         }
 
         public void CreateProduct(object parameter)
