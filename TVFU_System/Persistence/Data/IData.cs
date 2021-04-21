@@ -3,5 +3,6 @@
     public interface IData
     {
         void Save(string input);
+        void Update(string input);
     }
 }

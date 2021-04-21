@@ -11,5 +11,12 @@ namespace Persistence.Data
                 writer.WriteLine(input);
             }
         }
+        public void Update(string input)
+        {
+            using (StreamWriter writer = new StreamWriter(@"Data\TextFile.ini"))
+            {
+                writer.WriteLine(input);
+            }
+        }
     }
 }

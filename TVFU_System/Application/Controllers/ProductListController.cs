@@ -54,7 +54,7 @@ namespace Application.Controllers
         {
             var oldObj = (parameter as ProductViewModel);
             var newObj = (parameter as ProductViewModel);
-            CurrentProductVM = newObj;
+            CurrentProductVM = oldObj;
             ProductEventArgs productValues = OnNewProductRequested();
 
             if (productValues != null)

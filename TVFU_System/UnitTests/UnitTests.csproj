@@ -51,6 +51,7 @@
   <ItemGroup>
     <Compile Include="UC01-Controller_Tests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="UC02-Revider_Produktinformation.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

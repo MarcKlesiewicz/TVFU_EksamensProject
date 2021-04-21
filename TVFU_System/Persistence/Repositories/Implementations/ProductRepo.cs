@@ -37,7 +37,7 @@ namespace Persistence.Repositories.Implementations
 
         public void Update(EventArgs args)
         {
-            throw new NotImplementedException();
+            DataWriter.Save((args as ProductEventArgs).Name);
         }
     }
 }
