@@ -42,6 +42,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Commands\ChangeProductCmd.cs" />
     <Compile Include="Commands\CreateProductCmd.cs" />
     <Compile Include="Controllers\ProductListController.cs" />
     <Compile Include="Delegates\GeneralDelegates.cs" />

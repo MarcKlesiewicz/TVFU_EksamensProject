@@ -3,7 +3,7 @@ using System.Windows.Input;
 
 namespace Application.Commands
 {
-    public class CreateProductCmd : ICommand
+    public class ChangeProductCmd : ICommand
     {
         readonly Action<object> _execute;
 
@@ -13,7 +13,7 @@ namespace Application.Commands
             remove { CommandManager.RequerySuggested -= value; }
         }
 
-        public CreateProductCmd(Action<object> execute)
+        public ChangeProductCmd(Action<object> execute)
         {
             this._execute = execute;
         }
@@ -25,7 +25,7 @@ namespace Application.Commands
 
         public void Execute(object parameter)
         {
-            _execute.Invoke(parameter);
+            throw new NotImplementedException();
         }
     }
 }
