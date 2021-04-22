@@ -12,62 +12,32 @@ namespace UnitTests
     [TestClass]
     public class UC01_Controller_Tests
     {
-        //ProductListController controller;
-        //ProductRepo repo;
-        //TextFileWriter dataWriter;
+        ProductListController controller;
+        ProductRepo repo;
 
-        //[TestInitialize]
-        //public void Init()
-        //{
-        //    dataWriter = new TextFileWriter();
-        //    repo = new ProductRepo(dataWriter);
-        //}
+        [TestInitialize]
+        public void Init()
+        {
+            
+        }
 
-        //[TestMethod]
-        //public void CanCreateProductTestWithNull()
-        //{
-        //    //Arrange
-        //    controller = new ProductListController(repo);
+        [TestMethod]
+        public void CreateProductCancel()
+        {
+            repo = new ProductRepo();
+            controller = new ProductListController(repo);
+        }
 
-        //    //Act
-        //    controller.NewProductRequested += NewProductRequestedHandlerNull;
-        //    controller.CreateProduct(null);
+        [TestMethod]
+        public void CreateProductConfirmed()
+        {
+            repo = new ProductRepo();
+            controller = new ProductListController(repo);
+        }
 
-        //    //Assert
-        //    using (StreamReader reader = new StreamReader(@"Data\TextFile.ini"))
-        //    {
-        //        Assert.AreEqual(true, reader.EndOfStream);
-        //    }
-        //}
+        private ProductEventArgs NullProductEventArgs()
+        {
 
-        //[TestMethod]
-        //public void CanCreateProductTestWithoutNull()
-        //{
-        //    //Arrange
-        //    controller = new ProductListController(repo);
-
-        //    //Act
-        //    controller.NewProductRequested += NewProductRequestedHandlerNotNull;
-        //    controller.CreateProduct(null);
-
-        //    //Assert
-        //    using (StreamReader reader = new StreamReader(@"Data\TextFile.ini"))
-        //    {
-        //        Assert.AreEqual("Mette Frederiksen", reader.ReadLine());
-        //    }
-        //}
-
-        //private ProductEventArgs NewProductRequestedHandlerNull(object sender, ProductEventArgs args)
-        //{
-        //    ProductEventArgs result = null;
-        //    return result;
-        //}
-
-        //private ProductEventArgs NewProductRequestedHandlerNotNull(object sender, ProductEventArgs args)
-        //{
-        //    ProductEventArgs result = new ProductEventArgs() { Name = "Mette Frederiksen" };
-        //    return result;
-        //}
-
+        }
     }
 }
