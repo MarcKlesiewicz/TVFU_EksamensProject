@@ -1,6 +1,7 @@
 ﻿using System;
 using DomainLayer.EventArgs;
 using Application.Controllers;
+using Application.ViewModels;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Persistence.Repositories.Implementations;
 using Persistence.Data;

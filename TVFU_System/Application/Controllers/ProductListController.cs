@@ -26,6 +26,7 @@ namespace Application.Controllers
         {
             CreateProductCommand = new CreateProductCmd(CreateProduct);
             _productRepository = productRepo;
+            CurrentProductListVM = new ProductListViewModel();
         }
 
         public void CreateProduct(object parameter)
@@ -35,7 +36,9 @@ namespace Application.Controllers
             if (productValues != null)
             {
                 _productRepository.Add(productValues);
+                CurrentProductListVM.ViewModels.Add(CurrentProductVM);
             }
+            CurrentProductVM = null;
         }
 
         protected ProductEventArgs OnNewProductRequested()
