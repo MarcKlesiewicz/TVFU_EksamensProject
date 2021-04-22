@@ -4,6 +4,7 @@ using DomainLayer.EventArgs;
 using Application.Commands;
 using Application.Delegates;
 using System.Windows.Input;
+using System.Linq;
 
 namespace Application.Controllers
 {
@@ -66,7 +67,7 @@ namespace Application.Controllers
             }
             else
             {
-                CurrentProductListVM.ViewModels.Find(s => s.Id == CurrentProductVM.Id).Name = oldObj.Name;
+                CurrentProductListVM.ViewModels.First(s => s.Id == CurrentProductVM.Id).Update(productValues);
             }
             CurrentProductVM = null;
         }

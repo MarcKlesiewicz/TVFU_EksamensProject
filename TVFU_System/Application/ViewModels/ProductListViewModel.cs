@@ -1,4 +1,4 @@
-﻿using System.Collections.Generic;
+﻿using System.Collections.ObjectModel;
 using System.ComponentModel;
 
 namespace Application.ViewModels
@@ -7,11 +7,11 @@ namespace Application.ViewModels
     {
         public event PropertyChangedEventHandler PropertyChanged;
 
-        public List<ProductViewModel> ViewModels { get; set; }
+        public ObservableCollection<ProductViewModel> ViewModels { get; set; }
 
         public ProductListViewModel()
         {
-            ViewModels = new List<ProductViewModel>();
+            ViewModels = new ObservableCollection<ProductViewModel>();
         }
 
         protected void OnPropertyChanged(string propertyName)
