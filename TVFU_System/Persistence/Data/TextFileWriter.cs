@@ -1,4 +1,5 @@
-﻿using System.IO;
+﻿using System;
+using System.IO;
 
 namespace Persistence.Data
 {
@@ -9,6 +10,27 @@ namespace Persistence.Data
             using (StreamWriter writer = new StreamWriter(@"Data\TextFile.ini"))
             {
                 writer.WriteLine(input);
+            }
+        }
+        public void Update(string input, Guid Id)
+        {
+            using (StreamReader sr = new StreamReader(@"Data\TextFile.ini"))
+            {
+                while (sr.EndOfStream == false)
+                {
+                    string[] line = sr.ReadLine().Split(':');
+                    if (line[0] == Id.ToString())
+                    {
+                        goto there;
+                    }
+                }
+                return;
+            }
+            there:
+
+            using (StreamWriter writer = new StreamWriter(@"Data\TextFile.ini"))
+            {
+                writer.WriteLine(Id.ToString() + ":" + input);
             }
         }
     }

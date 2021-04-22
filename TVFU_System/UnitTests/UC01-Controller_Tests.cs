@@ -68,5 +68,6 @@ namespace UnitTests
             ProductEventArgs result = new ProductEventArgs() { Name = "Mette Frederiksen" };
             return result;
         }
+
     }
 }

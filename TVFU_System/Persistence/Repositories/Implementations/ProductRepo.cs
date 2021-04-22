@@ -17,7 +17,7 @@ namespace Persistence.Repositories.Implementations
 
         public void Add(EventArgs args)
         {
-            DataWriter.Save((args as ProductEventArgs).Name);
+            DataWriter.Save((args as ProductEventArgs).Id.ToString() + ":" + (args as ProductEventArgs).Name);
         }
 
         public IEnumerable<Product> GetAll()
@@ -37,7 +37,7 @@ namespace Persistence.Repositories.Implementations
 
         public void Update(EventArgs args)
         {
-            throw new NotImplementedException();
+            DataWriter.Update((args as ProductEventArgs).Name, (args as ProductEventArgs).Id);
         }
     }
 }
