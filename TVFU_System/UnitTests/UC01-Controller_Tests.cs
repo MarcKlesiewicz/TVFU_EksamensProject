@@ -6,6 +6,7 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Persistence.Repositories.Implementations;
 using Persistence.Data;
 using System.IO;
+using UnitTests.Dummy;
 
 namespace UnitTests
 {
@@ -13,7 +14,7 @@ namespace UnitTests
     public class UC01_Controller_Tests
     {
         ProductListController controller;
-        ProductRepo repo;
+        TextProductRepo repo;
 
         [TestInitialize]
         public void Init()
@@ -24,20 +25,51 @@ namespace UnitTests
         [TestMethod]
         public void CreateProductCancel()
         {
-            repo = new ProductRepo();
+            //Arrange
+            repo = new TextProductRepo();
             controller = new ProductListController(repo);
+            controller.NewProductRequested += NullProductEventArgs;
+
+            //Act
+            controller.CreateProduct(null);
+
+            //Assert
+            using (StreamReader reader = new StreamReader(@"Dummy\TextFile.ini"))
+            {
+                Assert.AreEqual(true, reader.EndOfStream);
+            }
         }
 
         [TestMethod]
         public void CreateProductConfirmed()
         {
-            repo = new ProductRepo();
+            //Arrange
+            repo = new TextProductRepo();
             controller = new ProductListController(repo);
+            controller.NewProductRequested += NotNullProductEventArgs;
+
+            //Act
+            controller.CreateProduct(null);
+
+            //Assert
+            using (StreamReader reader = new StreamReader(@"Dummy\TextFile.ini"))
+            {
+                Assert.AreEqual(false, reader.EndOfStream);
+            }
         }
 
-        private ProductEventArgs NullProductEventArgs()
+        private ProductEventArgs NullProductEventArgs(object sender, ProductEventArgs args)
         {
+            ProductEventArgs result = null;
+            return result;
+        }
 
+        private ProductEventArgs NotNullProductEventArgs(object sender, ProductEventArgs args)
+        {
+            ProductEventArgs result = new ProductEventArgs() { Description = "descriptionTest", UnitPrice = (float)1.1
+            , GuidingPrice = (float)1.5, TotalStock = 5, Blocked = false, UnitPerPackage = 1, QuantityDiscount = (float)0
+            , ConfirmedDeliveryDate = DateTime.Now, ProductNumber = 100000, CountryOfOrigin = "Danmark", PurchasingManager = "Anders" };
+            return result;
         }
     }
 }

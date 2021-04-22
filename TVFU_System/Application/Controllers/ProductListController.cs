@@ -21,7 +21,7 @@ namespace Application.Controllers
 
         public event ProductEventHandler NewProductRequested;
 
-        public event ProductEventHandler NewProductChange;
+        public event ProductEventHandler ProductUpdateRequested;
 
         public ProductListController(IProductRepo productRepo)
         {
@@ -36,6 +36,7 @@ namespace Application.Controllers
             ProductEventArgs productValues = OnNewProductRequested();
             if (productValues != null)
             {
+                productValues.Id = CurrentProductVM.Id;
                 _productRepository.Add(productValues);
                 CurrentProductListVM.ViewModels.Add(CurrentProductVM);
             }

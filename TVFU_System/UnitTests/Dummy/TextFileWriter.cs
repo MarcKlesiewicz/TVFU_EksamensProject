@@ -1,24 +1,24 @@
 ﻿using System;
 using System.IO;
 
-namespace Persistence.Data
+namespace UnitTests.Dummy
 {
-    public class TextFileWriter : IData
+    public class TextFileWriter
     {
         public void Save(string input)
         {
-            using (StreamWriter writer = new StreamWriter(@"Data\TextFile.ini"))
+            using (StreamWriter writer = new StreamWriter(@"Dummy\TextFile.ini"))
             {
                 writer.WriteLine(input);
             }
         }
-        public void Update(string input, Guid Id)
+        public void Update(string input, string Id)
         {
-            using (StreamReader sr = new StreamReader(@"Data\TextFile.ini"))
+            using (StreamReader sr = new StreamReader(@"Dummy\TextFile.ini"))
             {
                 while (sr.EndOfStream == false)
                 {
-                    string[] line = sr.ReadLine().Split(':');
+                    string[] line = sr.ReadLine().Split(',');
                     if (line[0] == Id.ToString())
                     {
                         goto there;
@@ -28,9 +28,9 @@ namespace Persistence.Data
             }
             there:
 
-            using (StreamWriter writer = new StreamWriter(@"Data\TextFile.ini"))
+            using (StreamWriter writer = new StreamWriter(@"Dummy\TextFile.ini"))
             {
-                writer.WriteLine(Id.ToString() + ":" + input);
+                writer.WriteLine(Id + "," + input);
             }
         }
     }

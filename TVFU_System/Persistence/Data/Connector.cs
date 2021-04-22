@@ -9,7 +9,7 @@ namespace Persistence.Data
 
         public Connector()
         {
-            using (StreamReader reader = new StreamReader(@"config.ini"))
+            using (StreamReader reader = new StreamReader(@"Data\config.ini"))
             {
                 ConnectionString = reader.ReadLine().Split(':')[1];
             }

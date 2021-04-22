@@ -8,7 +8,7 @@ namespace Application.ViewModels
     {
         public event PropertyChangedEventHandler PropertyChanged;
 
-        public Guid Id { get; } = new Guid();
+        public string Id { get; }
 
         private string _description;
         public string Description { get { return _description; } set { _description = value; OnPropertyChanged("Description"); } }
@@ -45,11 +45,12 @@ namespace Application.ViewModels
 
         public ProductViewModel()
         {
-            
+            Id = Guid.NewGuid().ToString();
         }
 
         public ProductViewModel(ProductEventArgs args)
         {
+            Id = Guid.NewGuid().ToString();
             _description = args.Description;
             _unitPrice = args.UnitPrice;
             _guidingPrice = args.GuidingPrice;

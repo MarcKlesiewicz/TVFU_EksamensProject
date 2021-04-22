@@ -21,7 +21,7 @@ namespace Persistence.Repositories.Implementations
                 connection.Open();
                 SqlCommand command = new SqlCommand(commandText, connection);
 
-                command.Parameters.Add("@ID", System.Data.SqlDbType.VarChar).Value = productArgs.Id.ToString();
+                command.Parameters.Add("@ID", System.Data.SqlDbType.VarChar).Value = productArgs.Id;
                 command.Parameters.Add("@Description", System.Data.SqlDbType.VarChar).Value = productArgs.Description;
                 command.Parameters.Add("@UnitPrice", System.Data.SqlDbType.Float).Value = productArgs.UnitPrice;
                 command.Parameters.Add("@GuidingPrice", System.Data.SqlDbType.Float).Value = productArgs.GuidingPrice;
@@ -63,7 +63,7 @@ namespace Persistence.Repositories.Implementations
                 connection.Open();
                 SqlCommand command = new SqlCommand(commandText, connection);
 
-                command.Parameters.Add("@ID", System.Data.SqlDbType.VarChar).Value = productArgs.Id.ToString();
+                command.Parameters.Add("@ID", System.Data.SqlDbType.VarChar).Value = productArgs.Id;
                 command.Parameters.Add("@Description", System.Data.SqlDbType.VarChar).Value = productArgs.Description;
                 command.Parameters.Add("@UnitPrice", System.Data.SqlDbType.Float).Value = productArgs.UnitPrice;
                 command.Parameters.Add("@GuidingPrice", System.Data.SqlDbType.Float).Value = productArgs.GuidingPrice;

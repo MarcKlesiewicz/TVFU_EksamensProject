@@ -4,7 +4,7 @@ namespace DomainLayer.EventArgs
 {
     public class ProductEventArgs : System.EventArgs
     {
-        public Guid Id { get; set; }
+        public string Id { get; set; }
 
         public string Description { get; set; }
 
@@ -27,5 +27,11 @@ namespace DomainLayer.EventArgs
         public string CountryOfOrigin { get; set; }
 
         public string PurchasingManager { get; set; }
+
+        public override string ToString()
+        {
+            return $"{Description},{UnitPrice},{GuidingPrice},{TotalStock},{Blocked},{UnitPerPackage},{QuantityDiscount}," +
+                $"{ConfirmedDeliveryDate.ToString()},{ProductNumber},{CountryOfOrigin},{PurchasingManager}";
+        }
     }
 }
