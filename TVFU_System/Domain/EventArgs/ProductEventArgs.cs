@@ -1,8 +1,8 @@
 ﻿using System;
 
-namespace DomainLayer.Models
+namespace DomainLayer.EventArgs
 {
-    public class Product
+    public class ProductEventArgs : System.EventArgs
     {
         public string Id { get; set; }
 

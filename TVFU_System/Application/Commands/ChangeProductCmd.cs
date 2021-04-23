@@ -3,9 +3,9 @@ using System.Windows.Input;
 
 namespace Application.Commands
 {
-    public class CreateProductCmd : ICommand
+    public class ChangeProductCmd : ICommand
     {
-        readonly Func<object, object> _execute;
+        readonly Action<object> _execute;
 
         public event System.EventHandler CanExecuteChanged
         {
@@ -13,7 +13,7 @@ namespace Application.Commands
             remove { CommandManager.RequerySuggested -= value; }
         }
 
-        public CreateProductCmd(Func<object, object> execute)
+        public ChangeProductCmd(Action<object> execute)
         {
             this._execute = execute;
         }

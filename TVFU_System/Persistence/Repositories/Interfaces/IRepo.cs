@@ -9,9 +9,12 @@ namespace Persistence.Repositories.Interfaces
         void Add(EventArgs args);
 
         IEnumerable<TEntity> GetAll();
+
         IEnumerable<TEntity> GetBy(EventArgs args);
 
-        void Remove(EventArgs args);
+        TEntity Get(string guid);
+
+        void Remove(string guid);
 
         void Update(EventArgs args);
     }
