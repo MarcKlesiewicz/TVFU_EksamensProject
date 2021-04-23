@@ -11,7 +11,7 @@ using UnitTests.Dummy;
 namespace UnitTests
 {
     [TestClass]
-    public class UC01_Controller_Tests
+    public class TextProductRepo_Get
     {
         ProductListController controller;
         TextProductRepo repo;
@@ -23,25 +23,7 @@ namespace UnitTests
         }
 
         [TestMethod]
-        public void CreateProductCancel()
-        {
-            //Arrange
-            repo = new TextProductRepo();
-            controller = new ProductListController(repo);
-            controller.NewProductRequested += NullProductEventArgs;
-
-            //Act
-            controller.CreateProduct(null);
-
-            //Assert
-            using (StreamReader reader = new StreamReader(@"Dummy\TextFile.ini"))
-            {
-                Assert.AreEqual(null, reader.ReadLine());
-            }
-        }
-
-        [TestMethod]
-        public void CreateProductConfirmed()
+        public void GetWithOneEntry()
         {
             //Arrange
             repo = new TextProductRepo();
@@ -49,19 +31,23 @@ namespace UnitTests
             controller.NewProductRequested += NotNullProductEventArgs;
 
             //Act
-            controller.CreateProduct(null);
+            var expected = controller.CreateProduct(null);
 
             //Assert
             using (StreamReader reader = new StreamReader(@"Dummy\TextFile.ini"))
             {
-                Assert.IsNotNull(reader.ReadLine());
+                string[] line = reader.ReadLine().Split(';');
+                string result = "";
+                for (int i = 1; i < line.Length; i++)
+                {
+                    result += line[i];
+                    if (i < line.Length - 1)
+                    {
+                        result += ";";
+                    }
+                }
+                Assert.AreEqual(expected.ToString(), result);
             }
-        }
-
-        private ProductEventArgs NullProductEventArgs(object sender, ProductEventArgs args)
-        {
-            ProductEventArgs result = null;
-            return result;
         }
 
         private ProductEventArgs NotNullProductEventArgs(object sender, ProductEventArgs args)

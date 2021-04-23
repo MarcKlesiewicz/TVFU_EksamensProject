@@ -5,7 +5,7 @@ namespace Application.Commands
 {
     public class CreateProductCmd : ICommand
     {
-        readonly Action<object> _execute;
+        readonly Func<object, object> _execute;
 
         public event System.EventHandler CanExecuteChanged
         {
@@ -13,7 +13,7 @@ namespace Application.Commands
             remove { CommandManager.RequerySuggested -= value; }
         }
 
-        public CreateProductCmd(Action<object> execute)
+        public CreateProductCmd(Func<object, object> execute)
         {
             this._execute = execute;
         }

@@ -38,6 +38,11 @@ namespace Persistence.Repositories.Implementations
             }
         }
 
+        public Product Get(string guid)
+        {
+            throw new NotImplementedException();
+        }
+
         public IEnumerable<Product> GetAll()
         {
             throw new NotImplementedException();
@@ -48,7 +53,7 @@ namespace Persistence.Repositories.Implementations
             throw new NotImplementedException();
         }
 
-        public void Remove(EventArgs args)
+        public void Remove(string guid)
         {
             throw new NotImplementedException();
         }

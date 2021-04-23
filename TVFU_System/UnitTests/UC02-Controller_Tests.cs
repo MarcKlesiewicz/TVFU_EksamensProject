@@ -30,42 +30,101 @@ namespace UnitTests
             controller = new ProductListController(repo);
 
             controller.NewProductRequested += NotNullProductEventArgs;
-            controller.CreateProduct(null);
+            var createdProduct = new ProductViewModel(controller.CreateProduct(null));
 
             controller.ProductUpdateRequested += NullProductEventArgs;
 
             //Act
-            controller.ChangeProduct(controller.CurrentProductVM);
+            controller.ChangeProduct(createdProduct);
 
             //Assert
-            using (StreamReader reader = new StreamReader(@"Dummy\TextFile.ini"))
-            {
-                Assert.AreEqual(NotNullProductEventArgs(null, null).ToString(), reader.ReadLine());
-            }
+            Assert.AreEqual(NotNullProductEventArgs(null, null).ToString(), repo.Get(createdProduct.Id).ToString());
         }
 
         [TestMethod]
-        public void ChangeProductConfirmed()
+        public void ChangeProductConfirmedWithOneEntryInRepository()
         {
             //Arrange
             repo = new TextProductRepo();
             controller = new ProductListController(repo);
 
             controller.NewProductRequested += NotNullProductEventArgs;
+            var createdProduct = new ProductViewModel(controller.CreateProduct(null));
+
+            controller.ProductUpdateRequested += UpdatedProductEventArgs;
+
+            //Act
+            controller.ChangeProduct(createdProduct);
+
+            //Assert
+            Assert.AreEqual(UpdatedProductEventArgs(null, null).ToString(), repo.Get(createdProduct.Id).ToString());
+        }
+
+        [TestMethod]
+        public void ChangeProductConfirmedWithManyEntriesInRepository()
+        {
+            //Arrange
+            repo = new TextProductRepo();
+            controller = new ProductListController(repo);
+
+            controller.NewProductRequested += NotNullProductEventArgs;
+
+            controller.CreateProduct(null);
+            controller.CreateProduct(null);
+            controller.CreateProduct(null);
+            controller.CreateProduct(null);
+            controller.CreateProduct(null);
+            var createdProduct = new ProductViewModel(controller.CreateProduct(null));
+            controller.CreateProduct(null);
+            controller.CreateProduct(null);
+            controller.CreateProduct(null);
             controller.CreateProduct(null);
 
             controller.ProductUpdateRequested += UpdatedProductEventArgs;
 
             //Act
-            controller.ChangeProduct(controller.CurrentProductVM);
+            controller.ChangeProduct(createdProduct);
 
             //Assert
-            using (StreamReader reader = new StreamReader(@"Dummy\TextFile.ini"))
-            {
-                string[] line = reader.ReadLine().Split(',');
+            Assert.AreEqual(UpdatedProductEventArgs(null, null).ToString(), repo.Get(createdProduct.Id).ToString());
+        }
 
-                Assert.AreEqual(UpdatedProductEventArgs(null, null).ToString(), line.);
-            }
+        [TestMethod]
+        public void ChangeManyProductsConfirmedWithManyEntriesInRepository()
+        {
+            //Arrange
+            repo = new TextProductRepo();
+            controller = new ProductListController(repo);
+
+            controller.NewProductRequested += NotNullProductEventArgs;
+
+            controller.CreateProduct(null);
+            controller.CreateProduct(null);
+            controller.CreateProduct(null);
+            controller.CreateProduct(null);
+            controller.CreateProduct(null);
+            var createdProduct1 = new ProductViewModel(controller.CreateProduct(null));
+            controller.CreateProduct(null);
+            controller.CreateProduct(null);
+            var createdProduct2 = new ProductViewModel(controller.CreateProduct(null));
+            controller.CreateProduct(null);
+            controller.CreateProduct(null);
+            controller.CreateProduct(null);
+            var createdProduct3 = new ProductViewModel(controller.CreateProduct(null));
+            controller.CreateProduct(null);
+            controller.CreateProduct(null);
+
+            controller.ProductUpdateRequested += UpdatedProductEventArgs;
+
+            //Act
+            controller.ChangeProduct(createdProduct1);
+            controller.ChangeProduct(createdProduct2);
+            controller.ChangeProduct(createdProduct3);
+
+            //Assert
+            Assert.AreEqual(UpdatedProductEventArgs(null, null).ToString(), repo.Get(createdProduct1.Id).ToString());
+            Assert.AreEqual(UpdatedProductEventArgs(null, null).ToString(), repo.Get(createdProduct2.Id).ToString());
+            Assert.AreEqual(UpdatedProductEventArgs(null, null).ToString(), repo.Get(createdProduct3.Id).ToString());
         }
 
         private ProductEventArgs NullProductEventArgs(object sender, ProductEventArgs args)

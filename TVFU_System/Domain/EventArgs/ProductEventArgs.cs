@@ -30,8 +30,8 @@ namespace DomainLayer.EventArgs
 
         public override string ToString()
         {
-            return $"{Description},{UnitPrice},{GuidingPrice},{TotalStock},{Blocked},{UnitPerPackage},{QuantityDiscount}," +
-                $"{ConfirmedDeliveryDate.ToString()},{ProductNumber},{CountryOfOrigin},{PurchasingManager}";
+            return $"{Description};{UnitPrice};{GuidingPrice};{TotalStock};{Blocked};{UnitPerPackage};{QuantityDiscount};" +
+                $"{ConfirmedDeliveryDate.ToString()};{ProductNumber};{CountryOfOrigin};{PurchasingManager}";
         }
     }
 }

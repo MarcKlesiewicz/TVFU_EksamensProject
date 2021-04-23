@@ -50,7 +50,7 @@ namespace Application.ViewModels
 
         public ProductViewModel(ProductEventArgs args)
         {
-            Id = Guid.NewGuid().ToString();
+            Id = args.Id;
             _description = args.Description;
             _unitPrice = args.UnitPrice;
             _guidingPrice = args.GuidingPrice;
@@ -79,6 +79,21 @@ namespace Application.ViewModels
             _purchasingManager = args.PurchasingManager;
         }
 
+        public void Update(ProductViewModel args)
+        {
+            _description = args.Description;
+            _unitPrice = args.UnitPrice;
+            _guidingPrice = args.GuidingPrice;
+            _totalStock = args.TotalStock;
+            _blocked = args.Blocked;
+            _unitPerPackage = args.UnitPerPackage;
+            _quantityDiscount = args.QuantityDiscount;
+            _confirmedDeliveryDate = args.ConfirmedDeliveryDate;
+            _productNumber = args.ProductNumber;
+            _countryOfOrigin = args.CountryOfOrigin;
+            _purchasingManager = args.PurchasingManager;
+        }
+
         protected void OnPropertyChanged(string propertyName)
         {
             PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
@@ -86,6 +101,12 @@ namespace Application.ViewModels
             {
                 propertyChanged(this, new PropertyChangedEventArgs(propertyName));
             }
+        }
+
+        public override string ToString()
+        {
+            return $"{_description};{_unitPrice};{_guidingPrice};{_totalStock};{_blocked};{_unitPerPackage};{_quantityDiscount};" +
+                $"{_confirmedDeliveryDate.ToString()};{_productNumber};{_countryOfOrigin};{_purchasingManager}";
         }
     }
 }

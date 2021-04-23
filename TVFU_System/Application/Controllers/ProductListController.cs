@@ -12,8 +12,8 @@ namespace Application.Controllers
     {
         private IProductRepo _productRepository;
 
-        public ProductViewModel CurrentProductVM { get; private set; }
-        public ProductListViewModel CurrentProductListVM { get; private set; }
+        public ProductViewModel CurrentProductVM { get; set; }
+        public ProductListViewModel CurrentProductListVM { get; set; }
 
         public ICommand CreateProductCommand { get; private set; }
 
@@ -30,7 +30,7 @@ namespace Application.Controllers
             CurrentProductListVM = new ProductListViewModel();
         }
 
-        public void CreateProduct(object parameter)
+        public ProductEventArgs CreateProduct(object parameter)
         {
             CurrentProductVM = new ProductViewModel();
             ProductEventArgs productValues = OnNewProductRequested();
@@ -38,9 +38,10 @@ namespace Application.Controllers
             {
                 productValues.Id = CurrentProductVM.Id;
                 _productRepository.Add(productValues);
+                CurrentProductVM.Update(productValues);
                 CurrentProductListVM.ViewModels.Add(CurrentProductVM);
             }
-            CurrentProductVM = null;
+            return productValues;
         }
 
         protected ProductEventArgs OnNewProductRequested()
@@ -59,18 +60,31 @@ namespace Application.Controllers
         {
             var oldObj = (parameter as ProductViewModel);
             var newObj = (parameter as ProductViewModel);
-            CurrentProductVM = oldObj;
-            ProductEventArgs productValues = OnNewProductRequested();
+            CurrentProductVM = newObj;
+            ProductEventArgs productValues = OnProductUpdateRequested();
 
             if (productValues != null)
             {
+                productValues.Id = CurrentProductVM.Id;
                 _productRepository.Update(productValues);
             }
             else
             {
-                CurrentProductListVM.ViewModels.First(s => s.Id == CurrentProductVM.Id).Update(productValues);
+                CurrentProductListVM.ViewModels.First(s => s.Id == oldObj.Id).Update(oldObj);
             }
             CurrentProductVM = null;
+        }
+
+        protected ProductEventArgs OnProductUpdateRequested()
+        {
+            ProductEventArgs result = null;
+            ProductEventHandler newProductRequested = ProductUpdateRequested;
+            if (newProductRequested != null)
+            {
+                ProductEventArgs args = null;
+                result = newProductRequested(this, args);
+            }
+            return result;
         }
 
         //protected ProductEventArgs OnProductChange(ProductViewModel parameter)
