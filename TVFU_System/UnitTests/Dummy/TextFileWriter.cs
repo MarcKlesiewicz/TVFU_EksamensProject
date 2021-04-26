@@ -34,7 +34,8 @@ namespace UnitTests.Dummy
                     if (line[0] == Id)
                     {
                         result += input + "\n";
-                    } else
+                    }
+                    else
                     {
                         result += String.Join(";", line) + "\n";
                     }
@@ -66,7 +67,7 @@ namespace UnitTests.Dummy
             }
             if (!objectFound)
             {
-                throw new Exception();
+                throw new KeyNotFoundException();
             }
             return result;
         }

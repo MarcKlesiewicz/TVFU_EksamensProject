@@ -5,6 +5,7 @@ using Application.Commands;
 using Application.Delegates;
 using System.Windows.Input;
 using System.Linq;
+using System;
 
 namespace Application.Controllers
 {
@@ -19,9 +20,13 @@ namespace Application.Controllers
 
         public ICommand ChangeProductCommand { get; private set; }
 
+        public ICommand DeleteProductCommand { get; private set; }
+
         public event ProductEventHandler NewProductRequested;
 
         public event ProductEventHandler ProductUpdateRequested;
+
+        public event BoolEventHandler ProductDeleteRequested;
 
         public ProductListController(IProductRepo productRepo)
         {
@@ -86,6 +91,47 @@ namespace Application.Controllers
             }
             return result;
         }
+
+        public void DeleteProduct(object parameter)
+        {
+            var delObj = (parameter as ProductViewModel);
+            CurrentProductVM = delObj;
+
+            bool confirmDelete = OnProductDeleteRequested();
+
+
+            if (confirmDelete)
+            {
+
+
+                foreach (var item in CurrentProductListVM.ViewModels)
+                {
+                    if (item.Id == delObj.Id)
+                    {
+                        _productRepository.Remove(item.Id);
+                        CurrentProductListVM.ViewModels.Remove(item);
+
+                        break;
+                    }
+                }
+            }
+            CurrentProductVM = null;
+        }
+
+        protected bool OnProductDeleteRequested()
+        {
+            bool result = false;
+            BoolEventHandler deleteProductRequested = ProductDeleteRequested;
+            if (deleteProductRequested != null)
+            {
+                ProductEventArgs args = null;
+                result = deleteProductRequested();
+            }
+
+            return result;
+
+        }
+
 
         //protected ProductEventArgs OnProductChange(ProductViewModel parameter)
         //{

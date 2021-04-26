@@ -47,6 +47,7 @@
   <ItemGroup>
     <Compile Include="Commands\ChangeProductCmd.cs" />
     <Compile Include="Commands\CreateProductCmd.cs" />
+    <Compile Include="Commands\DeleteProductCmd.cs" />
     <Compile Include="Controllers\ProductListController.cs" />
     <Compile Include="Delegates\GeneralDelegates.cs" />
     <Compile Include="Delegates\ProductDelegates.cs" />
