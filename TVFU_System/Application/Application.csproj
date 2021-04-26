@@ -46,6 +46,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Commands\ChangeProductCmd.cs" />
+    <Compile Include="Commands\CloseProductListCmd.cs" />
     <Compile Include="Commands\ShowProductListCmd.cs" />
     <Compile Include="Commands\CreateProductCmd.cs" />
     <Compile Include="Commands\DeleteProductCmd.cs" />

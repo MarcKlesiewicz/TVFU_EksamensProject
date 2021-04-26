@@ -130,7 +130,7 @@ namespace Application.ViewModels
         public override string ToString()
         {
             return $"{_description};{_unitPrice};{_guidingPrice};{_totalStock};{_blocked};{_unitPerPackage};{_quantityDiscount};" +
-                $"{_confirmedDeliveryDate.ToString()};{_productNumber};{_countryOfOrigin};{_purchasingManager}";
+                $"{_confirmedDeliveryDate.ToString()};{_productNumber};{_countryOfOrigin};{_purchasingManager};{_productCategory}";
         }
     }
 }

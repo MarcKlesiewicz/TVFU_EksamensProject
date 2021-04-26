@@ -68,7 +68,8 @@ namespace UnitTests
         {
             ProductEventArgs result = new ProductEventArgs() { Description = "descriptionTest", UnitPrice = (float)1.1
             , GuidingPrice = (float)1.5, TotalStock = 5, Blocked = false, UnitPerPackage = 1, QuantityDiscount = (float)0
-            , ConfirmedDeliveryDate = DateTime.Now, ProductNumber = 100000, CountryOfOrigin = "Danmark", PurchasingManager = "Anders" };
+            , ConfirmedDeliveryDate = DateTime.Now, ProductNumber = 100000, CountryOfOrigin = "Danmark", PurchasingManager = "Anders"
+            , ProductCategory = "productCategoryTest" };
             return result;
         }
     }

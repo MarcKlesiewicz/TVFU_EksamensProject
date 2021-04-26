@@ -26,6 +26,8 @@ namespace Application.Controllers
 
         public ICommand ShowProductListCommand { get; }
 
+        public ICommand CloseProductListCommand { get; }
+
         public event ProductEventHandler NewProductRequested;
 
         public event ProductEventHandler ProductUpdateRequested;
@@ -38,6 +40,7 @@ namespace Application.Controllers
         {
             CreateProductCommand = new CreateProductCmd(CreateProduct);
             ShowProductListCommand = new ShowProductListCmd(ShowProductList);
+            CloseProductListCommand = new CloseProductListCmd(CloseProductList);
             _productRepository = productRepo;
             CurrentProductListVM = new ProductListViewModel();
         }
@@ -131,7 +134,6 @@ namespace Application.Controllers
             BoolEventHandler deleteProductRequested = ProductDeleteRequested;
             if (deleteProductRequested != null)
             {
-                ProductEventArgs args = null;
                 result = deleteProductRequested();
             }
 
@@ -140,7 +142,7 @@ namespace Application.Controllers
 
         public void ShowProductList()
         {
-            List<Product> temp = (_productRepository.GetAll() as List<Product>);
+            List<Product> temp = (_productRepository.GetByProductCategories() as List<Product>);
             for (int i = 0; i < temp.Count; i++)
             {
                 CurrentProductListVM.ViewModels.Add(new ProductViewModel(temp[i]));
@@ -149,6 +151,11 @@ namespace Application.Controllers
             {
                 ShowProductListRequested.Invoke();
             }
+        }
+
+        public void CloseProductList()
+        {
+            CurrentProductListVM.ViewModels.Clear();
         }
 
         //protected ProductEventArgs OnProductChange(ProductViewModel parameter)
