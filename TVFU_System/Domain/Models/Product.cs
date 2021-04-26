@@ -28,6 +28,8 @@ namespace DomainLayer.Models
 
         public string PurchasingManager { get; set; }
 
+        public string ProductCategory { get; set; }
+
         public override string ToString()
         {
             return $"{Description};{UnitPrice};{GuidingPrice};{TotalStock};{Blocked};{UnitPerPackage};{QuantityDiscount};" +

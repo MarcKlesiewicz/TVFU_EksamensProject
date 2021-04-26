@@ -6,6 +6,8 @@ using Application.Delegates;
 using System.Windows.Input;
 using System.Linq;
 using System;
+using System.Collections.Generic;
+using DomainLayer.Models;
 
 namespace Application.Controllers
 {
@@ -22,15 +24,20 @@ namespace Application.Controllers
 
         public ICommand DeleteProductCommand { get; private set; }
 
+        public ICommand ShowProductListCommand { get; }
+
         public event ProductEventHandler NewProductRequested;
 
         public event ProductEventHandler ProductUpdateRequested;
 
         public event BoolEventHandler ProductDeleteRequested;
 
+        public event Action ShowProductListRequested;
+
         public ProductListController(IProductRepo productRepo)
         {
             CreateProductCommand = new CreateProductCmd(CreateProduct);
+            ShowProductListCommand = new ShowProductListCmd(ShowProductList);
             _productRepository = productRepo;
             CurrentProductListVM = new ProductListViewModel();
         }
@@ -129,9 +136,20 @@ namespace Application.Controllers
             }
 
             return result;
-
         }
 
+        public void ShowProductList()
+        {
+            List<Product> temp = (_productRepository.GetAll() as List<Product>);
+            for (int i = 0; i < temp.Count; i++)
+            {
+                CurrentProductListVM.ViewModels.Add(new ProductViewModel(temp[i]));
+            }
+            if (ShowProductListRequested != null)
+            {
+                ShowProductListRequested.Invoke();
+            }
+        }
 
         //protected ProductEventArgs OnProductChange(ProductViewModel parameter)
         //{
