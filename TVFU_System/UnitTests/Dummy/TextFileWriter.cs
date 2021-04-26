@@ -106,5 +106,10 @@ namespace UnitTests.Dummy
                 writer.Write(result);
             }
         }
+
+        public void Flush()
+        {
+            File.WriteAllText(@"Dummy\TextFile.ini", String.Empty);
+        }
     }
 }

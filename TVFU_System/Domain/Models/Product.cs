@@ -2,7 +2,7 @@
 
 namespace DomainLayer.Models
 {
-    public class Product
+    public class Product : IComparable
     {
         public string Id { get; set; }
 
@@ -28,10 +28,17 @@ namespace DomainLayer.Models
 
         public string PurchasingManager { get; set; }
 
+        public string ProductCategory { get; set; }
+
+        public int CompareTo(object obj)
+        {
+            return String.Compare(this.ProductCategory.ToLower(), (obj as Product).ProductCategory.ToLower());
+        }
+
         public override string ToString()
         {
             return $"{Description};{UnitPrice};{GuidingPrice};{TotalStock};{Blocked};{UnitPerPackage};{QuantityDiscount};" +
-                $"{ConfirmedDeliveryDate.ToString()};{ProductNumber};{CountryOfOrigin};{PurchasingManager}";
+                $"{ConfirmedDeliveryDate.ToString()};{ProductNumber};{CountryOfOrigin};{PurchasingManager};{ProductCategory}";
         }
     }
 }

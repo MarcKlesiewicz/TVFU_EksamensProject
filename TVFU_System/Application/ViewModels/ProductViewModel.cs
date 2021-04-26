@@ -1,6 +1,7 @@
 ﻿using System;
 using System.ComponentModel;
 using DomainLayer.EventArgs;
+using DomainLayer.Models;
 
 namespace Application.ViewModels
 {
@@ -43,6 +44,9 @@ namespace Application.ViewModels
         private string _purchasingManager;
         public string PurchasingManager { get { return _purchasingManager; } set { _purchasingManager = value; OnPropertyChanged("PurchasingManager"); } }
 
+        private string _productCategory;
+        public string ProductCategory { get { return _productCategory; } set { _productCategory = value; OnPropertyChanged("ProductCategory"); } }
+
         public ProductViewModel()
         {
             Id = Guid.NewGuid().ToString();
@@ -62,6 +66,24 @@ namespace Application.ViewModels
             _productNumber = args.ProductNumber;
             _countryOfOrigin = args.CountryOfOrigin;
             _purchasingManager = args.PurchasingManager;
+            _productCategory = args.ProductCategory;
+        }
+
+        public ProductViewModel(Product args)
+        {
+            Id = args.Id;
+            _description = args.Description;
+            _unitPrice = args.UnitPrice;
+            _guidingPrice = args.GuidingPrice;
+            _totalStock = args.TotalStock;
+            _blocked = args.Blocked;
+            _unitPerPackage = args.UnitPerPackage;
+            _quantityDiscount = args.QuantityDiscount;
+            _confirmedDeliveryDate = args.ConfirmedDeliveryDate;
+            _productNumber = args.ProductNumber;
+            _countryOfOrigin = args.CountryOfOrigin;
+            _purchasingManager = args.PurchasingManager;
+            _productCategory = args.ProductCategory;
         }
 
         public void Update(ProductEventArgs args)
@@ -77,6 +99,7 @@ namespace Application.ViewModels
             _productNumber = args.ProductNumber;
             _countryOfOrigin = args.CountryOfOrigin;
             _purchasingManager = args.PurchasingManager;
+            _productCategory = args.ProductCategory;
         }
 
         public void Update(ProductViewModel args)
@@ -92,6 +115,7 @@ namespace Application.ViewModels
             _productNumber = args.ProductNumber;
             _countryOfOrigin = args.CountryOfOrigin;
             _purchasingManager = args.PurchasingManager;
+            _productCategory = args.ProductCategory;
         }
 
         protected void OnPropertyChanged(string propertyName)
@@ -106,7 +130,7 @@ namespace Application.ViewModels
         public override string ToString()
         {
             return $"{_description};{_unitPrice};{_guidingPrice};{_totalStock};{_blocked};{_unitPerPackage};{_quantityDiscount};" +
-                $"{_confirmedDeliveryDate.ToString()};{_productNumber};{_countryOfOrigin};{_purchasingManager}";
+                $"{_confirmedDeliveryDate.ToString()};{_productNumber};{_countryOfOrigin};{_purchasingManager};{_productCategory}";
         }
     }
 }

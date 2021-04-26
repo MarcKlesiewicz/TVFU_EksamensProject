@@ -3,6 +3,7 @@ using Persistence.Repositories.Interfaces;
 using System;
 using System.Collections.Generic;
 using DomainLayer.EventArgs;
+using System.Collections;
 
 namespace UnitTests.Dummy
 {
@@ -34,13 +35,25 @@ namespace UnitTests.Dummy
             product.ProductNumber = int.Parse(productTextInitiator[9]);
             product.CountryOfOrigin = productTextInitiator[10];
             product.PurchasingManager = productTextInitiator[11];
+            product.ProductCategory = productTextInitiator[12];
 
             return product;
         }
 
         public IEnumerable<Product> GetAll()
         {
-            List<String> productsInStringFormat = new List<string>();
+            throw new NotImplementedException();
+        }
+
+        public IEnumerable<Product> GetBy(EventArgs args)
+        {
+            return null;
+        }
+
+        public IEnumerable GetByProductCategories()
+        {
+            TextFileWriter writer = new TextFileWriter();
+            List<String> productsInStringFormat = writer.GetAll();
             List<Product> result = new List<Product>();
             for (int i = 0; i < productsInStringFormat.Count; i++)
             {
@@ -60,15 +73,12 @@ namespace UnitTests.Dummy
                 product.ProductNumber = int.Parse(productTextInitiator[9]);
                 product.CountryOfOrigin = productTextInitiator[10];
                 product.PurchasingManager = productTextInitiator[11];
+                product.ProductCategory = productTextInitiator[12];
 
                 result.Add(product);
             }
+            Sort(ref result);
             return result;
-        }
-
-        public IEnumerable<Product> GetBy(EventArgs args)
-        {
-            return null;
         }
 
         public void Remove(string guid)
@@ -83,6 +93,22 @@ namespace UnitTests.Dummy
             string entry = $"{productArgs.Id};{productArgs.ToString()}";
             TextFileWriter writer = new TextFileWriter();
             writer.Update(entry, productArgs.Id);
+        }
+
+        private void Sort(ref List<Product> products)
+        {
+            for (int i = products.Count - 1; i > 1; i--)
+            {
+                for (int j = 0; j < i; j++)
+                {
+                    if (products[j].CompareTo(products[j + 1]) > 0)
+                    {
+                        var temp = products[j];
+                        products[j] = products[j + 1];
+                        products[j + 1] = temp;
+                    }
+                }
+            }
         }
     }
 }

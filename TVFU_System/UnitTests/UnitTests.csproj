@@ -61,6 +61,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="UC02-Controller_Tests.cs" />
     <Compile Include="UC03-Controller_Tests.cs" />
+    <Compile Include="UC04-Controller_Tests.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Dummy\TextFile.ini">

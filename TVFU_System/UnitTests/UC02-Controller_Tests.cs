@@ -147,7 +147,8 @@ namespace UnitTests
                 ConfirmedDeliveryDate = DateTime.Now,
                 ProductNumber = 100000,
                 CountryOfOrigin = "Danmark",
-                PurchasingManager = "Anders"
+                PurchasingManager = "Anders",
+                ProductCategory = "productCategoryTest"
             };
             return result;
         }
@@ -166,7 +167,8 @@ namespace UnitTests
                 ConfirmedDeliveryDate = DateTime.Now,
                 ProductNumber = 100000,
                 CountryOfOrigin = "Tyskland",
-                PurchasingManager = "Simon"
+                PurchasingManager = "Simon",
+                ProductCategory = "changedProductCategoryTest"
             };
             return result;
         }

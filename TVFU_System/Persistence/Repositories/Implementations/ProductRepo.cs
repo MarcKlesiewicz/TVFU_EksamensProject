@@ -5,6 +5,7 @@ using System.Data.SqlClient;
 using Persistence.Data;
 using System;
 using System.Collections.Generic;
+using System.Collections;
 
 namespace Persistence.Repositories.Implementations
 {
@@ -49,6 +50,11 @@ namespace Persistence.Repositories.Implementations
         }
 
         public IEnumerable<Product> GetBy(EventArgs args)
+        {
+            throw new NotImplementedException();
+        }
+
+        public IEnumerable GetByProductCategories()
         {
             throw new NotImplementedException();
         }
