@@ -33,7 +33,12 @@ namespace Application.ViewModels
         public float QuantityDiscount { get { return _quantityDiscount; } set { _quantityDiscount = value; OnPropertyChanged("QuantityDiscount"); } }
 
         private DateTime _confirmedDeliveryDate;
-        public DateTime ConfirmedDeliveryDate { get { return _confirmedDeliveryDate; } set { _confirmedDeliveryDate = value; OnPropertyChanged("ConfirmedDeliveryDate"); } }
+        public DateTime ConfirmedDeliveryDate
+        {
+            get { return _confirmedDeliveryDate; }
+            set
+            { _confirmedDeliveryDate = ((DateTime?)value).Value; OnPropertyChanged("ConfirmedDeliveryDate"); }
+        }
 
         private int _productNumber;
         public int ProductNumber { get { return _productNumber; } set { _productNumber = value; OnPropertyChanged("ProductNumber"); } }

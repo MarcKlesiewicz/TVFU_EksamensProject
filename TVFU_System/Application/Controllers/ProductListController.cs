@@ -87,7 +87,8 @@ namespace Application.Controllers
             }
             else
             {
-                CurrentProductListVM.ViewModels.First(s => s.Id == oldObj.Id).Update(oldObj);
+                int temp = CurrentProductListVM.ViewModels.IndexOf(CurrentProductVM);
+                CurrentProductListVM.ViewModels[temp] = oldObj;
             }
             CurrentProductVM = null;
         }

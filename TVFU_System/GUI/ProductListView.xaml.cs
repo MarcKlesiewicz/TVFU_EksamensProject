@@ -26,7 +26,6 @@ namespace GUI
     public partial class ProductListView : Window
     {
         private static IProductRepo repo = new ProductRepo();
-        //private ProductListViewModel PLVM = new ProductListViewModel();
         private ProductListController PLC = new ProductListController(repo);
         public ProductListView()
         {

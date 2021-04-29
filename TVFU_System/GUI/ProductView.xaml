@@ -190,13 +190,15 @@
                 <TextBlock
                     Text="Bekræftet modtagelsesdato"
                     FontSize="20"/>
-                <TextBox
-                    Text="{Binding PVM.ConfirmedDeliveryDate}"
-                    BorderBrush="Black"
+                <DatePicker
+                    SelectedDate="{Binding PVM.ConfirmedDeliveryDate, Mode=OneWayToSource}" 
+                    DisplayDate="2021-4-27"
+                    BorderBrush="Black"            
                     BorderThickness="1"
                     FontSize="20"
                     Height="30"
-                    Width="250"/>
+                    Width="250">
+                </DatePicker>
             </StackPanel>
             <StackPanel
                 Grid.Row="7"
