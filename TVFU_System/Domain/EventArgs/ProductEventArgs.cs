@@ -30,10 +30,29 @@ namespace DomainLayer.EventArgs
 
         public string ProductCategory { get; set; }
 
+        public ProductEventArgs() { }
+
+        public ProductEventArgs(ProductEventArgs args)
+        {
+            Id = args.Id;
+            Description = args.Description;
+            UnitPrice = args.UnitPrice;
+            GuidingPrice = args.GuidingPrice;
+            TotalStock = args.TotalStock;
+            Blocked = args.Blocked;
+            UnitPerPackage = args.UnitPerPackage;
+            QuantityDiscount = args.QuantityDiscount;
+            ConfirmedDeliveryDate = args.ConfirmedDeliveryDate;
+            ProductNumber = args.ProductNumber;
+            CountryOfOrigin = args.CountryOfOrigin;
+            PurchasingManager = args.PurchasingManager;
+            ProductCategory = args.ProductCategory;
+        }
+
         public override string ToString()
         {
             return $"{Description};{UnitPrice};{GuidingPrice};{TotalStock};{Blocked};{UnitPerPackage};{QuantityDiscount};" +
-                $"{ConfirmedDeliveryDate.ToString()};{ProductNumber};{CountryOfOrigin};{PurchasingManager};{ProductCategory}";
+                $"{ConfirmedDeliveryDate.ToString("dd/MM/yyyy")};{ProductNumber};{CountryOfOrigin};{PurchasingManager};{ProductCategory}";
         }
     }
 }

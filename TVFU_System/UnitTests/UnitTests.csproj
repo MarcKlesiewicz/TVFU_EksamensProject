@@ -56,12 +56,15 @@
   <ItemGroup>
     <Compile Include="Dummy\TextProductRepo.cs" />
     <Compile Include="Dummy\TextFileWriter.cs" />
+    <Compile Include="RepositoryTests\Database_DummyData_Flood.cs" />
+    <Compile Include="RepositoryTests\UC02_Repository_Tests.cs" />
+    <Compile Include="RepositoryTests\UC01_Repository_Tests.cs" />
     <Compile Include="TextProductRepo_Get.cs" />
-    <Compile Include="UC01-Controller_Tests.cs" />
+    <Compile Include="ControllerTests\UC01-Controller_Tests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="UC02-Controller_Tests.cs" />
-    <Compile Include="UC03-Controller_Tests.cs" />
-    <Compile Include="UC04-Controller_Tests.cs" />
+    <Compile Include="ControllerTests\UC02-Controller_Tests.cs" />
+    <Compile Include="ControllerTests\UC03-Controller_Tests.cs" />
+    <Compile Include="ControllerTests\UC04-Controller_Tests.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Dummy\TextFile.ini">

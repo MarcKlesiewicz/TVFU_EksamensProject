@@ -81,6 +81,11 @@ namespace UnitTests.Dummy
             return result;
         }
 
+        public IEnumerable GetByProductNumber(int min, int max)
+        {
+            throw new NotImplementedException();
+        }
+
         public void Remove(string guid)
         {
             TextFileWriter writer = new TextFileWriter();

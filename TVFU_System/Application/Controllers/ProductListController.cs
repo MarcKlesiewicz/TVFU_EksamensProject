@@ -41,6 +41,8 @@ namespace Application.Controllers
             CreateProductCommand = new CreateProductCmd(CreateProduct);
             ShowProductListCommand = new ShowProductListCmd(ShowProductList);
             CloseProductListCommand = new CloseProductListCmd(CloseProductList);
+            ChangeProductCommand = new ChangeProductCmd(ChangeProduct);
+            DeleteProductCommand = new DeleteProductCmd(DeleteProduct);
             _productRepository = productRepo;
             CurrentProductListVM = new ProductListViewModel();
         }
@@ -73,7 +75,7 @@ namespace Application.Controllers
 
         public void ChangeProduct(object parameter)
         {
-            var oldObj = (parameter as ProductViewModel);
+            var oldObj = new ProductViewModel((parameter as ProductViewModel));
             var newObj = (parameter as ProductViewModel);
             CurrentProductVM = newObj;
             ProductEventArgs productValues = OnProductUpdateRequested();
@@ -112,8 +114,6 @@ namespace Application.Controllers
 
             if (confirmDelete)
             {
-
-
                 foreach (var item in CurrentProductListVM.ViewModels)
                 {
                     if (item.Id == delObj.Id)

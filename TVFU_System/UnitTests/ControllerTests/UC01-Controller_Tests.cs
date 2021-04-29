@@ -15,6 +15,7 @@ namespace UnitTests
     {
         ProductListController controller;
         TextProductRepo repo;
+        TextFileWriter writer;
 
         [TestInitialize]
         public void Init()
@@ -28,6 +29,10 @@ namespace UnitTests
             //Arrange
             repo = new TextProductRepo();
             controller = new ProductListController(repo);
+
+            writer = new TextFileWriter();
+            writer.Flush();
+
             controller.NewProductRequested += NullProductEventArgs;
 
             //Act
@@ -46,6 +51,10 @@ namespace UnitTests
             //Arrange
             repo = new TextProductRepo();
             controller = new ProductListController(repo);
+
+            writer = new TextFileWriter();
+            writer.Flush();
+
             controller.NewProductRequested += NotNullProductEventArgs;
 
             //Act

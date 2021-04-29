@@ -7,6 +7,7 @@ using Persistence.Repositories.Implementations;
 using Persistence.Data;
 using System.IO;
 using UnitTests.Dummy;
+using System.Collections.Generic;
 
 namespace UnitTests
 {
@@ -15,6 +16,7 @@ namespace UnitTests
     {
         ProductListController controller;
         TextProductRepo repo;
+        TextFileWriter writer;
 
         [TestInitialize]
         public void Init()
@@ -28,6 +30,9 @@ namespace UnitTests
             //Arrange
             repo = new TextProductRepo();
             controller = new ProductListController(repo);
+
+            writer = new TextFileWriter();
+            writer.Flush();
 
             controller.NewProductRequested += NotNullProductEventArgs;
             var createdProduct = new ProductViewModel(controller.CreateProduct(null));
@@ -48,6 +53,9 @@ namespace UnitTests
             repo = new TextProductRepo();
             controller = new ProductListController(repo);
 
+            writer = new TextFileWriter();
+            writer.Flush();
+
             controller.NewProductRequested += NotNullProductEventArgs;
             var createdProduct = new ProductViewModel(controller.CreateProduct(null));
 
@@ -66,6 +74,9 @@ namespace UnitTests
             //Arrange
             repo = new TextProductRepo();
             controller = new ProductListController(repo);
+
+            writer = new TextFileWriter();
+            writer.Flush();
 
             controller.NewProductRequested += NotNullProductEventArgs;
 
@@ -96,35 +107,37 @@ namespace UnitTests
             repo = new TextProductRepo();
             controller = new ProductListController(repo);
 
+            writer = new TextFileWriter();
+            writer.Flush();
+
             controller.NewProductRequested += NotNullProductEventArgs;
 
-            controller.CreateProduct(null);
-            controller.CreateProduct(null);
-            controller.CreateProduct(null);
-            controller.CreateProduct(null);
-            controller.CreateProduct(null);
-            var createdProduct1 = new ProductViewModel(controller.CreateProduct(null));
-            controller.CreateProduct(null);
-            controller.CreateProduct(null);
-            var createdProduct2 = new ProductViewModel(controller.CreateProduct(null));
-            controller.CreateProduct(null);
-            controller.CreateProduct(null);
-            controller.CreateProduct(null);
-            var createdProduct3 = new ProductViewModel(controller.CreateProduct(null));
-            controller.CreateProduct(null);
-            controller.CreateProduct(null);
+            List<ProductViewModel> productsToBeUpdated = new List<ProductViewModel>();
+
+            for (int i = 1; i < 100; i++)
+            {
+                if (i % 4 == 0)
+                    productsToBeUpdated.Add(new ProductViewModel(controller.CreateProduct(null)));
+                else
+                    controller.CreateProduct(null);
+            }
 
             controller.ProductUpdateRequested += UpdatedProductEventArgs;
 
             //Act
-            controller.ChangeProduct(createdProduct1);
-            controller.ChangeProduct(createdProduct2);
-            controller.ChangeProduct(createdProduct3);
+            for (int i = 0; i < productsToBeUpdated.Count; i++)
+                controller.ChangeProduct(productsToBeUpdated[i]);
 
             //Assert
-            Assert.AreEqual(UpdatedProductEventArgs(null, null).ToString(), repo.Get(createdProduct1.Id).ToString());
-            Assert.AreEqual(UpdatedProductEventArgs(null, null).ToString(), repo.Get(createdProduct2.Id).ToString());
-            Assert.AreEqual(UpdatedProductEventArgs(null, null).ToString(), repo.Get(createdProduct3.Id).ToString());
+            List<string> expectedUpdatedText = new List<string>();
+            for (int i = 0; i < productsToBeUpdated.Count; i++)
+                expectedUpdatedText.Add(UpdatedProductEventArgs(null, null).ToString());
+            string expected = String.Join("\n", expectedUpdatedText);
+            List<string> actualUpdatedText = new List<string>();
+            for (int i = 0; i < productsToBeUpdated.Count; i++)
+                actualUpdatedText.Add(repo.Get(productsToBeUpdated[i].Id).ToString());
+            string actual = String.Join("\n", actualUpdatedText);
+            Assert.AreEqual(expected, actual);
         }
 
         private ProductEventArgs NullProductEventArgs(object sender, ProductEventArgs args)

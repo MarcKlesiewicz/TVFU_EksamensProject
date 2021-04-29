@@ -86,6 +86,23 @@ namespace Application.ViewModels
             _productCategory = args.ProductCategory;
         }
 
+        public ProductViewModel(ProductViewModel args)
+        {
+            Id = args.Id;
+            _description = args.Description;
+            _unitPrice = args.UnitPrice;
+            _guidingPrice = args.GuidingPrice;
+            _totalStock = args.TotalStock;
+            _blocked = args.Blocked;
+            _unitPerPackage = args.UnitPerPackage;
+            _quantityDiscount = args.QuantityDiscount;
+            _confirmedDeliveryDate = args.ConfirmedDeliveryDate;
+            _productNumber = args.ProductNumber;
+            _countryOfOrigin = args.CountryOfOrigin;
+            _purchasingManager = args.PurchasingManager;
+            _productCategory = args.ProductCategory;
+        }
+
         public void Update(ProductEventArgs args)
         {
             _description = args.Description;
@@ -129,8 +146,8 @@ namespace Application.ViewModels
 
         public override string ToString()
         {
-            return $"{_description};{_unitPrice};{_guidingPrice};{_totalStock};{_blocked};{_unitPerPackage};{_quantityDiscount};" +
-                $"{_confirmedDeliveryDate.ToString()};{_productNumber};{_countryOfOrigin};{_purchasingManager};{_productCategory}";
+            return $"{Description};{UnitPrice};{GuidingPrice};{TotalStock};{Blocked};{UnitPerPackage};{QuantityDiscount};" +
+                $"{ConfirmedDeliveryDate.ToString("dd/MM/yyyy")};{ProductNumber};{CountryOfOrigin};{PurchasingManager};{ProductCategory}";
         }
     }
 }

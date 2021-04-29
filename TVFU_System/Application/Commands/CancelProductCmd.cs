@@ -1,9 +1,13 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 using System.Windows.Input;
 
 namespace Application.Commands
 {
-    public class DeleteProductCmd : ICommand
+    class CancelProductCmd : ICommand
     {
         readonly Action<object> _execute;
 
@@ -13,18 +17,14 @@ namespace Application.Commands
             remove { CommandManager.RequerySuggested -= value; }
         }
 
-        public DeleteProductCmd(Action<object> execute)
+        public CancelProductCmd(Action<object> execute)
         {
             this._execute = execute;
         }
 
         public bool CanExecute(object parameter)
         {
-            if (parameter != null)
-            {
-                return true;
-            }
-            return false;
+            return true;
         }
 
         public void Execute(object parameter)

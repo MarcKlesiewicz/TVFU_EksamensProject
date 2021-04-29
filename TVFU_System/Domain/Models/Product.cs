@@ -38,7 +38,7 @@ namespace DomainLayer.Models
         public override string ToString()
         {
             return $"{Description};{UnitPrice};{GuidingPrice};{TotalStock};{Blocked};{UnitPerPackage};{QuantityDiscount};" +
-                $"{ConfirmedDeliveryDate.ToString()};{ProductNumber};{CountryOfOrigin};{PurchasingManager};{ProductCategory}";
+                $"{ConfirmedDeliveryDate.ToString("dd/MM/yyyy")};{ProductNumber};{CountryOfOrigin};{PurchasingManager};{ProductCategory}";
         }
     }
 }

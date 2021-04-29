@@ -1,0 +1,507 @@
+﻿<Window x:Class="GUI.ProductListView"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:GUI"
+        mc:Ignorable="d"
+        Title="ProductListView" Height="1080" Width="1920">
+    <Viewbox>
+        <Grid Height="1060" Width="1920" Margin="0">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="1.2*"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <Label
+                Content="Lageroversigt" 
+                Grid.Row="0"
+                Grid.Column="2" 
+                Grid.ColumnSpan="2" 
+                HorizontalAlignment="Center" 
+                VerticalAlignment="Center" 
+                FontSize="50"/>
+            <StackPanel
+                Grid.Row="0"
+                Grid.Column="7"
+                Grid.ColumnSpan="3"
+                Orientation="Horizontal"
+                HorizontalAlignment="Center"
+                VerticalAlignment="Bottom"
+                Margin="0,0,0,20"
+                Height="50">
+                <TextBox
+                    x:Name="TextBox_Søg"
+                    Width="400"
+                    BorderThickness="2"
+                    BorderBrush="Black"
+                    FontSize="30"/>
+                <Button
+                    x:Name="Button_Søg"
+                    Content="Søg"
+                    Width="70"
+                    FontSize="30"
+                    Padding="0"/>
+            </StackPanel>
+            <StackPanel
+                Grid.Row="1"
+                Grid.Column="0"
+                HorizontalAlignment="Center"
+                VerticalAlignment="Center">
+                <Label
+                    Content="Sorter efter:" 
+                    FontSize="30"/>
+                <ComboBox
+                    x:Name="SortAfter"
+                    Height="30"/>
+            </StackPanel>
+            <Grid
+                Grid.Row="2"
+                Grid.Column="0"
+                Grid.RowSpan="6">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="2*"/>
+                    <RowDefinition Height="2*"/>
+                    <RowDefinition Height="4*"/>
+                    <RowDefinition Height="2*"/>
+                    <RowDefinition Height="4*"/>
+                    <RowDefinition Height="3*"/>
+                    <RowDefinition Height="3*"/>
+                    <RowDefinition Height="3*"/>
+                    <RowDefinition Height="3*"/>
+                    <RowDefinition Height="3*"/>
+                </Grid.RowDefinitions>
+                <Label
+                    Content="Filtre"
+                    Grid.Row="0"
+                    Grid.Column="0"
+                    Grid.ColumnSpan="2"
+                    HorizontalAlignment="Center"
+                    FontSize="30"/>
+                <Label
+                    Content="Træsort"
+                    Grid.Row="1"
+                    Grid.Column="0"
+                    Grid.ColumnSpan="2"
+                    HorizontalAlignment="Left"
+                    VerticalAlignment="Bottom"
+                    FontSize="25"
+                    Padding="0"/>
+                <Grid
+                    Grid.Row="2"
+                    Grid.Column="0"
+                    Grid.ColumnSpan="2">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="*"/>
+                    </Grid.RowDefinitions>
+                    <Label
+                        Content="Birk"
+                        Grid.Row="0"
+                        Grid.Column="0"
+                        HorizontalAlignment="Left"
+                        VerticalAlignment="Bottom"
+                        FontSize="20"
+                        Padding="0"/>
+                    <CheckBox
+                        x:Name="CheckBox_Birk"
+                        Grid.Row="0"
+                        Grid.Column="0"
+                        HorizontalAlignment="Right"
+                        VerticalAlignment="Bottom"
+                        Margin="0,0,10,2"/>
+                    <Label
+                        Content="Eg"
+                        Grid.Row="0"
+                        Grid.Column="1"
+                        HorizontalAlignment="Left"
+                        VerticalAlignment="Bottom"
+                        FontSize="20"
+                        Padding="0"/>
+                    <CheckBox
+                        x:Name="CheckBox_Eg"
+                        Grid.Row="0"
+                        Grid.Column="1"
+                        HorizontalAlignment="Right"
+                        VerticalAlignment="Bottom"
+                        Margin="0,0,10,2"/>
+                    <Label
+                        Content="Akacie"
+                        Grid.Row="1"
+                        Grid.Column="0"
+                        HorizontalAlignment="Left"
+                        VerticalAlignment="Bottom"
+                        FontSize="20"
+                        Padding="0"/>
+                    <CheckBox
+                        x:Name="CheckBox_Akacie"
+                        Grid.Row="1"
+                        Grid.Column="0"
+                        HorizontalAlignment="Right"
+                        VerticalAlignment="Bottom"
+                        Margin="0,0,10,2"/>
+                    <Label
+                        Content="Kirsebær"
+                        Grid.Row="1"
+                        Grid.Column="1"
+                        HorizontalAlignment="Left"
+                        VerticalAlignment="Bottom"
+                        FontSize="20"
+                        Padding="0"/>
+                    <CheckBox
+                        x:Name="CheckBox_Kirsebær"
+                        Grid.Row="1"
+                        Grid.Column="1"
+                        HorizontalAlignment="Right"
+                        VerticalAlignment="Bottom"
+                        Margin="0,0,10,2"/>
+                    <Label
+                        Content="Bøg"
+                        Grid.Row="2"
+                        Grid.Column="0"
+                        HorizontalAlignment="Left"
+                        VerticalAlignment="Bottom"
+                        FontSize="20"
+                        Padding="0"/>
+                    <CheckBox
+                        x:Name="CheckBox_Bøg"
+                        Grid.Row="2"
+                        Grid.Column="0"
+                        HorizontalAlignment="Right"
+                        VerticalAlignment="Bottom"
+                        Margin="0,0,10,2"/>
+                    <Label
+                        Content="Fyr"
+                        Grid.Row="2"
+                        Grid.Column="2"
+                        HorizontalAlignment="Left"
+                        VerticalAlignment="Bottom"
+                        FontSize="20"
+                        Padding="0"/>
+                    <CheckBox
+                        x:Name="CheckBox_Fyr"
+                        Grid.Row="2"
+                        Grid.Column="2"
+                        HorizontalAlignment="Right"
+                        VerticalAlignment="Bottom"
+                        Margin="0,0,10,2"/>
+                </Grid>
+                <Label
+                    Content="Farve"
+                    Grid.Row="3"
+                    Grid.Column="0"
+                    Grid.ColumnSpan="2"
+                    HorizontalAlignment="Left"
+                    VerticalAlignment="Bottom"
+                    FontSize="25"
+                    Padding="0"/>
+                <Grid
+                    Grid.Row="4"
+                    Grid.Column="0"
+                    Grid.ColumnSpan="2">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="*"/>
+                    </Grid.RowDefinitions>
+                    <Label
+                        Content="Sort"
+                        Grid.Row="0"
+                        Grid.Column="0"
+                        HorizontalAlignment="Left"
+                        VerticalAlignment="Bottom"
+                        FontSize="20"
+                        Padding="0"/>
+                    <CheckBox
+                        x:Name="CheckBox_Sort"
+                        Grid.Row="0"
+                        Grid.Column="0"
+                        HorizontalAlignment="Right"
+                        VerticalAlignment="Bottom"
+                        Margin="0,0,10,2"/>
+                    <Label
+                        Content="Grøn"
+                        Grid.Row="0"
+                        Grid.Column="1"
+                        HorizontalAlignment="Left"
+                        VerticalAlignment="Bottom"
+                        FontSize="20"
+                        Padding="0"/>
+                    <CheckBox
+                        x:Name="CheckBox_Grøn"
+                        Grid.Row="0"
+                        Grid.Column="1"
+                        HorizontalAlignment="Right"
+                        VerticalAlignment="Bottom"
+                        Margin="0,0,10,2"/>
+                    <Label
+                        Content="Hvid"
+                        Grid.Row="1"
+                        Grid.Column="0"
+                        HorizontalAlignment="Left"
+                        VerticalAlignment="Bottom"
+                        FontSize="20"
+                        Padding="0"/>
+                    <CheckBox
+                        x:Name="CheckBox_Hvid"
+                        Grid.Row="1"
+                        Grid.Column="0"
+                        HorizontalAlignment="Right"
+                        VerticalAlignment="Bottom"
+                        Margin="0,0,10,2"/>
+                    <Label
+                        Content="Rød"
+                        Grid.Row="1"
+                        Grid.Column="1"
+                        HorizontalAlignment="Left"
+                        VerticalAlignment="Bottom"
+                        FontSize="20"
+                        Padding="0"/>
+                    <CheckBox
+                        x:Name="CheckBox_Rød"
+                        Grid.Row="1"
+                        Grid.Column="1"
+                        HorizontalAlignment="Right"
+                        VerticalAlignment="Bottom"
+                        Margin="0,0,10,2"/>
+                    <Label
+                        Content="Blå"
+                        Grid.Row="2"
+                        Grid.Column="0"
+                        HorizontalAlignment="Left"
+                        VerticalAlignment="Bottom"
+                        FontSize="20"
+                        Padding="0"/>
+                    <CheckBox
+                        x:Name="CheckBox_blå"
+                        Grid.Row="2"
+                        Grid.Column="0"
+                        HorizontalAlignment="Right"
+                        VerticalAlignment="Bottom"
+                        Margin="0,0,10,2"/>
+                    <Label
+                        Content="Gul"
+                        Grid.Row="2"
+                        Grid.Column="2"
+                        HorizontalAlignment="Left"
+                        VerticalAlignment="Bottom"
+                        FontSize="20"
+                        Padding="0"/>
+                    <CheckBox
+                        x:Name="CheckBox_Gul"
+                        Grid.Row="2"
+                        Grid.Column="2"
+                        HorizontalAlignment="Right"
+                        VerticalAlignment="Bottom"
+                        Margin="0,0,10,2"/>
+                </Grid>
+            </Grid>
+            <StackPanel
+                Grid.Row="8"
+                Grid.Column="0"
+                Grid.RowSpan="2"
+                HorizontalAlignment="Center"
+                Width="150">
+                <Button
+                    Command="{Binding PLC.CreateProductCommand}"
+                    Content="Opret produkt"
+                    Height="40"
+                    FontSize="20"
+                    Background="White"
+                    Margin="0,5"/>
+                <Button
+                    Command="{Binding PLC.ChangeProductCommand}"
+                    CommandParameter="{Binding ElementName=ListBoxProducts,Path=SelectedItem}"
+                    Content="Rediger produkt"
+                    Height="40"
+                    FontSize="20"
+                    Background="White"
+                    Margin="0,5"/>
+                <Button
+                    Command="{Binding PLC.DeleteProductCommand}"
+                    CommandParameter="{Binding ElementName=ListBoxProducts,Path=SelectedItem}"
+                    Content="Slet produkt"
+                    Height="40"
+                    FontSize="20"
+                    Background="White"
+                    Margin="0,5"/>
+            </StackPanel>
+            <StackPanel
+                Grid.Row="1"
+                Grid.Column="1"
+                Grid.ColumnSpan="9"
+                Grid.RowSpan="9">
+                <Label
+                    FontSize="18"
+                    Padding="0">
+                    <StackPanel
+                    Orientation="Horizontal"
+                    Height="35">
+                        <Label
+                        Content="Nummer"
+                        BorderThickness="1"
+                        BorderBrush="Black"
+                        Width="100"
+                        />
+                        <Label
+                        Content="Beskrivlese"
+                        BorderThickness="0,1,1,1"
+                        BorderBrush="Black"
+                        Width="330"/>
+                        <Label
+                        Content="Enhedspris"
+                        BorderThickness="0,1,1,1"
+                        BorderBrush="Black"
+                        Width="110"/>
+                        <Label
+                        Content="Vejledende pris"
+                        BorderThickness="0,1,1,1"
+                        BorderBrush="Black"
+                        Width="150"/>
+                        <Label
+                        Content="Total lager"
+                        BorderThickness="0,1,1,1"
+                        BorderBrush="Black"
+                        Width="100"/>
+                        <Label
+                        Content="Spærret"
+                        BorderThickness="0,1,1,1"
+                        BorderBrush="Black"
+                        Width="80"/>
+                        <Label
+                        Content="Antal pr. kolli"
+                        BorderThickness="0,1,1,1"
+                        BorderBrush="Black"
+                        Width="130"/>
+                        <Label
+                        Content="Mængderabat"
+                        BorderThickness="0,1,1,1"
+                        BorderBrush="Black"
+                        Width="140"/>
+                        <Label
+                        Content="Indkøbskode"
+                        BorderThickness="0,1,1,1"
+                        BorderBrush="Black"
+                        Width="150"/>
+                        <Label
+                        Content="Bekræftet Modtagelsedato"
+                        BorderThickness="0,1,1,1"
+                        BorderBrush="Black"
+                        Width="230"/>
+                        <Label
+                        Content="Oprindelsesland"
+                        BorderThickness="0,1,1,1"
+                        BorderBrush="Black"
+                        Width="150"/>
+                    </StackPanel>
+                </Label>
+                <ListBox
+                    FontSize="18"
+                    ScrollViewer.VerticalScrollBarVisibility="Auto"
+                    Height="915"
+                    ItemsSource="{Binding PLVM.ViewModels}" Name="ListBoxProducts"
+                    SelectionMode="Extended">
+                    <ListBox.ItemTemplate>
+                        <DataTemplate>
+                            <Label
+                            FontSize="18"
+                            Padding="0">
+                                <StackPanel
+                                Orientation="Horizontal"
+                                Height="35">
+                                    <Label
+                                    Content="{Binding ProductNumber}"
+                                    BorderThickness="1"
+                                    BorderBrush="Black"
+                                    Width="97"/>
+                                    <Label
+                                    Content="{Binding Description}"
+                                    BorderThickness="0,1,1,1"
+                                    BorderBrush="Black"
+                                    Width="330"/>
+                                    <Label
+                                    Content="{Binding UnitPrice}"
+                                    BorderThickness="0,1,1,1"
+                                    BorderBrush="Black"
+                                    Width="110"/>
+                                    <Label
+                                    Content="{Binding GuidingPrice}"
+                                    BorderThickness="0,1,1,1"
+                                    BorderBrush="Black"
+                                    Width="150"/>
+                                    <Label
+                                    Content="{Binding TotalStock}"
+                                    BorderThickness="0,1,1,1"
+                                    BorderBrush="Black"
+                                    Width="100"/>
+                                    <Label
+                                    Content="{Binding Blocked}"
+                                    BorderThickness="0,1,1,1"
+                                    BorderBrush="Black"
+                                    Width="80"/>
+                                    <Label
+                                    Content="{Binding UnitPerPackage}"
+                                    BorderThickness="0,1,1,1"
+                                    BorderBrush="Black"
+                                    Width="130"/>
+                                    <Label
+                                    Content="{Binding QuantityDiscount}"
+                                    BorderThickness="0,1,1,1"
+                                    BorderBrush="Black"
+                                    Width="140"/>
+                                    <Label
+                                    Content="{Binding PurchasingManager}"
+                                    BorderThickness="0,1,1,1"
+                                    BorderBrush="Black"
+                                    Width="150"/>
+                                    <Label
+                                    Content="{Binding ConfirmedDeliveryDate}"
+                                    BorderThickness="0,1,1,1"
+                                    BorderBrush="Black"
+                                    Width="230"/>
+                                    <Label
+                                    Content="{Binding CountryOfOrigin}"
+                                    BorderThickness="0,1,1,1"
+                                    BorderBrush="Black"
+                                    Width="150"/>
+                                </StackPanel>
+                            </Label>
+                        </DataTemplate>
+                    </ListBox.ItemTemplate>
+                </ListBox>
+            </StackPanel>
+        </Grid>
+    </Viewbox>
+</Window>

@@ -17,6 +17,7 @@ namespace UnitTests
     {
         ProductListController controller;
         TextProductRepo repo;
+        TextFileWriter writer;
 
         [TestInitialize]
         public void Init()
@@ -29,6 +30,9 @@ namespace UnitTests
             //Arrange
             repo = new TextProductRepo();
             controller = new ProductListController(repo);
+
+            writer = new TextFileWriter();
+            writer.Flush();
 
             controller.NewProductRequested += NotNullProductEventArgs;
 
@@ -58,6 +62,9 @@ namespace UnitTests
             repo = new TextProductRepo();
             controller = new ProductListController(repo);
 
+            writer = new TextFileWriter();
+            writer.Flush();
+
             controller.NewProductRequested += NotNullProductEventArgs;
 
             var createdProduct1 = new ProductViewModel(controller.CreateProduct(null));
@@ -82,13 +89,10 @@ namespace UnitTests
                 catch (KeyNotFoundException)
                 {
 
-
                 }
             }
 
         }
-
-
 
         private ProductEventArgs NullProductEventArgs(object sender, ProductEventArgs args)
         {

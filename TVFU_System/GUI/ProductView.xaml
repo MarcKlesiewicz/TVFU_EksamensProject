@@ -1,0 +1,286 @@
+﻿<Window x:Class="GUI.ProductView"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:GUI"
+        mc:Ignorable="d"
+        Title="ProductView" Height="600" Width="1000">
+    <Viewbox>
+        <Grid Height="580" Width="1000">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="1.2*"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="2*"/>
+                <RowDefinition Height="2*"/>
+                <RowDefinition Height="2*"/>
+                <RowDefinition Height="2*"/>
+                <RowDefinition Height="2*"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+            <Label
+                Content="Tilføj produktinformation"
+                FontSize="30"
+                Grid.Column="3"
+                Grid.Row="0"
+                Grid.ColumnSpan="4"
+                HorizontalAlignment="Center"/>
+            <StackPanel
+                Grid.Row="2"
+                Grid.Column="0"
+                Grid.ColumnSpan="3"
+                HorizontalAlignment="Center">
+                <TextBlock
+                    Text="Nummer"
+                    FontSize="20"/>
+                <TextBox
+                    Text="{Binding PVM.ProductNumber}"
+                    BorderBrush="Black"
+                    BorderThickness="1"
+                    FontSize="20"
+                    Height="30"
+                    Width="250"/>
+            </StackPanel>
+            <StackPanel
+                Grid.Row="2"
+                Grid.Column="3"
+                Grid.ColumnSpan="3"
+                HorizontalAlignment="Center">
+                <TextBlock
+                    Text="Oprindelsesland"
+                    FontSize="20"/>
+                <TextBox
+                    Text="{Binding PVM.CountryOfOrigin}"
+                    BorderBrush="Black"
+                    BorderThickness="1"
+                    FontSize="20"
+                    Height="30"
+                    Width="250"/>
+            </StackPanel>
+            <StackPanel
+                Grid.Row="3"
+                Grid.Column="0"
+                Grid.ColumnSpan="3"
+                HorizontalAlignment="Center">
+                <TextBlock
+                    Text="Beskrivelse"
+                    FontSize="20"/>
+                <TextBox
+                    Text="{Binding PVM.Description}"
+                    BorderBrush="Black"
+                    BorderThickness="1"
+                    FontSize="20"
+                    Height="30"
+                    Width="250"/>
+            </StackPanel>
+            <StackPanel
+                Grid.Row="3"
+                Grid.Column="3"
+                Grid.ColumnSpan="3"
+                HorizontalAlignment="Center">
+                <TextBlock
+                    Text="Antal pr. kolli"
+                    FontSize="20"/>
+                <TextBox
+                    Text="{Binding PVM.UnitPerPackage}"
+                    BorderBrush="Black"
+                    BorderThickness="1"
+                    FontSize="20"
+                    Height="30"
+                    Width="250"/>
+            </StackPanel>
+            <StackPanel
+                Grid.Row="4"
+                Grid.Column="0"
+                Grid.ColumnSpan="3"
+                HorizontalAlignment="Center">
+                <TextBlock
+                    Text="Enhedspris"
+                    FontSize="20"/>
+                <TextBox
+                    Text="{Binding PVM.UnitPrice}"
+                    BorderBrush="Black"
+                    BorderThickness="1"
+                    FontSize="20"
+                    Height="30"
+                    Width="250"/>
+            </StackPanel>
+            <StackPanel
+                Grid.Row="4"
+                Grid.Column="3"
+                Grid.ColumnSpan="3"
+                HorizontalAlignment="Center">
+                <TextBlock
+                    Text="Mængderabat"
+                    FontSize="20"/>
+                <TextBox
+                    Text="{Binding PVM.QuantityDiscount}"
+                    BorderBrush="Black"
+                    BorderThickness="1"
+                    FontSize="20"
+                    Height="30"
+                    Width="250"/>
+            </StackPanel>
+            <StackPanel
+                Grid.Row="5"
+                Grid.Column="0"
+                Grid.ColumnSpan="3"
+                HorizontalAlignment="Center">
+                <TextBlock
+                    Text="Vejlende pris"
+                    FontSize="20"/>
+                <TextBox
+                    Text="{Binding PVM.GuidingPrice}"
+                    BorderBrush="Black"
+                    BorderThickness="1"
+                    FontSize="20"
+                    Height="30"
+                    Width="250"/>
+            </StackPanel>
+            <StackPanel
+                Grid.Row="5"
+                Grid.Column="3"
+                Grid.ColumnSpan="3"
+                HorizontalAlignment="Center">
+                <TextBlock
+                    Text="Indkøbskode"
+                    FontSize="20"/>
+                <TextBox
+                    Text="{Binding PVM.PurchasingManager}"
+                    BorderBrush="Black"
+                    BorderThickness="1"
+                    FontSize="20"
+                    Height="30"
+                    Width="250"/>
+            </StackPanel>
+            <StackPanel
+                Grid.Row="6"
+                Grid.Column="0"
+                Grid.ColumnSpan="3"
+                HorizontalAlignment="Center">
+                <TextBlock
+                    Text="Total lager"
+                    FontSize="20"/>
+                <TextBox
+                    Text="{Binding PVM.TotalStock}"
+                    BorderBrush="Black"
+                    BorderThickness="1"
+                    FontSize="20"
+                    Height="30"
+                    Width="250"/>
+            </StackPanel>
+            <StackPanel
+                Grid.Row="6"
+                Grid.Column="3"
+                Grid.ColumnSpan="3"
+                HorizontalAlignment="Center">
+                <TextBlock
+                    Text="Bekræftet modtagelsesdato"
+                    FontSize="20"/>
+                <TextBox
+                    Text="{Binding PVM.ConfirmedDeliveryDate}"
+                    BorderBrush="Black"
+                    BorderThickness="1"
+                    FontSize="20"
+                    Height="30"
+                    Width="250"/>
+            </StackPanel>
+            <StackPanel
+                Grid.Row="7"
+                Grid.Column="0"
+                Grid.ColumnSpan="2"
+                Orientation="Horizontal"
+                HorizontalAlignment="Center"
+                VerticalAlignment="Center">
+                <TextBlock
+                    Text="Spærret"
+                    FontSize="20"
+                    Padding="0"/>
+                <CheckBox
+                    Name="BlockedCheckBox"
+                    Command="{Binding PL.ProductBlockedCommand}"
+                    Margin="5,9,0,0"/>
+            </StackPanel>
+            <StackPanel
+                Grid.Row="7"
+                Grid.Column="3"
+                Grid.ColumnSpan="3"
+                Grid.RowSpan="2"
+                HorizontalAlignment="Center">
+                <TextBlock
+                    Text="Produkt kategori"
+                    FontSize="20"/>
+                <TextBox
+                    Text="{Binding PVM.ProductCategory}"
+                    BorderBrush="Black"
+                    BorderThickness="1"
+                    FontSize="20"
+                    Height="30"
+                    Width="250"/>
+            </StackPanel>
+            <Image
+                Source="{Binding}"
+                Grid.Column="6"
+                Grid.Row="2"
+                Grid.RowSpan="4"
+                Grid.ColumnSpan="4"
+                Margin="15"/>
+            <StackPanel
+                Grid.Row="6"
+                Grid.Column="6"
+                Grid.ColumnSpan="4"
+                HorizontalAlignment="Center"
+                VerticalAlignment="Center">
+                <TextBlock
+                    Text="Billede link"
+                    FontSize="20"/>
+                <TextBox
+                    BorderBrush="Black"
+                    BorderThickness="1"
+                    Height="30"
+                    Width="350"
+                    FontSize="20"/>
+            </StackPanel>
+            <StackPanel
+                Grid.Row="7"
+                Grid.Column="7"
+                Grid.ColumnSpan="3"
+                Grid.RowSpan="2" 
+                VerticalAlignment="Center"
+                HorizontalAlignment="Right"
+                Orientation="Horizontal"
+                >
+                <Button
+                    Content="Godkend"
+                    Command="{Binding PL.AcceptProductCommand}"
+                    CommandParameter="{Binding PVM}"
+                    FontSize="20"
+                    Height="30"
+                    Width="130"
+                    Background="White"
+                    Margin="10"/>
+                <Button
+                    Content="Annuller"
+                    Command="{Binding PL.CancelProductCommand}"
+                    FontSize="20"
+                    Height="30"
+                    Width="130"
+                    Background="White"
+                    Margin="15"/>
+            </StackPanel>
+        </Grid>
+    </Viewbox>
+</Window>

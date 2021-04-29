@@ -20,7 +20,12 @@ namespace Application.Commands
 
         public bool CanExecute(object parameter)
         {
-            return true;
+            if (parameter != null)
+            {
+                return true;
+            }
+            return false;
+
         }
 
         public void Execute(object parameter)
