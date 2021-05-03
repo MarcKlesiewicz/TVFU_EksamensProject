@@ -35,7 +35,7 @@ namespace UnitTests
             writer.Flush();
 
             controller.NewProductRequested += NotNullProductEventArgs;
-            var createdProduct = new ProductViewModel(controller.CreateProduct(null));
+            var createdProduct = new ProductViewModel(controller.CreateProduct());
 
             controller.ProductUpdateRequested += NullProductEventArgs;
 
@@ -43,7 +43,7 @@ namespace UnitTests
             controller.ChangeProduct(createdProduct);
 
             //Assert
-            Assert.AreEqual(NotNullProductEventArgs(null, null).ToString(), repo.Get(createdProduct.Id).ToString());
+            Assert.AreEqual(NotNullProductEventArgs().ToString(), repo.Get(createdProduct.Id).ToString());
         }
 
         [TestMethod]
@@ -57,7 +57,7 @@ namespace UnitTests
             writer.Flush();
 
             controller.NewProductRequested += NotNullProductEventArgs;
-            var createdProduct = new ProductViewModel(controller.CreateProduct(null));
+            var createdProduct = new ProductViewModel(controller.CreateProduct());
 
             controller.ProductUpdateRequested += UpdatedProductEventArgs;
 
@@ -65,7 +65,7 @@ namespace UnitTests
             controller.ChangeProduct(createdProduct);
 
             //Assert
-            Assert.AreEqual(UpdatedProductEventArgs(null, null).ToString(), repo.Get(createdProduct.Id).ToString());
+            Assert.AreEqual(UpdatedProductEventArgs().ToString(), repo.Get(createdProduct.Id).ToString());
         }
 
         [TestMethod]
@@ -80,16 +80,16 @@ namespace UnitTests
 
             controller.NewProductRequested += NotNullProductEventArgs;
 
-            controller.CreateProduct(null);
-            controller.CreateProduct(null);
-            controller.CreateProduct(null);
-            controller.CreateProduct(null);
-            controller.CreateProduct(null);
-            var createdProduct = new ProductViewModel(controller.CreateProduct(null));
-            controller.CreateProduct(null);
-            controller.CreateProduct(null);
-            controller.CreateProduct(null);
-            controller.CreateProduct(null);
+            controller.CreateProduct();
+            controller.CreateProduct();
+            controller.CreateProduct();
+            controller.CreateProduct();
+            controller.CreateProduct();
+            var createdProduct = new ProductViewModel(controller.CreateProduct());
+            controller.CreateProduct();
+            controller.CreateProduct();
+            controller.CreateProduct();
+            controller.CreateProduct();
 
             controller.ProductUpdateRequested += UpdatedProductEventArgs;
 
@@ -97,7 +97,7 @@ namespace UnitTests
             controller.ChangeProduct(createdProduct);
 
             //Assert
-            Assert.AreEqual(UpdatedProductEventArgs(null, null).ToString(), repo.Get(createdProduct.Id).ToString());
+            Assert.AreEqual(UpdatedProductEventArgs().ToString(), repo.Get(createdProduct.Id).ToString());
         }
 
         [TestMethod]
@@ -117,9 +117,9 @@ namespace UnitTests
             for (int i = 1; i < 100; i++)
             {
                 if (i % 4 == 0)
-                    productsToBeUpdated.Add(new ProductViewModel(controller.CreateProduct(null)));
+                    productsToBeUpdated.Add(new ProductViewModel(controller.CreateProduct()));
                 else
-                    controller.CreateProduct(null);
+                    controller.CreateProduct();
             }
 
             controller.ProductUpdateRequested += UpdatedProductEventArgs;
@@ -131,7 +131,7 @@ namespace UnitTests
             //Assert
             List<string> expectedUpdatedText = new List<string>();
             for (int i = 0; i < productsToBeUpdated.Count; i++)
-                expectedUpdatedText.Add(UpdatedProductEventArgs(null, null).ToString());
+                expectedUpdatedText.Add(UpdatedProductEventArgs().ToString());
             string expected = String.Join("\n", expectedUpdatedText);
             List<string> actualUpdatedText = new List<string>();
             for (int i = 0; i < productsToBeUpdated.Count; i++)
@@ -140,13 +140,13 @@ namespace UnitTests
             Assert.AreEqual(expected, actual);
         }
 
-        private ProductEventArgs NullProductEventArgs(object sender, ProductEventArgs args)
+        private ProductEventArgs NullProductEventArgs()
         {
             ProductEventArgs result = null;
             return result;
         }
 
-        private ProductEventArgs NotNullProductEventArgs(object sender, ProductEventArgs args)
+        private ProductEventArgs NotNullProductEventArgs()
         {
             ProductEventArgs result = new ProductEventArgs()
             {
@@ -166,7 +166,7 @@ namespace UnitTests
             return result;
         }
 
-        private ProductEventArgs UpdatedProductEventArgs(object sender, ProductEventArgs args)
+        private ProductEventArgs UpdatedProductEventArgs()
         {
             ProductEventArgs result = new ProductEventArgs()
             {

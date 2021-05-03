@@ -55,8 +55,6 @@
     <Compile Include="Commands\ShowProductListCmd.cs" />
     <Compile Include="Controllers\ProductController.cs" />
     <Compile Include="Controllers\ProductListController.cs" />
-    <Compile Include="Delegates\GeneralDelegates.cs" />
-    <Compile Include="Delegates\ProductDelegates.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ViewModels\ProductListViewModel.cs" />
     <Compile Include="ViewModels\ProductViewModel.cs" />

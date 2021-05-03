@@ -5,15 +5,15 @@ namespace Application.Commands
 {
     public class CreateProductCmd : ICommand
     {
-        readonly Func<object, object> _execute;
+        readonly Func<object> _execute;
 
-        public event System.EventHandler CanExecuteChanged
+        public event EventHandler CanExecuteChanged
         {
             add { CommandManager.RequerySuggested += value; }
             remove { CommandManager.RequerySuggested -= value; }
         }
 
-        public CreateProductCmd(Func<object, object> execute)
+        public CreateProductCmd(Func<object> execute)
         {
             this._execute = execute;
         }
@@ -25,7 +25,7 @@ namespace Application.Commands
 
         public void Execute(object parameter)
         {
-            _execute.Invoke(parameter);
+            _execute.Invoke();
         }
     }
 }

@@ -37,7 +37,7 @@ namespace UnitTests
             controller.NewProductRequested += NotNullProductEventArgs;
 
             //Act
-            var expected = controller.CreateProduct(null);
+            var expected = controller.CreateProduct();
 
             //Assert
             using (StreamReader reader = new StreamReader(@"Dummy\TextFile.ini"))
@@ -56,7 +56,7 @@ namespace UnitTests
             }
         }
 
-        private ProductEventArgs NotNullProductEventArgs(object sender, ProductEventArgs args)
+        private ProductEventArgs NotNullProductEventArgs()
         {
             ProductEventArgs result = new ProductEventArgs() { Description = "descriptionTest", UnitPrice = (float)1.1
             , GuidingPrice = (float)1.5, TotalStock = 5, Blocked = false, UnitPerPackage = 1, QuantityDiscount = (float)0

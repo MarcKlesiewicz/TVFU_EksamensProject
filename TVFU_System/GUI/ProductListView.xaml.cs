@@ -38,7 +38,7 @@ namespace GUI
             PLC.ShowProductList();
         }
 
-        public ProductEventArgs NewProductRequestHandler(object sender, ProductEventArgs args)
+        public ProductEventArgs NewProductRequestHandler()
         {
             ProductEventArgs result = new ProductEventArgs();
             ProductView PV = new ProductView(PLC.CurrentProductVM);
@@ -71,7 +71,7 @@ namespace GUI
             return result;
 
         }
-        public ProductEventArgs ProductUpdateRequestHandler(object sender, ProductEventArgs args)
+        public ProductEventArgs ProductUpdateRequestHandler()
         {
             ProductEventArgs result = new ProductEventArgs();
             ProductView PV = new ProductView(PLC.CurrentProductVM);

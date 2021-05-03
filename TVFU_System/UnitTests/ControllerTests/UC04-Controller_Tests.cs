@@ -36,17 +36,17 @@ namespace UnitTests
 
             controller.NewProductRequested += CreateProduct1;
 
-            controller.CreateProduct(null);
+            controller.CreateProduct();
 
             controller.NewProductRequested -= CreateProduct1;
             controller.NewProductRequested += CreateProduct2;
 
-            controller.CreateProduct(null);
+            controller.CreateProduct();
 
             controller.NewProductRequested -= CreateProduct2;
             controller.NewProductRequested += CreateProduct3;
 
-            controller.CreateProduct(null);
+            controller.CreateProduct();
 
             controller.CloseProductList();
 
@@ -57,7 +57,7 @@ namespace UnitTests
 
             //Assert
             List<ProductEventArgs> expectedResult = new List<ProductEventArgs>()
-                { CreateProduct2(null, null), CreateProduct3(null, null), CreateProduct1(null, null) };
+                { CreateProduct2(), CreateProduct3(), CreateProduct1() };
 
             Assert.AreEqual(expectedResult[0].ToString(), controller.CurrentProductListVM.ViewModels[0].ToString());
             Assert.AreEqual(expectedResult[1].ToString(), controller.CurrentProductListVM.ViewModels[1].ToString());
@@ -76,32 +76,32 @@ namespace UnitTests
 
             controller.NewProductRequested += CreateProduct3;
 
-            controller.CreateProduct(null);
+            controller.CreateProduct();
 
             controller.NewProductRequested -= CreateProduct3;
             controller.NewProductRequested += CreateProduct1;
 
-            controller.CreateProduct(null);
+            controller.CreateProduct();
 
             controller.NewProductRequested -= CreateProduct1;
             controller.NewProductRequested += CreateProduct6;
 
-            controller.CreateProduct(null);
+            controller.CreateProduct();
 
             controller.NewProductRequested -= CreateProduct6;
             controller.NewProductRequested += CreateProduct2;
 
-            controller.CreateProduct(null);
+            controller.CreateProduct();
 
             controller.NewProductRequested -= CreateProduct2;
             controller.NewProductRequested += CreateProduct5;
 
-            controller.CreateProduct(null);
+            controller.CreateProduct();
 
             controller.NewProductRequested -= CreateProduct5;
             controller.NewProductRequested += CreateProduct4;
 
-            controller.CreateProduct(null);
+            controller.CreateProduct();
 
             controller.CloseProductList();
 
@@ -112,8 +112,8 @@ namespace UnitTests
 
             //Assert
             List<ProductEventArgs> expectedResult = new List<ProductEventArgs>()
-                { CreateProduct2(null, null), CreateProduct3(null, null), CreateProduct4(null, null)
-                , CreateProduct5(null, null), CreateProduct6(null, null), CreateProduct1(null, null) };
+                { CreateProduct2(), CreateProduct3(), CreateProduct4()
+                , CreateProduct5(), CreateProduct6(), CreateProduct1() };
 
             Assert.AreEqual(expectedResult[0].ToString(), controller.CurrentProductListVM.ViewModels[0].ToString());
             Assert.AreEqual(expectedResult[1].ToString(), controller.CurrentProductListVM.ViewModels[1].ToString());
@@ -123,7 +123,7 @@ namespace UnitTests
             Assert.AreEqual(expectedResult[5].ToString(), controller.CurrentProductListVM.ViewModels[5].ToString());
         }
 
-        private ProductEventArgs CreateProduct1(object sender, ProductEventArgs args)
+        private ProductEventArgs CreateProduct1()
         {
             ProductEventArgs result = new ProductEventArgs()
             {
@@ -143,7 +143,7 @@ namespace UnitTests
             return result;
         }
 
-        private ProductEventArgs CreateProduct2(object sender, ProductEventArgs args)
+        private ProductEventArgs CreateProduct2()
         {
             ProductEventArgs result = new ProductEventArgs()
             {
@@ -163,7 +163,7 @@ namespace UnitTests
             return result;
         }
 
-        private ProductEventArgs CreateProduct3(object sender, ProductEventArgs args)
+        private ProductEventArgs CreateProduct3()
         {
             ProductEventArgs result = new ProductEventArgs()
             {
@@ -183,7 +183,7 @@ namespace UnitTests
             return result;
         }
 
-        private ProductEventArgs CreateProduct4(object sender, ProductEventArgs args)
+        private ProductEventArgs CreateProduct4()
         {
             ProductEventArgs result = new ProductEventArgs()
             {
@@ -203,7 +203,7 @@ namespace UnitTests
             return result;
         }
 
-        private ProductEventArgs CreateProduct5(object sender, ProductEventArgs args)
+        private ProductEventArgs CreateProduct5()
         {
             ProductEventArgs result = new ProductEventArgs()
             {
@@ -222,7 +222,7 @@ namespace UnitTests
             };
             return result;
         }
-        private ProductEventArgs CreateProduct6(object sender, ProductEventArgs args)
+        private ProductEventArgs CreateProduct6()
         {
             ProductEventArgs result = new ProductEventArgs()
             {

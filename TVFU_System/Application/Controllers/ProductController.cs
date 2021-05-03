@@ -5,15 +5,14 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Input;
 using Application.Commands;
-using Application.Delegates;
 
 namespace Application.Controllers
 {
     public class ProductController
     {
-        public event Delegates.EventHandler AcceptProductRequested;
-        public event Delegates.EventHandler CancelProductRequested;
-        public event Delegates.EventHandler ProductBlockedRequested;
+        public event Action<object, EventArgs> AcceptProductRequested;
+        public event Action<object, EventArgs> CancelProductRequested;
+        public event Action<object, EventArgs> ProductBlockedRequested;
 
         public ICommand AcceptProductCommand { get; private set; }
         public ICommand CancelProductCommand { get; private set; }
@@ -40,6 +39,6 @@ namespace Application.Controllers
         {
             CancelProductRequested.Invoke(this, null);
         }
-        
+
     }
 }

@@ -36,7 +36,7 @@ namespace UnitTests
 
             controller.NewProductRequested += NotNullProductEventArgs;
 
-            var createdProduct1 = new ProductViewModel(controller.CreateProduct(null));
+            var createdProduct1 = new ProductViewModel(controller.CreateProduct());
 
             controller.ProductDeleteRequested += () => false;
 
@@ -67,7 +67,7 @@ namespace UnitTests
 
             controller.NewProductRequested += NotNullProductEventArgs;
 
-            var createdProduct1 = new ProductViewModel(controller.CreateProduct(null));
+            var createdProduct1 = new ProductViewModel(controller.CreateProduct());
 
             controller.ProductDeleteRequested += () => true;
 
@@ -94,13 +94,13 @@ namespace UnitTests
 
         }
 
-        private ProductEventArgs NullProductEventArgs(object sender, ProductEventArgs args)
+        private ProductEventArgs NullProductEventArgs()
         {
             ProductEventArgs result = null;
             return result;
         }
 
-        private ProductEventArgs NotNullProductEventArgs(object sender, ProductEventArgs args)
+        private ProductEventArgs NotNullProductEventArgs()
         {
             ProductEventArgs result = new ProductEventArgs()
             {
