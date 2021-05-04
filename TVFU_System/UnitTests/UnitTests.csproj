@@ -59,6 +59,7 @@
     <Compile Include="RepositoryTests\Database_DummyData_Flood.cs" />
     <Compile Include="RepositoryTests\UC02_Repository_Tests.cs" />
     <Compile Include="RepositoryTests\UC01_Repository_Tests.cs" />
+    <Compile Include="RepositoryTests\UC05_Repository_Tests.cs" />
     <Compile Include="TextProductRepo_Get.cs" />
     <Compile Include="ControllerTests\UC01-Controller_Tests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

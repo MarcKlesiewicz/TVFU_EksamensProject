@@ -92,6 +92,11 @@ namespace UnitTests.Dummy
             writer.Remove(guid);
         }
 
+        public IEnumerable SearchProductList(string searchCategory, string searchWord)
+        {
+            throw new NotImplementedException();
+        }
+
         public void Update(EventArgs args)
         {
             ProductEventArgs productArgs = (args as ProductEventArgs);
