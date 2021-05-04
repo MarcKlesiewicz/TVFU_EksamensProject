@@ -1,4 +1,4 @@
-﻿using DomainLayer.Models;
+using DomainLayer.Models;
 using Persistence.Repositories.Interfaces;
 using DomainLayer.EventArgs;
 using System.Data.SqlClient;
