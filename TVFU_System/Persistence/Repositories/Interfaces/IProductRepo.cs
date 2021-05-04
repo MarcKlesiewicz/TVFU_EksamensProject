@@ -7,5 +7,7 @@ namespace Persistence.Repositories.Interfaces
         IEnumerable GetByProductCategories();
 
         IEnumerable GetByProductNumber(int min, int max);
+
+        IEnumerable SearchProductList(string searchCategory, string searchWord);
     }
 }

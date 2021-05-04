@@ -49,6 +49,8 @@ namespace Application.Controllers
         /// </summary>
         public ICommand CloseProductListCommand { get; }
 
+        public ICommand SearchProductListCommand { get; }
+
         /// <summary>
         /// An event whose eventhandler is expected to be set from the GUI layer before calling the method 'CreateProduct'
         /// within this class
@@ -86,6 +88,7 @@ namespace Application.Controllers
             CloseProductListCommand = new CloseProductListCmd(CloseProductList);
             ChangeProductCommand = new ChangeProductCmd(ChangeProduct);
             DeleteProductCommand = new DeleteProductCmd(DeleteProduct);
+            SearchProductListCommand = new SearchProductListCmd(ConfirmSearch);
             _productRepository = productRepo;
             CurrentProductListVM = new ProductListViewModel();
         }
@@ -242,5 +245,15 @@ namespace Application.Controllers
             CurrentProductListVM.ViewModels.Clear();
         }
 
+        public void ConfirmSearch()
+        {
+            List<Product> temp = (_productRepository.SearchProductList(CurrentProductListVM.SearchCategory.ToString(), CurrentProductListVM.SearchWord) as List<Product>);
+
+            CloseProductList();
+            for (int i = 0; i < temp.Count; i++)
+            {
+                CurrentProductListVM.ViewModels.Add(new ProductViewModel(temp[i]));
+            }
+        }
     }
 }

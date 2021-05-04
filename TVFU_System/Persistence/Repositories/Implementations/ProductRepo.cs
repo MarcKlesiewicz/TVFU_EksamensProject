@@ -243,5 +243,49 @@ namespace Persistence.Repositories.Implementations
                 command.ExecuteNonQuery();
             }
         }
+
+        public IEnumerable SearchProductList(string searchCategory, string searchWord)
+        {
+            string commandText = "EXEC SearchInAColumn @searchWord, @searchCategory";
+            var searchedProductList = new List<Product>();
+
+            using (SqlConnection connection = new SqlConnection(new Connector().ConnectionString))
+            {
+
+                connection.Open();
+                SqlCommand command = new SqlCommand(commandText, connection);
+                command.Parameters.Add("@searchWord", System.Data.SqlDbType.VarChar).Value = searchWord;
+                command.Parameters.Add("@searchCategory", System.Data.SqlDbType.VarChar).Value = new EnumConverter().Convert(searchCategory);
+
+
+                using (SqlDataReader reader = command.ExecuteReader())
+                {
+
+                    while (reader.Read())
+                    {
+                        searchedProductList.Add(new Product()
+                        {
+                            Id = (string)reader["ID"],
+                            Description = (string)reader["Description"],
+                            UnitPrice = (float)reader["UnitPrice"],
+                            GuidingPrice = (float)reader["GuidingPrice"],
+                            TotalStock = (int)reader["TotalStock"],
+                            Blocked = (bool)reader["Blocked"],
+                            UnitPerPackage = (int)reader["UnitPerPackage"],
+                            QuantityDiscount = (float)reader["QuantityDiscount"],
+                            ConfirmedDeliveryDate = (DateTime)reader["ConfirmedDeliveryDate"],
+                            ProductNumber = (int)reader["ProductNumber"],
+                            CountryOfOrigin = (string)reader["CountryOfOrigin"],
+                            PurchasingManager = (string)reader["Name"],
+                            ProductCategory = (string)reader["ProductCategory"]
+                        });
+                    }
+                }
+            }
+            return searchedProductList;
+
+        }
+
+        
     }
 }
