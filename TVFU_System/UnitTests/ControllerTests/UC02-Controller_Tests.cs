@@ -80,16 +80,18 @@ namespace UnitTests
 
             controller.NewProductRequested += NotNullProductEventArgs;
 
-            controller.CreateProduct();
-            controller.CreateProduct();
-            controller.CreateProduct();
-            controller.CreateProduct();
-            controller.CreateProduct();
-            var createdProduct = new ProductViewModel(controller.CreateProduct());
-            controller.CreateProduct();
-            controller.CreateProduct();
-            controller.CreateProduct();
-            controller.CreateProduct();
+            ProductViewModel createdProduct = null;
+
+            for (int i = 0; i < 57; i++)
+            {
+                if (i == 23)
+                {
+                    createdProduct = new ProductViewModel(controller.CreateProduct());
+                } else
+                {
+                    controller.CreateProduct();
+                }
+            }
 
             controller.ProductUpdateRequested += UpdatedProductEventArgs;
 

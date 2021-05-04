@@ -1,4 +1,4 @@
-﻿using DomainLayer.Models;
+using DomainLayer.Models;
 using Persistence.Repositories.Interfaces;
 using DomainLayer.EventArgs;
 using System.Data.SqlClient;
@@ -11,7 +11,10 @@ namespace Persistence.Repositories.Implementations
 {
     public class ProductRepo : IProductRepo
     {
-
+        /// <summary>
+        /// Saves the given parameter in an SQL Server database
+        /// </summary>
+        /// <param name="args">Expected to be of type ProductEventArgs, with no properties being null</param>
         public void Add(EventArgs args)
         {
             var productArgs = (args as ProductEventArgs);
@@ -71,21 +74,40 @@ namespace Persistence.Repositories.Implementations
             }
         }
 
+        /// <summary>
+        /// Not implemented
+        /// </summary>
+        /// <param name="guid"></param>
+        /// <returns></returns>
         public Product Get(string guid)
         {
             throw new NotImplementedException();
         }
 
+        /// <summary>
+        /// Not implemented
+        /// </summary>
+        /// <returns></returns>
         public IEnumerable<Product> GetAll()
         {
             throw new NotImplementedException();
         }
 
+        /// <summary>
+        /// Not implemented
+        /// </summary>
+        /// <param name="args"></param>
+        /// <returns></returns>
         public IEnumerable<Product> GetBy(EventArgs args)
         {
             throw new NotImplementedException();
         }
 
+        /// <summary>
+        /// Gets all entries in the SQL Server database sorted by ProductCategory.
+        /// Instantiates objects of type 'Product' for each entry in the database
+        /// </summary>
+        /// <returns>A List of type 'Product'</returns>
         public IEnumerable GetByProductCategories()
         {
             string commandText = "EXEC GetByProductCategories";
@@ -120,6 +142,12 @@ namespace Persistence.Repositories.Implementations
             return products;
         }
 
+        /// <summary>
+        /// Gets all entries in the SQL Server database, that has a ProductNumber in between two given integers.
+        /// </summary>
+        /// <param name="min"></param>
+        /// <param name="max"></param>
+        /// <returns></returns>
         public IEnumerable GetByProductNumber(int min, int max)
         {
             string commandText = "BEGIN " +
@@ -165,6 +193,10 @@ namespace Persistence.Repositories.Implementations
             return products;
         }
 
+        /// <summary>
+        /// Removes a single entry in the SQL Server Database whose ID matches exactly with the given paramater.
+        /// </summary>
+        /// <param name="guid">A Guid represented by a string object</param>
         public void Remove(string guid)
         {
             string commandText = "EXEC DeleteProduct @ID";
@@ -179,6 +211,11 @@ namespace Persistence.Repositories.Implementations
             }
         }
 
+        /// <summary>
+        /// Updates a single entry in the SQL Server Database - whose ID matches exactly with the parameter's 'ID' property - 
+        /// with the information in the parameter's properties (except the 'ID' property)
+        /// </summary>
+        /// <param name="args">Expected to be of type ProductEventArgs, with no properties being null</param>
         public void Update(EventArgs args)
         {
             var productArgs = (args as ProductEventArgs);
