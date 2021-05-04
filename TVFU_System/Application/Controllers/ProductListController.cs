@@ -51,6 +51,8 @@ namespace Application.Controllers
 
         public ICommand SearchProductListCommand { get; }
 
+        public ICommand SortAfterCommand { get; }
+
         /// <summary>
         /// An event whose eventhandler is expected to be set from the GUI layer before calling the method 'CreateProduct'
         /// within this class
@@ -89,6 +91,7 @@ namespace Application.Controllers
             ChangeProductCommand = new ChangeProductCmd(ChangeProduct);
             DeleteProductCommand = new DeleteProductCmd(DeleteProduct);
             SearchProductListCommand = new SearchProductListCmd(ConfirmSearch);
+            SortAfterCommand = new SortAfterCmd(SortAfter);
             _productRepository = productRepo;
             CurrentProductListVM = new ProductListViewModel();
         }
@@ -254,6 +257,20 @@ namespace Application.Controllers
             {
                 CurrentProductListVM.ViewModels.Add(new ProductViewModel(temp[i]));
             }
+        }
+
+        public void SortAfter(string sortCategory)
+        {
+            var temp = CurrentProductListVM.SortAfter(sortCategory).ToList();
+
+            CloseProductList();
+
+            for (int i = 0; i < temp.Count; i++)
+            {
+                CurrentProductListVM.ViewModels.Add(new ProductViewModel(temp[i]));
+            }
+            //var order = CurrentProductListVM.SortAfter(sortCategory);
+            //_productRepository.SortAfter(sortCategory, order);
         }
     }
 }

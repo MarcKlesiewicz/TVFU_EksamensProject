@@ -286,6 +286,9 @@ namespace Persistence.Repositories.Implementations
 
         }
 
-        
+        public IEnumerable SortAfter(string sortCategory, string order)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

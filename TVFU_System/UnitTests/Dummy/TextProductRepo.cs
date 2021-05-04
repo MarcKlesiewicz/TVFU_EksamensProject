@@ -97,6 +97,11 @@ namespace UnitTests.Dummy
             throw new NotImplementedException();
         }
 
+        public IEnumerable SortAfter(string sortCategory, string order)
+        {
+            throw new NotImplementedException();
+        }
+
         public void Update(EventArgs args)
         {
             ProductEventArgs productArgs = (args as ProductEventArgs);
