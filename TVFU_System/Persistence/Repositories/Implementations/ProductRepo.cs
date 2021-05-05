@@ -244,9 +244,17 @@ namespace Persistence.Repositories.Implementations
             }
         }
 
-        public IEnumerable SearchProductList(string searchCategory, string searchWord)
+        /// <summary>
+        /// A method which creates a temperary list of products in the database, using the SearchInAColumn stored procedure.
+        /// Then filtrering the temperary list by FilterCategory, FilterColor, FilterTreeSort.
+        /// Which is returned and set to the CurrentProductListVM. 
+        /// </summary>
+        /// <param name="args">Expected to be of type FilterEventArgs, with no properties being null</param>
+        public IEnumerable FilterAndSearchProductList(EventArgs args)
         {
-            string commandText = "EXEC SearchInAColumn @searchWord, @searchCategory";
+            var filterEventArgs = (args as FilterEventArgs);
+
+            string commandText = "EXEC FilterAndSearch @SearchFor, @searchIn, @FilterCategory, @FilterColor, @FilterTreeSort";
             var searchedProductList = new List<Product>();
 
             using (SqlConnection connection = new SqlConnection(new Connector().ConnectionString))
@@ -254,8 +262,11 @@ namespace Persistence.Repositories.Implementations
 
                 connection.Open();
                 SqlCommand command = new SqlCommand(commandText, connection);
-                command.Parameters.Add("@searchWord", System.Data.SqlDbType.VarChar).Value = searchWord;
-                command.Parameters.Add("@searchCategory", System.Data.SqlDbType.VarChar).Value = new EnumConverter().Convert(searchCategory);
+                command.Parameters.Add("@searchFor", System.Data.SqlDbType.VarChar).Value = filterEventArgs.SearchWord;
+                command.Parameters.Add("@searchIn", System.Data.SqlDbType.VarChar).Value = filterEventArgs.SearchCategory;
+                command.Parameters.Add("@FilterCategory", System.Data.SqlDbType.VarChar).Value = filterEventArgs.FilterCategory;
+                command.Parameters.Add("@FilterColor", System.Data.SqlDbType.VarChar).Value = filterEventArgs.FilterColour;
+                command.Parameters.Add("@FilterTreeSort", System.Data.SqlDbType.VarChar).Value = filterEventArgs.FilterTreeSort;
 
 
                 using (SqlDataReader reader = command.ExecuteReader())
@@ -276,7 +287,7 @@ namespace Persistence.Repositories.Implementations
                             ConfirmedDeliveryDate = (DateTime)reader["ConfirmedDeliveryDate"],
                             ProductNumber = (int)reader["ProductNumber"],
                             CountryOfOrigin = (string)reader["CountryOfOrigin"],
-                            PurchasingManager = (string)reader["Name"],
+                            PurchasingManager = (string)reader["PurchasingManagerName"],
                             ProductCategory = (string)reader["ProductCategory"]
                         });
                     }
@@ -287,6 +298,11 @@ namespace Persistence.Repositories.Implementations
         }
 
         public IEnumerable SortAfter(string sortCategory, string order)
+        {
+            throw new NotImplementedException();
+        }
+
+        public IEnumerable SearchProductList(string searchCategory, string searchWord)
         {
             throw new NotImplementedException();
         }

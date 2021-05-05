@@ -10,6 +10,7 @@ namespace Application.ViewModels
 {
     public enum SearchCategory { Beskrivelse, Nummer, Enhedspris, Vejledende_pris, Total_lager, Spærret, Antal_pr_kolli, Mængderabat, Indkøbskode, Bekræftet_modtagelsesdato, Oprindelsesland }
 
+    public enum FilterCategory { Ingen, KUBIK, ABC, Møbler, Køkken, Have }
     public static class LinqExtensions
     {
         public static ObservableCollection<T> ToObservableCollection<T>(this IEnumerable<T> _linqResult)
@@ -26,10 +27,21 @@ namespace Application.ViewModels
 
         public SearchCategory SearchCategory { get { return _searchCategory; } set { _searchCategory = value; } }
 
-        private string _searchWord;
+        private string _searchWord = "";
 
         public string SearchWord { get { return _searchWord; } set { _searchWord = value; OnPropertyChanged("SearchWord"); } }
 
+        private FilterCategory _filterCategory;
+
+        public FilterCategory FilterCategory { get { return _filterCategory; } set { _filterCategory = value; } }
+
+        private string _filterTreeSort = "";
+
+        public string FilterTreeSort { get { return _filterTreeSort; } set { _filterTreeSort = value; } }
+
+        private string _filtercolor = "";
+
+        public string FilterColor { get { return _filtercolor; } set { _filtercolor = value; } }
         public ObservableCollection<ProductViewModel> ViewModels { get; set; }
 
         private List<Column> _columns = new List<Column>() 

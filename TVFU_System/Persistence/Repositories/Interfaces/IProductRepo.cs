@@ -1,4 +1,5 @@
 ﻿using System.Collections;
+using System;
 
 namespace Persistence.Repositories.Interfaces
 {
@@ -11,5 +12,7 @@ namespace Persistence.Repositories.Interfaces
         IEnumerable SearchProductList(string searchCategory, string searchWord);
 
         IEnumerable SortAfter(string sortCategory, string order);
+
+        IEnumerable FilterAndSearchProductList(EventArgs args);
     }
 }

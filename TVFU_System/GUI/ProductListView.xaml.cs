@@ -114,5 +114,62 @@ namespace GUI
             }
             return false;
         }
+
+        /// <summary>
+        /// Called by ComboBox_ProductCategory's SelectionChanged property 
+        /// An event which calls the ConfirmFilterAndSearch method in ProductListController.
+        /// </summary>
+        public void FilterAndSearchProductListRequestEventHandler(object sender, EventArgs args)
+        {
+            PLC.ConfirmFilterAndSearch();
+        }
+
+        /// <summary>
+        /// Called by all tree sort checkboxes.
+        /// Creates a temperary list of checkboxes and unchecks all added checkboxes expect for the chosen checkbox
+        /// </summary>
+        /// <param name="sender"> has to be the 'checked' checkbox</param>
+        public void TreeSortChecked(object sender, EventArgs args)
+        {
+            List<CheckBox> temp = new List<CheckBox>();
+
+            temp.Add(CheckBox_Birk);
+            temp.Add(CheckBox_Akacie);
+            temp.Add(CheckBox_Bøg);
+            temp.Add(CheckBox_Fyr);
+            temp.Add(CheckBox_Kirsebær);
+            temp.Add(CheckBox_Eg);
+
+            temp.Remove((CheckBox)sender);
+
+            foreach (var item in temp)
+            {
+                item.IsChecked = false;
+            }
+        }
+
+        /// <summary>
+        /// Called by all color checkboxes.
+        /// Creates a temperary list of checkboxes and unchecks all added checkboxes expect for the chosen checkbox
+        /// </summary>
+        /// <param name="sender"> has to be the 'checked' checkbox</param>
+        public void ColorChecked(object sender, EventArgs args)
+        {
+            List<CheckBox> temp = new List<CheckBox>();
+
+            temp.Add(CheckBox_blå);
+            temp.Add(CheckBox_Rød);
+            temp.Add(CheckBox_Gul);
+            temp.Add(CheckBox_Sort);
+            temp.Add(CheckBox_Hvid);
+            temp.Add(CheckBox_Grøn);
+
+            temp.Remove((CheckBox)sender);
+
+            foreach (var item in temp)
+            {
+                item.IsChecked = false;
+            }
+        }
     }
 }

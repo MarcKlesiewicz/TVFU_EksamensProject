@@ -17,6 +17,11 @@ namespace UnitTests.Dummy
             writer.Save(entry);
         }
 
+        public IEnumerable FilterAndSearchProductList(EventArgs args)
+        {
+            throw new NotImplementedException();
+        }
+
         public Product Get(string guid)
         {
             Product product = new Product();

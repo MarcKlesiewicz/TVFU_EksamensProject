@@ -16,6 +16,13 @@
                 <x:Type TypeName="application:SearchCategory"/>
             </ObjectDataProvider.MethodParameters>
         </ObjectDataProvider>
+
+        <ObjectDataProvider x:Key="dataFromProductCat" MethodName="GetValues"
+                        ObjectType="{x:Type sys:Enum}">
+            <ObjectDataProvider.MethodParameters>
+                <x:Type TypeName="application:FilterCategory"/>
+            </ObjectDataProvider.MethodParameters>
+        </ObjectDataProvider>
     </Window.Resources>
     
     <Viewbox>
@@ -104,11 +111,17 @@
                 HorizontalAlignment="Center"
                 VerticalAlignment="Center">
                 <Label
-                    Content="Sorter efter:" 
-                    FontSize="30"/>
+                    Content="Produktkategori" 
+                    FontSize="24"
+                    />
+
                 <ComboBox
+                    ItemsSource="{Binding Source={StaticResource dataFromProductCat}}"
+                    SelectedItem="{Binding PLVM.FilterCategory}"
+                    SelectionChanged="FilterAndSearchProductListRequestEventHandler"
                     x:Name="SortAfter"
-                    Height="30"/>
+                    Height="30"
+                    FontSize="16"/>
             </StackPanel>
             <Grid
                 Grid.Row="2"
@@ -173,7 +186,10 @@
                         Grid.Column="0"
                         HorizontalAlignment="Right"
                         VerticalAlignment="Bottom"
-                        Margin="0,0,10,2"/>
+                        Margin="0,0,10,2"
+                        Command="{Binding PLC.TreeSortCheckedCommand}"
+                        CommandParameter="Birk"
+                        Checked="TreeSortChecked"/>
                     <Label
                         Content="Eg"
                         Grid.Row="0"
@@ -188,7 +204,10 @@
                         Grid.Column="1"
                         HorizontalAlignment="Right"
                         VerticalAlignment="Bottom"
-                        Margin="0,0,10,2"/>
+                        Margin="0,0,10,2"
+                        Command="{Binding PLC.TreeSortCheckedCommand}"
+                        CommandParameter="Eg"
+                        Checked="TreeSortChecked"/>
                     <Label
                         Content="Akacie"
                         Grid.Row="1"
@@ -203,7 +222,10 @@
                         Grid.Column="0"
                         HorizontalAlignment="Right"
                         VerticalAlignment="Bottom"
-                        Margin="0,0,10,2"/>
+                        Margin="0,0,10,2"
+                        Command="{Binding PLC.TreeSortCheckedCommand}"
+                        CommandParameter="Akacie"
+                        Checked="TreeSortChecked"/>
                     <Label
                         Content="Kirsebær"
                         Grid.Row="1"
@@ -218,7 +240,10 @@
                         Grid.Column="1"
                         HorizontalAlignment="Right"
                         VerticalAlignment="Bottom"
-                        Margin="0,0,10,2"/>
+                        Margin="0,0,10,2"
+                        Command="{Binding PLC.TreeSortCheckedCommand}"
+                        CommandParameter="Kirsebær"
+                        Checked="TreeSortChecked"/>
                     <Label
                         Content="Bøg"
                         Grid.Row="2"
@@ -233,7 +258,10 @@
                         Grid.Column="0"
                         HorizontalAlignment="Right"
                         VerticalAlignment="Bottom"
-                        Margin="0,0,10,2"/>
+                        Margin="0,0,10,2"
+                        Command="{Binding PLC.TreeSortCheckedCommand}"
+                        CommandParameter="Bøg"
+                        Checked="TreeSortChecked"/>
                     <Label
                         Content="Fyr"
                         Grid.Row="2"
@@ -248,7 +276,10 @@
                         Grid.Column="2"
                         HorizontalAlignment="Right"
                         VerticalAlignment="Bottom"
-                        Margin="0,0,10,2"/>
+                        Margin="0,0,10,2"
+                        Command="{Binding PLC.TreeSortCheckedCommand}"
+                        CommandParameter="Fyr"
+                        Checked="TreeSortChecked"/>
                 </Grid>
                 <Label
                     Content="Farve"
@@ -286,7 +317,10 @@
                         Grid.Column="0"
                         HorizontalAlignment="Right"
                         VerticalAlignment="Bottom"
-                        Margin="0,0,10,2"/>
+                        Margin="0,0,10,2"
+                        Command="{Binding PLC.ColorCheckedCommand}"
+                        CommandParameter="Sort"
+                        Checked="ColorChecked"/>
                     <Label
                         Content="Grøn"
                         Grid.Row="0"
@@ -294,14 +328,18 @@
                         HorizontalAlignment="Left"
                         VerticalAlignment="Bottom"
                         FontSize="20"
-                        Padding="0"/>
+                        Padding="0"
+                        />
                     <CheckBox
                         x:Name="CheckBox_Grøn"
                         Grid.Row="0"
                         Grid.Column="1"
                         HorizontalAlignment="Right"
                         VerticalAlignment="Bottom"
-                        Margin="0,0,10,2"/>
+                        Margin="0,0,10,2"
+                        Command="{Binding PLC.ColorCheckedCommand}"
+                        CommandParameter="Grøn"
+                        Checked="ColorChecked"/>
                     <Label
                         Content="Hvid"
                         Grid.Row="1"
@@ -316,7 +354,10 @@
                         Grid.Column="0"
                         HorizontalAlignment="Right"
                         VerticalAlignment="Bottom"
-                        Margin="0,0,10,2"/>
+                        Margin="0,0,10,2"
+                        Command="{Binding PLC.ColorCheckedCommand}"
+                        CommandParameter="Hvid"
+                        Checked="ColorChecked"/>
                     <Label
                         Content="Rød"
                         Grid.Row="1"
@@ -331,7 +372,10 @@
                         Grid.Column="1"
                         HorizontalAlignment="Right"
                         VerticalAlignment="Bottom"
-                        Margin="0,0,10,2"/>
+                        Margin="0,0,10,2"
+                        Command="{Binding PLC.ColorCheckedCommand}"
+                        CommandParameter="Rød"
+                        Checked="ColorChecked"/>
                     <Label
                         Content="Blå"
                         Grid.Row="2"
@@ -346,7 +390,10 @@
                         Grid.Column="0"
                         HorizontalAlignment="Right"
                         VerticalAlignment="Bottom"
-                        Margin="0,0,10,2"/>
+                        Margin="0,0,10,2"
+                        Command="{Binding PLC.ColorCheckedCommand}"
+                        CommandParameter="Blå"
+                        Checked="ColorChecked"/>
                     <Label
                         Content="Gul"
                         Grid.Row="2"
@@ -361,7 +408,10 @@
                         Grid.Column="2"
                         HorizontalAlignment="Right"
                         VerticalAlignment="Bottom"
-                        Margin="0,0,10,2"/>
+                        Margin="0,0,10,2"
+                        Command="{Binding PLC.ColorCheckedCommand}"
+                        CommandParameter="Gul"
+                        Checked="ColorChecked"/>
                 </Grid>
             </Grid>
             <StackPanel

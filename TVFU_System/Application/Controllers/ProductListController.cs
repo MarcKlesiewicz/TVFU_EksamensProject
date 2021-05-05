@@ -49,9 +49,22 @@ namespace Application.Controllers
         /// </summary>
         public ICommand CloseProductListCommand { get; }
 
+        /// <summary>
+        /// A command expected to be databinded to a xaml object governing the search for a product
+        /// </summary>
         public ICommand SearchProductListCommand { get; }
 
         public ICommand SortAfterCommand { get; }
+
+        /// <summary>
+        /// A command expected to be databinded to a xaml object governing the filtering for treesort
+        /// </summary>
+        public ICommand TreeSortCheckedCommand { get; }
+
+        /// <summary>
+        /// A command expected to be databinded to a xaml object governing the filtering for color
+        /// </summary>
+        public ICommand ColorCheckedCommand { get; }
 
         /// <summary>
         /// An event whose eventhandler is expected to be set from the GUI layer before calling the method 'CreateProduct'
@@ -90,8 +103,10 @@ namespace Application.Controllers
             CloseProductListCommand = new CloseProductListCmd(CloseProductList);
             ChangeProductCommand = new ChangeProductCmd(ChangeProduct);
             DeleteProductCommand = new DeleteProductCmd(DeleteProduct);
-            SearchProductListCommand = new SearchProductListCmd(ConfirmSearch);
+            SearchProductListCommand = new SearchProductListCmd(ConfirmFilterAndSearch);
             SortAfterCommand = new SortAfterCmd(SortAfter);
+            TreeSortCheckedCommand = new TreeSortCheckedCmd(SetTreeSort);
+            ColorCheckedCommand = new ColorCheckedCmd(SetColor);
             _productRepository = productRepo;
             CurrentProductListVM = new ProductListViewModel();
         }
@@ -248,15 +263,74 @@ namespace Application.Controllers
             CurrentProductListVM.ViewModels.Clear();
         }
 
-        public void ConfirmSearch()
+        /// <summary>
+        /// A method which search and filter the current productlist by given factors from CurrentProductListVM's properties:
+        /// - Filtercategory
+        /// - Filtercolor
+        /// - FilterTreeSort
+        /// - SearchWord
+        /// - SearchCategory 
+        /// </summary>
+        public void ConfirmFilterAndSearch()
         {
-            List<Product> temp = (_productRepository.SearchProductList(CurrentProductListVM.SearchCategory.ToString(), CurrentProductListVM.SearchWord) as List<Product>);
+            FilterEventArgs args = new FilterEventArgs();
+            if (CurrentProductListVM.FilterCategory == FilterCategory.Ingen)
+            {
+                args.FilterCategory = "";
+            }
+            else
+            {
+                args.FilterCategory = CurrentProductListVM.FilterCategory.ToString();
+            }
+            args.FilterColour = CurrentProductListVM.FilterColor;
+            args.FilterTreeSort = CurrentProductListVM.FilterTreeSort;
+            args.SearchCategory = new EnumConverter().Convert(CurrentProductListVM.SearchCategory.ToString());
+            args.SearchWord = CurrentProductListVM.SearchWord;
+
+            List<Product> temp = ((_productRepository.FilterAndSearchProductList(args)) as List<Product>);
 
             CloseProductList();
             for (int i = 0; i < temp.Count; i++)
             {
                 CurrentProductListVM.ViewModels.Add(new ProductViewModel(temp[i]));
             }
+        }
+
+        /// <summary>
+        /// A method which is setting the current productlist's property (FilterTreeSort) to parameter.
+        /// </summary>
+        /// <param name="treeSort">Is expected to be a 'tree sorts declacred in XAML'</param>
+        public void SetTreeSort(string treeSort)
+        {
+            if (CurrentProductListVM.FilterTreeSort == treeSort)
+            {
+                CurrentProductListVM.FilterTreeSort = "";
+            }
+            else
+            {
+                CurrentProductListVM.FilterTreeSort = treeSort;
+            }
+
+            ConfirmFilterAndSearch();
+        }
+
+        /// <summary>
+        /// A method which is setting the current productlist's property (FilterColor) to parameter.
+        /// </summary>
+        /// <param name="color">Is expected to be a 'color declacred in XAML'</param>
+        public void SetColor(string color)
+        {
+            if (CurrentProductListVM.FilterColor == color)
+            {
+                CurrentProductListVM.FilterColor = "";
+            }
+            else
+            {
+                CurrentProductListVM.FilterColor = color;
+            }
+
+            ConfirmFilterAndSearch();
+
         }
 
         public void SortAfter(string sortCategory)
