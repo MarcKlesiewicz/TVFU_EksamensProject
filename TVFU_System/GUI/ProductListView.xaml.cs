@@ -25,42 +25,42 @@ namespace GUI
     /// </summary>
     public partial class ProductListView : Window
     {
-        private static IProductRepo repo = new ProductRepo();
-        private ProductListController PLC = new ProductListController(repo);
+        private readonly static IProductRepo _repo = new ProductRepo();
+        private readonly ProductListController _pLC = new ProductListController(_repo);
         public ProductListView()
         {
             InitializeComponent();
-            var PLVM = PLC.CurrentProductListVM;
-            DataContext = new { PLVM, PLC };
-            PLC.NewProductRequested += NewProductRequestHandler;
-            PLC.ProductUpdateRequested += ProductUpdateRequestHandler;
-            PLC.ProductDeleteRequested += DeleteProductRequestHandler;
-            PLC.ShowProductList();
+            var PLVM = _pLC.CurrentProductListVM;
+            DataContext = new { PLVM, _pLC };
+            _pLC.NewProductRequested += NewProductRequestHandler;
+            _pLC.ProductUpdateRequested += ProductUpdateRequestHandler;
+            _pLC.ProductDeleteRequested += DeleteProductRequestHandler;
+            _pLC.ShowProductList();
         }
 
         public ProductEventArgs NewProductRequestHandler()
         {
             ProductEventArgs result = new ProductEventArgs();
-            ProductView PV = new ProductView(PLC.CurrentProductVM);
+            ProductView PV = new ProductView(_pLC.CurrentProductVM);
             bool? dialogresult = PV.ShowDialog();
 
             if (dialogresult.HasValue)
             {
                 if (dialogresult.Value)
                 {
-                    result.ProductNumber = PLC.CurrentProductVM.ProductNumber;
-                    result.ProductCategory = PLC.CurrentProductVM.ProductCategory;
-                    result.Id = PLC.CurrentProductVM.Id;
-                    result.Description = PLC.CurrentProductVM.Description;
-                    result.UnitPrice = PLC.CurrentProductVM.UnitPrice;
-                    result.GuidingPrice = PLC.CurrentProductVM.GuidingPrice;
-                    result.TotalStock = PLC.CurrentProductVM.TotalStock;
-                    result.Blocked = PLC.CurrentProductVM.Blocked;
-                    result.UnitPerPackage = PLC.CurrentProductVM.UnitPerPackage;
-                    result.QuantityDiscount = PLC.CurrentProductVM.QuantityDiscount;
-                    result.ConfirmedDeliveryDate = PLC.CurrentProductVM.ConfirmedDeliveryDate;
-                    result.CountryOfOrigin = PLC.CurrentProductVM.CountryOfOrigin;
-                    result.PurchasingManager = PLC.CurrentProductVM.PurchasingManager;
+                    result.ProductNumber = _pLC.CurrentProductVM.ProductNumber;
+                    result.ProductCategory = _pLC.CurrentProductVM.ProductCategory;
+                    result.Id = _pLC.CurrentProductVM.Id;
+                    result.Description = _pLC.CurrentProductVM.Description;
+                    result.UnitPrice = _pLC.CurrentProductVM.UnitPrice;
+                    result.GuidingPrice = _pLC.CurrentProductVM.GuidingPrice;
+                    result.TotalStock = _pLC.CurrentProductVM.TotalStock;
+                    result.Blocked = _pLC.CurrentProductVM.Blocked;
+                    result.UnitPerPackage = _pLC.CurrentProductVM.UnitPerPackage;
+                    result.QuantityDiscount = _pLC.CurrentProductVM.QuantityDiscount;
+                    result.ConfirmedDeliveryDate = _pLC.CurrentProductVM.ConfirmedDeliveryDate;
+                    result.CountryOfOrigin = _pLC.CurrentProductVM.CountryOfOrigin;
+                    result.PurchasingManager = _pLC.CurrentProductVM.PurchasingManager;
 
                 }
                 else
@@ -74,26 +74,26 @@ namespace GUI
         public ProductEventArgs ProductUpdateRequestHandler()
         {
             ProductEventArgs result = new ProductEventArgs();
-            ProductView PV = new ProductView(PLC.CurrentProductVM);
+            ProductView PV = new ProductView(_pLC.CurrentProductVM);
             bool? dialogresult = PV.ShowDialog();
 
             if (dialogresult.HasValue)
             {
                 if (dialogresult.Value)
                 {
-                    result.ProductNumber = PLC.CurrentProductVM.ProductNumber;
-                    result.ProductCategory = PLC.CurrentProductVM.ProductCategory;
-                    result.Id = PLC.CurrentProductVM.Id;
-                    result.Description = PLC.CurrentProductVM.Description;
-                    result.UnitPrice = PLC.CurrentProductVM.UnitPrice;
-                    result.GuidingPrice = PLC.CurrentProductVM.GuidingPrice;
-                    result.TotalStock = PLC.CurrentProductVM.TotalStock;
-                    result.Blocked = PLC.CurrentProductVM.Blocked;
-                    result.UnitPerPackage = PLC.CurrentProductVM.UnitPerPackage;
-                    result.QuantityDiscount = PLC.CurrentProductVM.QuantityDiscount;
-                    result.ConfirmedDeliveryDate = PLC.CurrentProductVM.ConfirmedDeliveryDate;
-                    result.CountryOfOrigin = PLC.CurrentProductVM.CountryOfOrigin;
-                    result.PurchasingManager = PLC.CurrentProductVM.PurchasingManager;
+                    result.ProductNumber = _pLC.CurrentProductVM.ProductNumber;
+                    result.ProductCategory = _pLC.CurrentProductVM.ProductCategory;
+                    result.Id = _pLC.CurrentProductVM.Id;
+                    result.Description = _pLC.CurrentProductVM.Description;
+                    result.UnitPrice = _pLC.CurrentProductVM.UnitPrice;
+                    result.GuidingPrice = _pLC.CurrentProductVM.GuidingPrice;
+                    result.TotalStock = _pLC.CurrentProductVM.TotalStock;
+                    result.Blocked = _pLC.CurrentProductVM.Blocked;
+                    result.UnitPerPackage = _pLC.CurrentProductVM.UnitPerPackage;
+                    result.QuantityDiscount = _pLC.CurrentProductVM.QuantityDiscount;
+                    result.ConfirmedDeliveryDate = _pLC.CurrentProductVM.ConfirmedDeliveryDate;
+                    result.CountryOfOrigin = _pLC.CurrentProductVM.CountryOfOrigin;
+                    result.PurchasingManager = _pLC.CurrentProductVM.PurchasingManager;
 
                 }
                 else
@@ -121,7 +121,7 @@ namespace GUI
         /// </summary>
         public void FilterAndSearchProductListRequestEventHandler(object sender, EventArgs args)
         {
-            PLC.ConfirmFilterAndSearch();
+            _pLC.ConfirmFilterAndSearch();
         }
 
         /// <summary>

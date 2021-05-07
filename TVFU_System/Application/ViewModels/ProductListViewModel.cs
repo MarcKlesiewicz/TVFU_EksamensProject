@@ -44,7 +44,7 @@ namespace Application.ViewModels
         public string FilterColor { get { return _filtercolor; } set { _filtercolor = value; } }
         public ObservableCollection<ProductViewModel> ViewModels { get; set; }
 
-        private List<Column> _columns = new List<Column>() 
+        private readonly List<Column> _columns = new List<Column>() 
         {
             new Column("ProductNumber"),
             new Column("Description"),

@@ -12,7 +12,7 @@ namespace Application.Controllers
 {
     public class ProductListController
     {
-        private IProductRepo _productRepository;
+        private readonly IProductRepo _productRepository;
 
         /// <summary>
         /// A ViewModel expected to be set as a datacontext to a view that can take user input towards twelve different properties.

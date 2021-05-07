@@ -64,21 +64,22 @@ namespace UnitTests.Dummy
             {
                 string[] productTextInitiator = productsInStringFormat[i].Split(';');
 
-                Product product = new Product();
-
-                product.Id = productTextInitiator[0];
-                product.Description = productTextInitiator[1];
-                product.UnitPrice = float.Parse(productTextInitiator[2]);
-                product.GuidingPrice = float.Parse(productTextInitiator[3]);
-                product.TotalStock = int.Parse(productTextInitiator[4]);
-                product.Blocked = bool.Parse(productTextInitiator[5]);
-                product.UnitPerPackage = int.Parse(productTextInitiator[6]);
-                product.QuantityDiscount = float.Parse(productTextInitiator[7]);
-                product.ConfirmedDeliveryDate = DateTime.Parse(productTextInitiator[8]);
-                product.ProductNumber = int.Parse(productTextInitiator[9]);
-                product.CountryOfOrigin = productTextInitiator[10];
-                product.PurchasingManager = productTextInitiator[11];
-                product.ProductCategory = productTextInitiator[12];
+                Product product = new Product
+                {
+                    Id = productTextInitiator[0],
+                    Description = productTextInitiator[1],
+                    UnitPrice = float.Parse(productTextInitiator[2]),
+                    GuidingPrice = float.Parse(productTextInitiator[3]),
+                    TotalStock = int.Parse(productTextInitiator[4]),
+                    Blocked = bool.Parse(productTextInitiator[5]),
+                    UnitPerPackage = int.Parse(productTextInitiator[6]),
+                    QuantityDiscount = float.Parse(productTextInitiator[7]),
+                    ConfirmedDeliveryDate = DateTime.Parse(productTextInitiator[8]),
+                    ProductNumber = int.Parse(productTextInitiator[9]),
+                    CountryOfOrigin = productTextInitiator[10],
+                    PurchasingManager = productTextInitiator[11],
+                    ProductCategory = productTextInitiator[12]
+                };
 
                 result.Add(product);
             }
