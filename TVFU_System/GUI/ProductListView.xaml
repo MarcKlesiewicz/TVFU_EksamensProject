@@ -542,6 +542,7 @@
                         Command="{Binding _pLC.SortAfterCommand}"
                         CommandParameter="ProductNumber" 
                         FontFamily="Segoe UI Semibold" 
+                        FontSize="16"
                         Click="ChangeAcsAndDecsOnButtons" 
                         />
                         
@@ -554,6 +555,7 @@
                         Command="{Binding _pLC.SortAfterCommand}"
                         CommandParameter="Description"
                         FontFamily="Segoe UI Semibold" 
+                        FontSize="16"
                         Click="ChangeAcsAndDecsOnButtons"
                         
                         />
@@ -566,6 +568,7 @@
                         Command="{Binding _pLC.SortAfterCommand}"
                         CommandParameter="UnitPrice"
                         FontFamily="Segoe UI Semibold" Click="ChangeAcsAndDecsOnButtons"
+                        FontSize="16"
                         />
                         <Button
                         Content="Vejledende pris"
@@ -576,6 +579,7 @@
                         Command="{Binding _pLC.SortAfterCommand}"
                         CommandParameter="GuidingPrice"
                         FontFamily="Segoe UI Semibold" Click="ChangeAcsAndDecsOnButtons" 
+                        FontSize="16"
                         />
                         <Button
                         Content="Total lager"
@@ -584,6 +588,7 @@
                         BorderBrush="Black"
                         Width="100"
                         FontFamily="Segoe UI Semibold"
+                        FontSize="16"
                         Command="{Binding _pLC.SortAfterCommand}"
                         CommandParameter="TotalStock" Click="ChangeAcsAndDecsOnButtons"
                         />
@@ -594,6 +599,7 @@
                         BorderBrush="Black"
                         Width="80"
                         FontFamily="Segoe UI Semibold"
+                        FontSize="16"
                         Command="{Binding _pLC.SortAfterCommand}"
                         CommandParameter="Blocked" Click="ChangeAcsAndDecsOnButtons"
                         />
@@ -603,6 +609,7 @@
                         BorderThickness="0,1,1,1"
                         BorderBrush="Black"
                         FontFamily="Segoe UI Semibold"
+                        FontSize="16"
                         Width="130"
                         Command="{Binding _pLC.SortAfterCommand}"
                         CommandParameter="UnitPerPackage" Click="ChangeAcsAndDecsOnButtons"
@@ -613,6 +620,7 @@
                         BorderThickness="0,1,1,1"
                         BorderBrush="Black"
                         FontFamily="Segoe UI Semibold"
+                        FontSize="16"
                         Width="140"
                         Command="{Binding _pLC.SortAfterCommand}"
                         CommandParameter="QuantityDiscount"
@@ -625,6 +633,7 @@
                         BorderBrush="Black"
                         Width="144"
                         FontFamily="Segoe UI Semibold"
+                        FontSize="16"
                         Command="{Binding _pLC.SortAfterCommand}"
                         CommandParameter="PurchasingManager"
                             Click="ChangeAcsAndDecsOnButtons"
@@ -635,6 +644,7 @@
                         BorderThickness="0,1,1,1"
                         BorderBrush="Black"
                         FontFamily="Segoe UI Semibold"
+                        FontSize="16"
                         Width="230"
                         Command="{Binding _pLC.SortAfterCommand}"
                         CommandParameter="ConfirmedDeliveryDate"
@@ -646,6 +656,7 @@
                         BorderThickness="0,1,1,1"
                         BorderBrush="Black"
                         FontFamily="Segoe UI Semibold"
+                        FontSize="16"
                         Width="150"
                         Command="{Binding _pLC.SortAfterCommand}"
                         CommandParameter="CountryOfOrigin"
