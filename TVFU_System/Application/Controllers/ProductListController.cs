@@ -40,16 +40,6 @@ namespace Application.Controllers
         public ICommand DeleteProductCommand { get; }
 
         /// <summary>
-        /// A command expected to be databinded to a xaml object governing the entry of the Product List
-        /// </summary>
-        public ICommand ShowProductListCommand { get; }
-
-        /// <summary>
-        /// A command expected to be databinded to a xaml object governing the closing of the Product List
-        /// </summary>
-        public ICommand CloseProductListCommand { get; }
-
-        /// <summary>
         /// A command expected to be databinded to a xaml object governing the search for a product
         /// </summary>
         public ICommand SearchProductListCommand { get; }
@@ -99,8 +89,6 @@ namespace Application.Controllers
         public ProductListController(IProductRepo productRepo)
         {
             CreateProductCommand = new CreateProductCmd(CreateProduct);
-            ShowProductListCommand = new ShowProductListCmd(ShowProductList);
-            CloseProductListCommand = new CloseProductListCmd(CloseProductList);
             ChangeProductCommand = new ChangeProductCmd(ChangeProduct);
             DeleteProductCommand = new DeleteProductCmd(DeleteProduct);
             SearchProductListCommand = new SearchProductListCmd(ConfirmFilterAndSearch);
@@ -293,6 +281,12 @@ namespace Application.Controllers
             for (int i = 0; i < temp.Count; i++)
             {
                 CurrentProductListVM.ViewModels.Add(new ProductViewModel(temp[i]));
+            }
+
+            if (!CurrentProductListVM.ColumnsReset())
+            {
+                CurrentProductListVM.LastCategoryPreviousColumnOrder();
+                CurrentProductListVM.SortAfter(CurrentProductListVM.LastSortedCategory);
             }
         }
 

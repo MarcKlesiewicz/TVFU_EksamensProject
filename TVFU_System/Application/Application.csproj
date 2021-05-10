@@ -54,13 +54,11 @@
     <Compile Include="Commands\AcceptProductCmd.cs" />
     <Compile Include="Commands\CancelProductCmd.cs" />
     <Compile Include="Commands\ChangeProductCmd.cs" />
-    <Compile Include="Commands\CloseProductListCmd.cs" />
     <Compile Include="Commands\ColorCheckedCmd.cs" />
     <Compile Include="Commands\CreateProductCmd.cs" />
     <Compile Include="Commands\DeleteProductCmd.cs" />
     <Compile Include="Commands\ProductBlockedCmd.cs" />
     <Compile Include="Commands\SearchProductListCmd.cs" />
-    <Compile Include="Commands\ShowProductListCmd.cs" />
     <Compile Include="Commands\SortAfterCmd.cs" />
     <Compile Include="Commands\TreeSortCheckedCmd.cs" />
     <Compile Include="Controllers\ProductController.cs" />

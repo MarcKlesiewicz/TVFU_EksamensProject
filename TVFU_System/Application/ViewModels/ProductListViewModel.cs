@@ -24,24 +24,22 @@ namespace Application.ViewModels
         public event PropertyChangedEventHandler PropertyChanged;
 
         private SearchCategory _searchCategory;
-
         public SearchCategory SearchCategory { get { return _searchCategory; } set { _searchCategory = value; } }
 
         private string _searchWord = "";
-
         public string SearchWord { get { return _searchWord; } set { _searchWord = value; OnPropertyChanged("SearchWord"); } }
 
         private FilterCategory _filterCategory;
-
         public FilterCategory FilterCategory { get { return _filterCategory; } set { _filterCategory = value; } }
 
         private string _filterTreeSort = "";
-
         public string FilterTreeSort { get { return _filterTreeSort; } set { _filterTreeSort = value; } }
 
         private string _filtercolor = "";
-
         public string FilterColor { get { return _filtercolor; } set { _filtercolor = value; } }
+
+        public string LastSortedCategory { get; set; }
+
         public ObservableCollection<ProductViewModel> ViewModels { get; set; }
 
         private readonly List<Column> _columns = new List<Column>() 
@@ -82,7 +80,37 @@ namespace Application.ViewModels
 
             column.NextOrder();
 
+            if (!ColumnsReset())
+            {
+                LastSortedCategory = category;
+            } else
+            {
+                LastSortedCategory = String.Empty;
+            }
+
             return new CategorySorter().Sort(ViewModels.ToList(), category.ToLower(), column.Order);
+        }
+
+        public bool ColumnsReset()
+        {
+            for (int i = 0; i < _columns.Count; i++)
+            {
+                if (_columns[i].Order != ColumnOrder.Null)
+                {
+                    return false;
+                }
+            }
+            return true;
+        }
+
+        public void LastCategoryPreviousColumnOrder()
+        {
+            var column = _columns.First(s => s.Name.ToLower() == LastSortedCategory.ToLower());
+
+            for (int i = 0; i < 2; i++)
+            {
+                column.NextOrder();
+            }
         }
 
         protected void OnPropertyChanged(string propertyName)
