@@ -286,7 +286,7 @@ namespace Application.Controllers
             if (!CurrentProductListVM.ColumnsReset())
             {
                 CurrentProductListVM.LastCategoryPreviousColumnOrder();
-                CurrentProductListVM.SortAfter(CurrentProductListVM.LastSortedCategory);
+                SortAfter(CurrentProductListVM.LastSortedCategory);
             }
         }
 
