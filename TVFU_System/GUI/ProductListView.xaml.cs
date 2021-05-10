@@ -172,96 +172,322 @@ namespace GUI
             }
         }
 
+        /// <summary>
+        /// Called by all sorting columns from productlistbox.
+        /// Changes the content of a button on click
+        /// </summary>
+        /// <param name="sender"> has to be a button from listbox</param>
         public void ChangeAcsAndDecsOnButtons(object sender, EventArgs args)
         {
-            
+            if (sender.ToString().Contains("Nummer"))
+            {
+                if (Btn_NummerSort.Content.ToString() == "Nummer")
+                    Btn_NummerSort.Content = $"Nummer \x2191";
+
+                else if (Btn_NummerSort.Content.ToString() == "Nummer \x2191")
+                    Btn_NummerSort.Content = $"Nummer \x2193";
+
+                else
+                    Btn_NummerSort.Content = "Nummer";
+
+                ResetSortButtons(sender);
+                return;
+            }
+            else if (sender.ToString().Contains("Beskrivelse"))
+            {
+                if (Btn_BeskrivelseSort.Content.ToString() == "Beskrivelse")
+                    Btn_BeskrivelseSort.Content = $"Beskrivelse \x2191";
+
+                else if (Btn_BeskrivelseSort.Content.ToString() == "Beskrivelse \x2191")
+                    Btn_BeskrivelseSort.Content = $"Beskrivelse \x2193";
+
+                else
+                    Btn_BeskrivelseSort.Content = "Beskrivelse";
+
+                ResetSortButtons(sender);
+                return;
+            }
+            else if (sender.ToString().Contains("Enhedspris"))
+            {
+                if (Btn_EnhedsprisSort.Content.ToString() == "Enhedspris")
+                    Btn_EnhedsprisSort.Content = $"Enhedspris \x2191";
+
+                else if (Btn_EnhedsprisSort.Content.ToString() == "Enhedspris \x2191")
+                    Btn_EnhedsprisSort.Content = $"Enhedspris \x2193";
+
+                else
+                    Btn_EnhedsprisSort.Content = "Enhedspris";
+
+                ResetSortButtons(sender);
+                return;
+            }
+            else if (sender.ToString().Contains("Vejledende pris"))
+            {
+                if (Btn_VejledendePrisSort.Content.ToString() == "Vejledende pris")
+                    Btn_VejledendePrisSort.Content = "Vejledende pris \x2191";
+
+                else if (Btn_VejledendePrisSort.Content.ToString() == "Vejledende pris \x2191")
+                    Btn_VejledendePrisSort.Content = "Vejledende pris \x2193";
+
+                else
+                    Btn_VejledendePrisSort.Content = "Vejledende pris";
+
+                ResetSortButtons(sender);
+                return;
+            }
+            else if (sender.ToString().Contains("Total lager"))
+            {
+                if (Btn_TotalLager.Content.ToString() == "Total lager")
+                    Btn_TotalLager.Content = $"Total lager \x2191";
+
+                else if (Btn_TotalLager.Content.ToString() == "Total lager \x2191")
+                    Btn_TotalLager.Content = $"Total lager \x2193";
+
+                else
+                    Btn_TotalLager.Content = "Total lager";
+
+                ResetSortButtons(sender);
+                return;
+            }
+            else if (sender.ToString().Contains("Spærret"))
+            {
+                if (Btn_SpærretSort.Content.ToString() == "Spærret")
+                    Btn_SpærretSort.Content = $"Spærret(F)";
+
+                else if (Btn_SpærretSort.Content.ToString() == "Spærret(F)")
+                    Btn_SpærretSort.Content = $"Spærret(T)";
+
+                else
+                    Btn_SpærretSort.Content = "Spærret";
+
+                ResetSortButtons(sender);
+                return;
+            }
+            else if (sender.ToString().Contains("Antal pr. kolli"))
+            {
+                if (Btn_KolliSort.Content.ToString() == "Antal pr. kolli")
+                    Btn_KolliSort.Content = $"Antal pr. kolli \x2191";
+
+                else if (Btn_KolliSort.Content.ToString() == "Antal pr. kolli \x2191")
+                    Btn_KolliSort.Content = $"Antal pr. kolli \x2193";
+
+                else
+                    Btn_KolliSort.Content = "Antal pr. kolli";
+
+                ResetSortButtons(sender);
+                return;
+            }
+            else if (sender.ToString().Contains("Mængderabat"))
+            {
+                if (Btn_MængderabatSort.Content.ToString() == "Mængderabat")
+                    Btn_MængderabatSort.Content = $"Mængderabat \x2191";
+
+                else if (Btn_MængderabatSort.Content.ToString() == "Mængderabat \x2191")
+                    Btn_MængderabatSort.Content = $"Mængderabat \x2193";
+
+                else
+                    Btn_MængderabatSort.Content = "Mængderabat";
+
+                ResetSortButtons(sender);
+                return;
+            }
+            else if (sender.ToString().Contains("Indkøbskode"))
+            {
+                if (Btn_IndkøbskodeSort.Content.ToString() == "Indkøbskode")
+                    Btn_IndkøbskodeSort.Content = $"Indkøbskode a-z";
+
+                else if (Btn_IndkøbskodeSort.Content.ToString() == "Indkøbskode a-z")
+                    Btn_IndkøbskodeSort.Content = $"Indkøbskode z-a";
+
+                else
+                    Btn_IndkøbskodeSort.Content = "Indkøbskode";
+
+                ResetSortButtons(sender);
+                return;
+            }
+            else if (sender.ToString().Contains("Bekræftet Modtagelsedato"))
+            {
+                if (Btn_ModtagelsesdatoSort.Content.ToString() == "Bekræftet Modtagelsedato")
+                    Btn_ModtagelsesdatoSort.Content = $"Bekræftet Modtagelsedato \x2191";
+
+                else if (Btn_ModtagelsesdatoSort.Content.ToString() == "Bekræftet Modtagelsedato \x2191")
+                    Btn_ModtagelsesdatoSort.Content = $"Bekræftet Modtagelsedato \x2193";
+
+                else
+                    Btn_ModtagelsesdatoSort.Content = "Bekræftet Modtagelsedato";
+
+                ResetSortButtons(sender);
+                return;
+            }
+            else if (sender.ToString().Contains("Oprindelsesland"))
+            {
+                if (Btn_OprindelseslandSort.Content.ToString() == "Oprindelsesland")
+                    Btn_OprindelseslandSort.Content = $"Oprindelsesland a-z";
+
+                else if (Btn_OprindelseslandSort.Content.ToString() == "Oprindelsesland a-z")
+                    Btn_OprindelseslandSort.Content = $"Oprindelsesland z-a";
+
+                else
+                    Btn_OprindelseslandSort.Content = "Oprindelsesland";
+
+                ResetSortButtons(sender);
+                return;
+            }
+
         }
 
-        private void Btn_NummerSort_Click(object sender, RoutedEventArgs e)
+        /// <summary>
+        /// Called in the ChangeAcsAndDecsButtons method
+        /// Resets buttons content which isn't clicked to default
+        /// </summary>
+        private void ResetSortButtons(object sender)
         {
-            if (Btn_NummerSort.Content.ToString() == "Nummer")
-                Btn_NummerSort.Content = $"Nummer \x2191";
-            
-            else if (Btn_NummerSort.Content.ToString() == "Nummer \x2191")
-                Btn_NummerSort.Content = $"Nummer \x2193";
-
-            else
-                Btn_NummerSort.Content = "Nummer";
-            
-        }
-
-        private void Btn_BeskrivelseSort_Click(object sender, RoutedEventArgs e)
-        {
-            if (Btn_BeskrivelseSort.Content.ToString() == "Beskrivelse")
-                Btn_BeskrivelseSort.Content = $"Beskrivelse \x2191";
-            
-            else if (Btn_BeskrivelseSort.Content.ToString() == "Beskrivelse \x2191")
-                Btn_BeskrivelseSort.Content = $"Beskrivelse \x2193";
-            
-            else
+            if (sender.ToString().Contains("Nummer"))
+            {
                 Btn_BeskrivelseSort.Content = "Beskrivelse";
-            
-        }
-
-        private void Btn_EnhedsprisSort_Click(object sender, RoutedEventArgs e)
-        {
-            if (Btn_EnhedsprisSort.Content.ToString() == "Enhedspris")
-                Btn_EnhedsprisSort.Content = $"Enhedspris \x2191";
-            
-            else if (Btn_EnhedsprisSort.Content.ToString() == "Enhedspris \x2191")
-                Btn_EnhedsprisSort.Content = $"Enhedspris \x2193";
-            
-            else
                 Btn_EnhedsprisSort.Content = "Enhedspris";
-            
-        }
-
-        private void Btn_VejledendePrisSort_Click(object sender, RoutedEventArgs e)
-        {
-            if (Btn_VejledendePrisSort.Content.ToString() == "Vejledenden pris")
-                Btn_VejledendePrisSort.Content = $"Vejledenden pris \x2191";
-
-            else if (Btn_VejledendePrisSort.Content.ToString() == "Vejledenden pris \x2191")
-                Btn_VejledendePrisSort.Content = $"Vejledenden pris \x2193";
-
-            else
-                Btn_VejledendePrisSort.Content = "Vejledenden pris";
-        }
-
-        private void Btn_TotalLager_Click(object sender, RoutedEventArgs e)
-        {
-            if (Btn_TotalLager.Content.ToString() == "Total lager")
-                Btn_TotalLager.Content = $"Total lager \x2191";
-
-            else if (Btn_TotalLager.Content.ToString() == "Total lager \x2191")
-                Btn_TotalLager.Content = $"Total lager \x2193";
-
-            else
+                Btn_VejledendePrisSort.Content = "Vejledende pris";
                 Btn_TotalLager.Content = "Total lager";
-        }
-
-        private void Btn_SpærretSort_Click(object sender, RoutedEventArgs e)
-        {
-            if (Btn_SpærretSort.Content.ToString() == "Spærret")
-                Btn_SpærretSort.Content = $"Spærret(F)";
-
-            else if (Btn_SpærretSort.Content.ToString() == "Spærret(F)")
-                Btn_SpærretSort.Content = $"Spærret(T)";
-
-            else
                 Btn_SpærretSort.Content = "Spærret";
-        }
-
-        private void Btn_KolliSort_Click(object sender, RoutedEventArgs e)
-        {
-            if (Btn_KolliSort.Content.ToString() == "Spærret")
-                Btn_KolliSort.Content = $"Spærret(F)";
-
-            else if (Btn_KolliSort.Content.ToString() == "Spærret(F)")
-                Btn_KolliSort.Content = $"Spærret(T)";
-
-            else
+                Btn_KolliSort.Content = "Antal pr. kolli";
+                Btn_MængderabatSort.Content = "Mængderabat";
+                Btn_IndkøbskodeSort.Content = "Indkøbskode";
+                Btn_ModtagelsesdatoSort.Content = "Bekræftet Modtagelsedato";
+                Btn_OprindelseslandSort.Content = "Oprindelsesland";
+            }
+            else if (sender.ToString().Contains("Beskrivelse"))
+            {
+                Btn_NummerSort.Content = "Nummer";
+                Btn_EnhedsprisSort.Content = "Enhedspris";
+                Btn_VejledendePrisSort.Content = "Vejledende pris";
+                Btn_TotalLager.Content = "Total lager";
                 Btn_SpærretSort.Content = "Spærret";
+                Btn_KolliSort.Content = "Antal pr. kolli";
+                Btn_MængderabatSort.Content = "Mængderabat";
+                Btn_IndkøbskodeSort.Content = "Indkøbskode";
+                Btn_ModtagelsesdatoSort.Content = "Bekræftet Modtagelsedato";
+                Btn_OprindelseslandSort.Content = "Oprindelsesland";
+            }
+            else if (sender.ToString().Contains("Enhedspris"))
+            {
+                Btn_NummerSort.Content = "Nummer";
+                Btn_BeskrivelseSort.Content = "Beskrivelse";
+                Btn_VejledendePrisSort.Content = "Vejledende pris";
+                Btn_TotalLager.Content = "Total lager";
+                Btn_SpærretSort.Content = "Spærret";
+                Btn_KolliSort.Content = "Antal pr. kolli";
+                Btn_MængderabatSort.Content = "Mængderabat";
+                Btn_IndkøbskodeSort.Content = "Indkøbskode";
+                Btn_ModtagelsesdatoSort.Content = "Bekræftet Modtagelsedato";
+                Btn_OprindelseslandSort.Content = "Oprindelsesland";
+            }
+            else if (sender.ToString().Contains("Vejledende pris"))
+            {
+                Btn_NummerSort.Content = "Nummer";
+                Btn_BeskrivelseSort.Content = "Beskrivelse";
+                Btn_EnhedsprisSort.Content = "Enhedspris";
+                Btn_TotalLager.Content = "Total lager";
+                Btn_SpærretSort.Content = "Spærret";
+                Btn_KolliSort.Content = "Antal pr. kolli";
+                Btn_MængderabatSort.Content = "Mængderabat";
+                Btn_IndkøbskodeSort.Content = "Indkøbskode";
+                Btn_ModtagelsesdatoSort.Content = "Bekræftet Modtagelsedato";
+                Btn_OprindelseslandSort.Content = "Oprindelsesland";
+            }
+            else if (sender.ToString().Contains("Total lager"))
+            {
+                Btn_NummerSort.Content = "Nummer";
+                Btn_BeskrivelseSort.Content = "Beskrivelse";
+                Btn_EnhedsprisSort.Content = "Enhedspris";
+                Btn_VejledendePrisSort.Content = "Vejledende pris";
+                Btn_SpærretSort.Content = "Spærret";
+                Btn_KolliSort.Content = "Antal pr. kolli";
+                Btn_MængderabatSort.Content = "Mængderabat";
+                Btn_IndkøbskodeSort.Content = "Indkøbskode";
+                Btn_ModtagelsesdatoSort.Content = "Bekræftet Modtagelsedato";
+                Btn_OprindelseslandSort.Content = "Oprindelsesland";
+            }
+            else if (sender.ToString().Contains("Spærret"))
+            {
+                Btn_NummerSort.Content = "Nummer";
+                Btn_BeskrivelseSort.Content = "Beskrivelse";
+                Btn_EnhedsprisSort.Content = "Enhedspris";
+                Btn_VejledendePrisSort.Content = "Vejledende pris";
+                Btn_TotalLager.Content = "Total lager";
+                Btn_KolliSort.Content = "Antal pr. kolli";
+                Btn_MængderabatSort.Content = "Mængderabat";
+                Btn_IndkøbskodeSort.Content = "Indkøbskode";
+                Btn_ModtagelsesdatoSort.Content = "Bekræftet Modtagelsedato";
+                Btn_OprindelseslandSort.Content = "Oprindelsesland";
+            }
+            else if (sender.ToString().Contains("Antal pr. kolli"))
+            {
+                Btn_NummerSort.Content = "Nummer";
+                Btn_BeskrivelseSort.Content = "Beskrivelse";
+                Btn_EnhedsprisSort.Content = "Enhedspris";
+                Btn_VejledendePrisSort.Content = "Vejledende pris";
+                Btn_TotalLager.Content = "Total lager";
+                Btn_SpærretSort.Content = "Spærret";
+                Btn_MængderabatSort.Content = "Mængderabat";
+                Btn_IndkøbskodeSort.Content = "Indkøbskode";
+                Btn_ModtagelsesdatoSort.Content = "Bekræftet Modtagelsedato";
+                Btn_OprindelseslandSort.Content = "Oprindelsesland";
+            }
+            else if (sender.ToString().Contains("Mængderabat"))
+            {
+                Btn_NummerSort.Content = "Nummer";
+                Btn_BeskrivelseSort.Content = "Beskrivelse";
+                Btn_EnhedsprisSort.Content = "Enhedspris";
+                Btn_VejledendePrisSort.Content = "Vejledende pris";
+                Btn_TotalLager.Content = "Total lager";
+                Btn_SpærretSort.Content = "Spærret";
+                Btn_KolliSort.Content = "Antal pr. kolli";
+                Btn_IndkøbskodeSort.Content = "Indkøbskode";
+                Btn_ModtagelsesdatoSort.Content = "Bekræftet Modtagelsedato";
+                Btn_OprindelseslandSort.Content = "Oprindelsesland";
+            }
+            else if (sender.ToString().Contains("Indkøbskode"))
+            {
+                Btn_NummerSort.Content = "Nummer";
+                Btn_BeskrivelseSort.Content = "Beskrivelse";
+                Btn_EnhedsprisSort.Content = "Enhedspris";
+                Btn_VejledendePrisSort.Content = "Vejledende pris";
+                Btn_TotalLager.Content = "Total lager";
+                Btn_SpærretSort.Content = "Spærret";
+                Btn_KolliSort.Content = "Antal pr. kolli";
+                Btn_MængderabatSort.Content = "Mængderabat";
+                Btn_ModtagelsesdatoSort.Content = "Bekræftet Modtagelsedato";
+                Btn_OprindelseslandSort.Content = "Oprindelsesland";
+            }
+            else if (sender.ToString().Contains("Bekræftet modtagelsedato"))
+            {
+                Btn_NummerSort.Content = "Nummer";
+                Btn_BeskrivelseSort.Content = "Beskrivelse";
+                Btn_EnhedsprisSort.Content = "Enhedspris";
+                Btn_VejledendePrisSort.Content = "Vejledende pris";
+                Btn_TotalLager.Content = "Total lager";
+                Btn_SpærretSort.Content = "Spærret";
+                Btn_KolliSort.Content = "Antal pr. kolli";
+                Btn_MængderabatSort.Content = "Mængderabat";
+                Btn_IndkøbskodeSort.Content = "Indkøbskode";
+                Btn_OprindelseslandSort.Content = "Oprindelsesland";
+            }
+            else if (sender.ToString().Contains("Oprindelsesland"))
+            {
+                Btn_NummerSort.Content = "Nummer";
+                Btn_BeskrivelseSort.Content = "Beskrivelse";
+                Btn_EnhedsprisSort.Content = "Enhedspris";
+                Btn_VejledendePrisSort.Content = "Vejledende pris";
+                Btn_TotalLager.Content = "Total lager";
+                Btn_SpærretSort.Content = "Spærret";
+                Btn_KolliSort.Content = "Antal pr. kolli";
+                Btn_MængderabatSort.Content = "Mængderabat";
+                Btn_IndkøbskodeSort.Content = "Indkøbskode";
+                Btn_ModtagelsesdatoSort.Content = "Bekræftet modtagelsedato";
+            }
+
+
         }
+
     }
 }
