@@ -171,5 +171,97 @@ namespace GUI
                 item.IsChecked = false;
             }
         }
+
+        public void ChangeAcsAndDecsOnButtons(object sender, EventArgs args)
+        {
+            
+        }
+
+        private void Btn_NummerSort_Click(object sender, RoutedEventArgs e)
+        {
+            if (Btn_NummerSort.Content.ToString() == "Nummer")
+                Btn_NummerSort.Content = $"Nummer \x2191";
+            
+            else if (Btn_NummerSort.Content.ToString() == "Nummer \x2191")
+                Btn_NummerSort.Content = $"Nummer \x2193";
+
+            else
+                Btn_NummerSort.Content = "Nummer";
+            
+        }
+
+        private void Btn_BeskrivelseSort_Click(object sender, RoutedEventArgs e)
+        {
+            if (Btn_BeskrivelseSort.Content.ToString() == "Beskrivelse")
+                Btn_BeskrivelseSort.Content = $"Beskrivelse \x2191";
+            
+            else if (Btn_BeskrivelseSort.Content.ToString() == "Beskrivelse \x2191")
+                Btn_BeskrivelseSort.Content = $"Beskrivelse \x2193";
+            
+            else
+                Btn_BeskrivelseSort.Content = "Beskrivelse";
+            
+        }
+
+        private void Btn_EnhedsprisSort_Click(object sender, RoutedEventArgs e)
+        {
+            if (Btn_EnhedsprisSort.Content.ToString() == "Enhedspris")
+                Btn_EnhedsprisSort.Content = $"Enhedspris \x2191";
+            
+            else if (Btn_EnhedsprisSort.Content.ToString() == "Enhedspris \x2191")
+                Btn_EnhedsprisSort.Content = $"Enhedspris \x2193";
+            
+            else
+                Btn_EnhedsprisSort.Content = "Enhedspris";
+            
+        }
+
+        private void Btn_VejledendePrisSort_Click(object sender, RoutedEventArgs e)
+        {
+            if (Btn_VejledendePrisSort.Content.ToString() == "Vejledenden pris")
+                Btn_VejledendePrisSort.Content = $"Vejledenden pris \x2191";
+
+            else if (Btn_VejledendePrisSort.Content.ToString() == "Vejledenden pris \x2191")
+                Btn_VejledendePrisSort.Content = $"Vejledenden pris \x2193";
+
+            else
+                Btn_VejledendePrisSort.Content = "Vejledenden pris";
+        }
+
+        private void Btn_TotalLager_Click(object sender, RoutedEventArgs e)
+        {
+            if (Btn_TotalLager.Content.ToString() == "Total lager")
+                Btn_TotalLager.Content = $"Total lager \x2191";
+
+            else if (Btn_TotalLager.Content.ToString() == "Total lager \x2191")
+                Btn_TotalLager.Content = $"Total lager \x2193";
+
+            else
+                Btn_TotalLager.Content = "Total lager";
+        }
+
+        private void Btn_SpærretSort_Click(object sender, RoutedEventArgs e)
+        {
+            if (Btn_SpærretSort.Content.ToString() == "Spærret")
+                Btn_SpærretSort.Content = $"Spærret(F)";
+
+            else if (Btn_SpærretSort.Content.ToString() == "Spærret(F)")
+                Btn_SpærretSort.Content = $"Spærret(T)";
+
+            else
+                Btn_SpærretSort.Content = "Spærret";
+        }
+
+        private void Btn_KolliSort_Click(object sender, RoutedEventArgs e)
+        {
+            if (Btn_KolliSort.Content.ToString() == "Spærret")
+                Btn_KolliSort.Content = $"Spærret(F)";
+
+            else if (Btn_KolliSort.Content.ToString() == "Spærret(F)")
+                Btn_KolliSort.Content = $"Spærret(T)";
+
+            else
+                Btn_SpærretSort.Content = "Spærret";
+        }
     }
 }
