@@ -475,7 +475,7 @@
                 Grid.RowSpan="2"
                 HorizontalAlignment="Center"
                 Width="150">
-                <Button 
+                <!--<Button 
                     Command="{Binding _pLC.CreateProductCommand}"
                     Content="Opret produkt"
                     Height="40"
@@ -520,7 +520,7 @@
                             <Setter Property="CornerRadius" Value="5"/>
                         </Style>
                     </Button.Resources>
-                </Button>
+                </Button>-->
             </StackPanel>
             <StackPanel
                 Grid.Row="1"
