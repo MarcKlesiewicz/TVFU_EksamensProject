@@ -21,20 +21,15 @@ namespace Application.ViewModels
 
     public class ProductListViewModel
     {
-        private SearchCategory _searchCategory;
-        public SearchCategory SearchCategory { get { return _searchCategory; } set { _searchCategory = value; } }
+        public SearchCategory SearchCategory { get; set; }
 
-        private string _searchWord = "";
-        public string SearchWord { get { return _searchWord; } set { _searchWord = value; } }
+        public string SearchWord { get; set; } = "";
 
-        private FilterCategory _filterCategory;
-        public FilterCategory FilterCategory { get { return _filterCategory; } set { _filterCategory = value; } }
+        public FilterCategory FilterCategory { get; set; }
 
-        private string _filterTreeSort = "";
-        public string FilterTreeSort { get { return _filterTreeSort; } set { _filterTreeSort = value; } }
+        public string FilterTreeSort { get; set; } = "";
 
-        private string _filtercolor = "";
-        public string FilterColor { get { return _filtercolor; } set { _filtercolor = value; } }
+        public string FilterColor { get; set; } = "";
 
         public string LastSortedCategory { get; set; }
 
