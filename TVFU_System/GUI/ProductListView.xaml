@@ -542,7 +542,7 @@
                         Command="{Binding _pLC.SortAfterCommand}"
                         CommandParameter="ProductNumber" 
                         FontFamily="Segoe UI Semibold" 
-                        Click="Btn_NummerSort_Click" 
+                        Click="ChangeAcsAndDecsOnButtons" 
                         />
                         
                         <Button
@@ -553,7 +553,8 @@
                         Width="330"
                         Command="{Binding _pLC.SortAfterCommand}"
                         CommandParameter="Description"
-                        FontFamily="Segoe UI Semibold" Click="Btn_BeskrivelseSort_Click"
+                        FontFamily="Segoe UI Semibold" 
+                        Click="ChangeAcsAndDecsOnButtons"
                         
                         />
                         <Button
@@ -564,7 +565,7 @@
                         Width="110"
                         Command="{Binding _pLC.SortAfterCommand}"
                         CommandParameter="UnitPrice"
-                        FontFamily="Segoe UI Semibold" Click="Btn_EnhedsprisSort_Click"
+                        FontFamily="Segoe UI Semibold" Click="ChangeAcsAndDecsOnButtons"
                         />
                         <Button
                         Content="Vejledende pris"
@@ -574,7 +575,7 @@
                         Width="150"
                         Command="{Binding _pLC.SortAfterCommand}"
                         CommandParameter="GuidingPrice"
-                        FontFamily="Segoe UI Semibold" Click="Btn_VejledendePrisSort_Click" 
+                        FontFamily="Segoe UI Semibold" Click="ChangeAcsAndDecsOnButtons" 
                         />
                         <Button
                         Content="Total lager"
@@ -584,7 +585,7 @@
                         Width="100"
                         FontFamily="Segoe UI Semibold"
                         Command="{Binding _pLC.SortAfterCommand}"
-                        CommandParameter="TotalStock" Click="Btn_TotalLager_Click"
+                        CommandParameter="TotalStock" Click="ChangeAcsAndDecsOnButtons"
                         />
                         <Button
                         Content="Spærret"
@@ -594,7 +595,7 @@
                         Width="80"
                         FontFamily="Segoe UI Semibold"
                         Command="{Binding _pLC.SortAfterCommand}"
-                        CommandParameter="Blocked" Click="Btn_SpærretSort_Click"
+                        CommandParameter="Blocked" Click="ChangeAcsAndDecsOnButtons"
                         />
                         <Button
                         Content="Antal pr. kolli"
@@ -604,7 +605,7 @@
                         FontFamily="Segoe UI Semibold"
                         Width="130"
                         Command="{Binding _pLC.SortAfterCommand}"
-                        CommandParameter="UnitPerPackage" Click="Btn_KolliSort_Click"
+                        CommandParameter="UnitPerPackage" Click="ChangeAcsAndDecsOnButtons"
                         />
                         <Button
                         Content="Mængderabat"
@@ -615,6 +616,7 @@
                         Width="140"
                         Command="{Binding _pLC.SortAfterCommand}"
                         CommandParameter="QuantityDiscount"
+                        Click="ChangeAcsAndDecsOnButtons"
                         />
                         <Button
                         Content="Indkøbskode"
@@ -625,6 +627,7 @@
                         FontFamily="Segoe UI Semibold"
                         Command="{Binding _pLC.SortAfterCommand}"
                         CommandParameter="PurchasingManager"
+                            Click="ChangeAcsAndDecsOnButtons"
                         />
                         <Button
                         Content="Bekræftet Modtagelsedato"
@@ -635,6 +638,7 @@
                         Width="230"
                         Command="{Binding _pLC.SortAfterCommand}"
                         CommandParameter="ConfirmedDeliveryDate"
+                            Click="ChangeAcsAndDecsOnButtons"
                         />
                         <Button
                         Content="Oprindelsesland"
@@ -645,6 +649,7 @@
                         Width="150"
                         Command="{Binding _pLC.SortAfterCommand}"
                         CommandParameter="CountryOfOrigin"
+                            Click="ChangeAcsAndDecsOnButtons"
                         />
                     </StackPanel>
                 </Label>
