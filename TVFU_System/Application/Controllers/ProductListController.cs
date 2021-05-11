@@ -56,6 +56,8 @@ namespace Application.Controllers
         /// </summary>
         public ICommand ColorCheckedCommand { get; }
 
+        public ICommand ResetCommand { get; }
+
         /// <summary>
         /// An event whose eventhandler is expected to be set from the GUI layer before calling the method 'CreateProduct'
         /// within this class
@@ -81,6 +83,8 @@ namespace Application.Controllers
         /// </summary>
         public event Action ShowProductListRequested;
 
+        public event Action ResetRequested;
+
         /// <summary>
         /// A controller used to control the ProductList view.
         /// Must be used as a singleton.
@@ -95,8 +99,10 @@ namespace Application.Controllers
             SortAfterCommand = new SortAfterCmd(SortAfter);
             TreeSortCheckedCommand = new TreeSortCheckedCmd(SetTreeSort);
             ColorCheckedCommand = new ColorCheckedCmd(SetColor);
+            ResetCommand = new ResetCmd(Reset);
             _productRepository = productRepo;
             CurrentProductListVM = new ProductListViewModel();
+            //ShowProductList();
         }
 
         /// <summary>
@@ -339,6 +345,18 @@ namespace Application.Controllers
             }
             //var order = CurrentProductListVM.SortAfter(sortCategory);
             //_productRepository.SortAfter(sortCategory, order);
+        }
+
+        public void Reset()
+        {
+            CurrentProductListVM.Reset();
+
+            Action resetRequested = ResetRequested;
+            resetRequested.Invoke();
+
+            CloseProductList();
+
+            ShowProductList();
         }
     }
 }

@@ -123,7 +123,7 @@
                     Foreground="White" 
                     FontFamily="Segoe UI Semibold"
                     BorderThickness="2">
-                    
+
                 </Button>
             </StackPanel>
 
@@ -150,7 +150,7 @@
                     Height="30"
                     FontSize="16" BorderBrush="Black">
                     </ComboBox>
-                    
+
                 </Border>
             </StackPanel>
 
@@ -550,7 +550,7 @@
                         FontSize="16"
                         Click="ChangeAcsAndDecsOnButtons" 
                         />
-                        
+
                         <Button
                         Name="Btn_BeskrivelseSort"
                         Content="Beskrivelse"
@@ -746,6 +746,24 @@
                     </ListBox.ItemTemplate>
                 </ListBox>
             </StackPanel>
+            <Button
+                Content="Nulstil"
+                HorizontalAlignment="Center" 
+                Grid.Row="6" VerticalAlignment="Center"
+                Width="175"
+                Height="50"
+                FontFamily="Segoe UI Semibold"
+                FontSize="24"
+                Background="#96BAB8"
+                Foreground="White"
+                Command="{Binding _pLC.ResetCommand}"
+            >
+                <Button.Resources>
+                <Style TargetType="Border">
+                    <Setter Property="CornerRadius" Value="5"/>
+                </Style>
+                </Button.Resources>
+            </Button>
         </Grid>
     </Viewbox>
 </Window>
