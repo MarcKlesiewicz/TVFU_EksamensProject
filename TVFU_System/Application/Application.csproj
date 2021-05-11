@@ -58,6 +58,7 @@
     <Compile Include="Commands\CreateProductCmd.cs" />
     <Compile Include="Commands\DeleteProductCmd.cs" />
     <Compile Include="Commands\ProductBlockedCmd.cs" />
+    <Compile Include="Commands\ResetCmd.cs" />
     <Compile Include="Commands\SearchProductListCmd.cs" />
     <Compile Include="Commands\SortAfterCmd.cs" />
     <Compile Include="Commands\TreeSortCheckedCmd.cs" />

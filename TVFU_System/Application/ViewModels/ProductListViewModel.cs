@@ -19,17 +19,22 @@ namespace Application.ViewModels
         }
     }
 
-    public class ProductListViewModel
+    public class ProductListViewModel : INotifyPropertyChanged
     {
-        public SearchCategory SearchCategory { get; set; }
+        private SearchCategory _searchCategory;
+        public SearchCategory SearchCategory { get { return _searchCategory; } set { _searchCategory = value; OnPropertyChanged("SearchCategory"); } }
 
-        public string SearchWord { get; set; } = "";
+        private string _searchWord = String.Empty;
+        public string SearchWord { get { return _searchWord; } set { _searchWord = value; OnPropertyChanged("SearchWord"); } }
 
-        public FilterCategory FilterCategory { get; set; }
+        private FilterCategory _filterCategory;
+        public FilterCategory FilterCategory { get { return _filterCategory; } set { _filterCategory = value; OnPropertyChanged("FilterCategory"); } }
 
-        public string FilterTreeSort { get; set; } = "";
+        private string _filterTreeSort = String.Empty;
+        public string FilterTreeSort { get { return _filterTreeSort; } set { _filterTreeSort = value; OnPropertyChanged("FilterTreeSort"); } }
 
-        public string FilterColor { get; set; } = "";
+        private string _filterColor = String.Empty;
+        public string FilterColor { get { return _filterTreeSort; } set { _filterTreeSort = value; OnPropertyChanged("FilterColor"); } }
 
         public string LastSortedCategory { get; set; }
 
@@ -49,6 +54,8 @@ namespace Application.ViewModels
             new Column("ConfirmedDeliveryDate"),
             new Column("CountryOfOrigin")
         };
+
+        public event PropertyChangedEventHandler PropertyChanged;
 
         public ProductListViewModel()
         {
@@ -105,6 +112,36 @@ namespace Application.ViewModels
             {
                 column.NextOrder();
             }
+        }
+
+        private void ResetColumns()
+        {
+            LastSortedCategory = String.Empty;
+
+            for (int i = 0; i < _columns.Count; i++)
+            {
+                _columns[i].Order = ColumnOrder.Null;
+            }
+        }
+
+        public void Reset()
+        {
+            ResetColumns();
+            _searchCategory = SearchCategory.Beskrivelse;
+            OnPropertyChanged("SearchCategory");
+            _filterCategory = FilterCategory.Ingen;
+            OnPropertyChanged("FilterCategory");
+            _searchWord = String.Empty;
+            OnPropertyChanged("SearchWord");
+            _filterTreeSort = String.Empty;
+            OnPropertyChanged("FilterTreeSort");
+            _filterColor = String.Empty;
+            OnPropertyChanged("FilterColor");
+        }
+
+        protected void OnPropertyChanged(string propertyName)
+        {
+            this.PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
     }
 }

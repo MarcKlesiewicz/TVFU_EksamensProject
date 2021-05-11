@@ -29,13 +29,14 @@ namespace GUI
         private readonly ProductListController _pLC = new ProductListController(_repo);
         public ProductListView()
         {
+            //_pLC.ShowProductList();
             InitializeComponent();
             var PLVM = _pLC.CurrentProductListVM;
             DataContext = new { PLVM, _pLC };
             _pLC.NewProductRequested += NewProductRequestHandler;
             _pLC.ProductUpdateRequested += ProductUpdateRequestHandler;
             _pLC.ProductDeleteRequested += DeleteProductRequestHandler;
-            _pLC.ShowProductList();
+            _pLC.ResetRequested += ResetRequestedHandler;
         }
 
         public ProductEventArgs NewProductRequestHandler()
@@ -105,6 +106,15 @@ namespace GUI
 
 
         }
+        public void ResetRequestedHandler()
+        {
+            ResetSortButtons(new object());
+
+            TreeSortChecked(null, null);
+
+            ColorChecked(null, null);
+        }
+
         public bool DeleteProductRequestHandler()
         {
             MessageBoxResult result = MessageBox.Show("Er du sikker på, at du vil slette produktet?", "", MessageBoxButton.YesNo, MessageBoxImage.Warning, MessageBoxResult.No);
@@ -140,7 +150,10 @@ namespace GUI
             temp.Add(CheckBox_Kirsebær);
             temp.Add(CheckBox_Eg);
 
-            temp.Remove((CheckBox)sender);
+            if (sender != null)
+            {
+                temp.Remove((CheckBox)sender);
+            }
 
             foreach (var item in temp)
             {
@@ -164,7 +177,10 @@ namespace GUI
             temp.Add(CheckBox_Hvid);
             temp.Add(CheckBox_Grøn);
 
-            temp.Remove((CheckBox)sender);
+            if (sender != null)
+            {
+                temp.Remove((CheckBox)sender);
+            }
 
             foreach (var item in temp)
             {
@@ -485,7 +501,20 @@ namespace GUI
                 Btn_IndkøbskodeSort.Content = "Indkøbskode";
                 Btn_ModtagelsesdatoSort.Content = "Bekræftet modtagelsedato";
             }
-
+            else
+            {
+                Btn_NummerSort.Content = "Nummer";
+                Btn_BeskrivelseSort.Content = "Beskrivelse";
+                Btn_EnhedsprisSort.Content = "Enhedspris";
+                Btn_VejledendePrisSort.Content = "Vejledende pris";
+                Btn_TotalLager.Content = "Total lager";
+                Btn_SpærretSort.Content = "Spærret";
+                Btn_KolliSort.Content = "Antal pr. kolli";
+                Btn_MængderabatSort.Content = "Mængderabat";
+                Btn_IndkøbskodeSort.Content = "Indkøbskode";
+                Btn_OprindelseslandSort.Content = "Oprindelsesland";
+                Btn_ModtagelsesdatoSort.Content = "Bekræftet modtagelsedato";
+            } 
 
         }
 
