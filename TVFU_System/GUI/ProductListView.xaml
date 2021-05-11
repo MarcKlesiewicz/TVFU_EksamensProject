@@ -7,7 +7,9 @@
         xmlns:local="clr-namespace:GUI"
         xmlns:application="clr-namespace:Application.ViewModels;assembly=Application"
         mc:Ignorable="d"
-        Title="ProductListView" Height="1080" Width="1920">
+        Title="ProductListView" Height="1080" Width="1920"
+        WindowStartupLocation="CenterScreen"
+        WindowState="Maximized">
 
     <Window.Resources>
         <ObjectDataProvider x:Key="dataFromEnum" MethodName="GetValues"
