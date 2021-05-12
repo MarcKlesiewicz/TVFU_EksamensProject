@@ -34,7 +34,7 @@ namespace Application.ViewModels
         public string FilterTreeSort { get { return _filterTreeSort; } set { _filterTreeSort = value; OnPropertyChanged("FilterTreeSort"); } }
 
         private string _filterColor = String.Empty;
-        public string FilterColor { get { return _filterTreeSort; } set { _filterTreeSort = value; OnPropertyChanged("FilterColor"); } }
+        public string FilterColor { get { return _filterColor; } set { _filterColor = value; OnPropertyChanged("FilterColor"); } }
 
         public string LastSortedCategory { get; set; }
 

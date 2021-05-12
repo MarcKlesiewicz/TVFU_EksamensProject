@@ -85,6 +85,8 @@ namespace Application.Controllers
 
         public event Action ResetRequested;
 
+        public event Action<string> ExceptionThrown;
+
         /// <summary>
         /// A controller used to control the ProductList view.
         /// Must be used as a singleton.
@@ -280,8 +282,18 @@ namespace Application.Controllers
             args.FilterTreeSort = CurrentProductListVM.FilterTreeSort;
             args.SearchCategory = new EnumConverter().Convert(CurrentProductListVM.SearchCategory.ToString());
             args.SearchWord = CurrentProductListVM.SearchWord;
-
-            List<Product> temp = ((_productRepository.FilterAndSearchProductList(args)) as List<Product>);
+            List<Product> temp = null;
+            try
+            {
+                temp = ((_productRepository.FilterAndSearchProductList(args)) as List<Product>);
+            }
+            catch (Exception ex)
+            {
+                Action<string> onExceptionThrown = ExceptionThrown;
+                onExceptionThrown.Invoke(ex.ToString());
+                return;
+            }
+            
 
             CloseProductList();
             for (int i = 0; i < temp.Count; i++)

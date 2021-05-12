@@ -262,12 +262,11 @@ namespace Persistence.Repositories.Implementations
 
                 connection.Open();
                 SqlCommand command = new SqlCommand(commandText, connection);
-                command.Parameters.Add("@searchFor", System.Data.SqlDbType.VarChar).Value = filterEventArgs.SearchWord;
-                command.Parameters.Add("@searchIn", System.Data.SqlDbType.VarChar).Value = filterEventArgs.SearchCategory;
-                command.Parameters.Add("@FilterCategory", System.Data.SqlDbType.VarChar).Value = filterEventArgs.FilterCategory;
-                command.Parameters.Add("@FilterColor", System.Data.SqlDbType.VarChar).Value = filterEventArgs.FilterColour;
-                command.Parameters.Add("@FilterTreeSort", System.Data.SqlDbType.VarChar).Value = filterEventArgs.FilterTreeSort;
-
+                command.Parameters.AddWithValue("@searchFor", filterEventArgs.SearchWord);
+                command.Parameters.AddWithValue("@searchIn", filterEventArgs.SearchCategory);
+                command.Parameters.AddWithValue("@FilterCategory", filterEventArgs.FilterCategory);
+                command.Parameters.AddWithValue("@FilterColor", filterEventArgs.FilterColour);
+                command.Parameters.AddWithValue("@FilterTreeSort", filterEventArgs.FilterTreeSort);
 
                 using (SqlDataReader reader = command.ExecuteReader())
                 {

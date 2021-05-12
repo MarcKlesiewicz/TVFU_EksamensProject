@@ -37,6 +37,7 @@ namespace GUI
             _pLC.ProductUpdateRequested += ProductUpdateRequestHandler;
             _pLC.ProductDeleteRequested += DeleteProductRequestHandler;
             _pLC.ResetRequested += ResetRequestedHandler;
+            _pLC.ExceptionThrown += ExceptionHandler;
         }
 
         public ProductEventArgs NewProductRequestHandler()
@@ -518,5 +519,9 @@ namespace GUI
 
         }
 
+        private void ExceptionHandler(string exceptionMessage)
+        {
+            MessageBox.Show(exceptionMessage, "Der gik noget galt", MessageBoxButton.OK, MessageBoxImage.Error);
+        }
     }
 }
