@@ -9,7 +9,7 @@ using System.Collections;
 
 namespace Persistence.Repositories.Implementations
 {
-    public class ProductRepo : IProductRepo
+    public class ProductRepo : IProductRepo, IGetAll<Product>
     {
         /// <summary>
         /// Saves the given parameter in an SQL Server database
@@ -90,7 +90,7 @@ namespace Persistence.Repositories.Implementations
         /// <returns></returns>
         public IEnumerable<Product> GetAll()
         {
-            throw new NotImplementedException();
+            return (IEnumerable<Product>)GetByProductCategories();
         }
 
         /// <summary>

@@ -45,6 +45,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="EventArgs\FilterEventArgs.cs" />
+    <Compile Include="EventArgs\LFilterEventArgs.cs" />
     <Compile Include="EventArgs\ProductEventArgs.cs" />
     <Compile Include="Models\Product.cs" />
     <Compile Include="Models\ProductList.cs" />

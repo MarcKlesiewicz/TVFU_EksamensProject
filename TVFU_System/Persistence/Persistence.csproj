@@ -46,8 +46,11 @@
   <ItemGroup>
     <Compile Include="Data\Connector.cs" />
     <Compile Include="EnumConverter.cs" />
+    <Compile Include="ProductListService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Repositories\Implementations\LProductRepo.cs" />
     <Compile Include="Repositories\Implementations\ProductRepo.cs" />
+    <Compile Include="Repositories\Interfaces\IGetAll.cs" />
     <Compile Include="Repositories\Interfaces\IProductRepo.cs" />
     <Compile Include="Repositories\Interfaces\IRepo.cs" />
   </ItemGroup>
