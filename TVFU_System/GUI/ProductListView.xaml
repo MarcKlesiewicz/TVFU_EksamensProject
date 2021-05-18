@@ -749,7 +749,8 @@
             <Button
                 Content="Nulstil"
                 HorizontalAlignment="Center" 
-                Grid.Row="6" VerticalAlignment="Center"
+                Grid.Row="6" 
+                VerticalAlignment="Center"
                 Width="175"
                 Height="50"
                 FontFamily="Segoe UI Semibold"
@@ -762,6 +763,25 @@
                 <Style TargetType="Border">
                     <Setter Property="CornerRadius" Value="5"/>
                 </Style>
+                </Button.Resources>
+            </Button>
+            <Button
+                Content="Admin"
+                HorizontalAlignment="Center" 
+                Grid.Row="8" 
+                VerticalAlignment="Center"
+                Width="175"
+                Height="50"
+                FontFamily="Segoe UI Semibold"
+                FontSize="24"
+                Background="#96BAB8"
+                Foreground="White"
+                Command="{Binding _pLC.OpenAdminCommand}"
+            >
+                <Button.Resources>
+                    <Style TargetType="Border">
+                        <Setter Property="CornerRadius" Value="5"/>
+                    </Style>
                 </Button.Resources>
             </Button>
         </Grid>

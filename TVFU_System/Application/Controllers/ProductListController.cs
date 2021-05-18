@@ -7,6 +7,7 @@ using System.Linq;
 using System;
 using System.Collections.Generic;
 using DomainLayer.Models;
+using System.Collections.ObjectModel;
 
 namespace Application.Controllers
 {
@@ -58,6 +59,8 @@ namespace Application.Controllers
 
         public ICommand ResetCommand { get; }
 
+        public ICommand OpenAdminCommand { get; }
+
         /// <summary>
         /// An event whose eventhandler is expected to be set from the GUI layer before calling the method 'CreateProduct'
         /// within this class
@@ -87,6 +90,8 @@ namespace Application.Controllers
 
         public event Action<string> ExceptionThrown;
 
+        public event Func<IEnumerable<string>> OpenAdminRequested;
+
         /// <summary>
         /// A controller used to control the ProductList view.
         /// Must be used as a singleton.
@@ -102,6 +107,7 @@ namespace Application.Controllers
             TreeSortCheckedCommand = new TreeSortCheckedCmd(SetTreeSort);
             ColorCheckedCommand = new ColorCheckedCmd(SetColor);
             ResetCommand = new ResetCmd(Reset);
+            OpenAdminCommand = new OpenAdminCmd(OpenAdmin);
             _productRepository = productRepo;
             CurrentProductListVM = new ProductListViewModel();
             //ShowProductList();
@@ -369,6 +375,11 @@ namespace Application.Controllers
             CloseProductList();
 
             ShowProductList();
+        }
+
+        public void OpenAdmin()
+        {
+            CurrentProductListVM.Filters = (ObservableCollection<string>)OpenAdminRequested();
         }
     }
 }

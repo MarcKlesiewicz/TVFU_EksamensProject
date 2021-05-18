@@ -38,6 +38,7 @@ namespace GUI
             _pLC.ProductDeleteRequested += DeleteProductRequestHandler;
             _pLC.ResetRequested += ResetRequestedHandler;
             _pLC.ExceptionThrown += ExceptionHandler;
+            _pLC.OpenAdminRequested += OpenAdminRequestHandler;
         }
 
         public ProductEventArgs NewProductRequestHandler()
@@ -522,6 +523,13 @@ namespace GUI
         private void ExceptionHandler(string exceptionMessage)
         {
             MessageBox.Show(exceptionMessage, "Der gik noget galt", MessageBoxButton.OK, MessageBoxImage.Error);
+        }
+
+        private IEnumerable<string> OpenAdminRequestHandler()
+        {
+            AdminView AV = new AdminView();
+            AV.ShowDialog();
+            return AV.AVM.Filters;
         }
     }
 }

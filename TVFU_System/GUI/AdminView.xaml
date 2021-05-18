@@ -1,0 +1,60 @@
+﻿<Window x:Class="GUI.AdminView"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:GUI"
+        mc:Ignorable="d"
+        Height="600" Width="1000">
+    <Viewbox>
+        <Grid Height="580" Width="1000">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+            <ComboBox Grid.Row="1" 
+                      Grid.Column="1"
+                      ItemsSource="{Binding AVM.Filters}"
+                      Height="22"
+                      Name="ComboBoxFilters"
+                      />
+            <TextBox Grid.Row="3"
+                     Grid.Column="1"
+                     Name="NewFilter"
+                     Height="20"/>
+            <Button Grid.Row="4"
+                    Grid.Column="1"
+                    Content="Tilføj filter"
+                    Height="20"
+                    Command="{Binding AC.AddFilterCommand}"
+                    CommandParameter="{Binding ElementName=NewFilter,Path=Text}"
+                    />
+            <Button Grid.Row="1"
+                    Grid.Column="3"
+                    Content="Fjern filter"
+                    Height="20"
+                    Command="{Binding AC.RemoveFilterCommand}"
+                    CommandParameter="{Binding ElementName=ComboBoxFilters,Path=SelectedItem}"
+                    />
+        </Grid>
+    </Viewbox>
+</Window>
