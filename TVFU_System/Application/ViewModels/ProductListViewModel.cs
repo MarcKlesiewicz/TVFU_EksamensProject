@@ -40,8 +40,7 @@ namespace Application.ViewModels
 
         public ObservableCollection<ProductViewModel> ViewModels { get; set; }
 
-        public ObservableCollection<string> Filters { get; 
-            set; }
+        public ObservableCollection<string> Filters { get; set; }
 
         private readonly List<Column> _columns = new List<Column>()
         {

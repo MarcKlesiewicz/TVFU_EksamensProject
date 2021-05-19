@@ -89,8 +89,11 @@ namespace Application.Controllers
         public event Action ResetRequested;
 
         public event Action<string> ExceptionThrown;
-
-        public event Func<IEnumerable<string>> OpenAdminRequested;
+        /// <summary>
+        /// An event whose eventhandler is expected to be set from the GUI layer before calling the method 'OpenAdmin'
+        /// within this class.
+        /// </summary>
+        public event Func<AdminEventArgs> OpenAdminRequested;
 
         /// <summary>
         /// A controller used to control the ProductList view.
@@ -376,10 +379,14 @@ namespace Application.Controllers
 
             ShowProductList();
         }
-
+        /// <summary>
+        /// A method which is calling the evet 'OpenAdminRequested'.
+        /// It is then setting the CurrentProductListVM.Filters to the filtes from the admin view
+        /// </summary>
         public void OpenAdmin()
         {
-            CurrentProductListVM.Filters = (ObservableCollection<string>)OpenAdminRequested();
+            AdminEventArgs args = OpenAdminRequested();
+            CurrentProductListVM.Filters = (ObservableCollection<string>)args.Filters;
         }
     }
 }

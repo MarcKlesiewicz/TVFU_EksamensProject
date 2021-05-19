@@ -525,11 +525,13 @@ namespace GUI
             MessageBox.Show(exceptionMessage, "Der gik noget galt", MessageBoxButton.OK, MessageBoxImage.Error);
         }
 
-        private IEnumerable<string> OpenAdminRequestHandler()
+        private AdminEventArgs OpenAdminRequestHandler()
         {
+            AdminEventArgs args = new AdminEventArgs();
             AdminView AV = new AdminView();
             AV.ShowDialog();
-            return AV.AVM.Filters;
+            args.Filters = AV.AVM.Filters;
+            return args;
         }
     }
 }
