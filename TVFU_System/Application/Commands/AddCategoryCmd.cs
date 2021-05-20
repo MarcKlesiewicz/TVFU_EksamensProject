@@ -4,13 +4,12 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Input;
-using Persistence.Repositories.Interfaces;
 
 namespace Application.Commands
 {
-    public class OpenAdminCmd : ICommand
+    public class AddCategoryCmd : ICommand
     {
-        readonly Action _execute;
+        readonly Action<string> _execute;
 
         public event EventHandler CanExecuteChanged
         {
@@ -18,19 +17,23 @@ namespace Application.Commands
             remove { CommandManager.RequerySuggested -= value; }
         }
 
-        public OpenAdminCmd(Action execute)
+        public AddCategoryCmd(Action<string> execute)
         {
             this._execute = execute;
         }
 
         public bool CanExecute(object parameter)
         {
-            return true;
+            if ((string)parameter != "")
+            {
+                return true;
+            }
+            return false;
         }
 
         public void Execute(object parameter)
         {
-            _execute.Invoke();
+            _execute.Invoke((string)parameter);
         }
     }
 }

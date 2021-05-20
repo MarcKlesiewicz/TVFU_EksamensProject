@@ -52,6 +52,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Commands\AcceptProductCmd.cs" />
+    <Compile Include="Commands\AddCategoryCmd.cs" />
     <Compile Include="Commands\AddFilterCmd.cs" />
     <Compile Include="Commands\CancelProductCmd.cs" />
     <Compile Include="Commands\ChangeProductCmd.cs" />
@@ -60,6 +61,7 @@
     <Compile Include="Commands\DeleteProductCmd.cs" />
     <Compile Include="Commands\OpenAdminCmd.cs" />
     <Compile Include="Commands\ProductBlockedCmd.cs" />
+    <Compile Include="Commands\RemoveCategoryCmd.cs" />
     <Compile Include="Commands\RemoveFilterCmd.cs" />
     <Compile Include="Commands\ResetCmd.cs" />
     <Compile Include="Commands\SearchProductListCmd.cs" />

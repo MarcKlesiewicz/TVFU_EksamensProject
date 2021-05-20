@@ -385,8 +385,7 @@ namespace Application.Controllers
         /// </summary>
         public void OpenAdmin()
         {
-            AdminEventArgs args = OpenAdminRequested();
-            CurrentProductListVM.Filters = (ObservableCollection<string>)args.Filters;
+            OpenAdminRequested();
         }
     }
 }

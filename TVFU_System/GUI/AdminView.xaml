@@ -55,6 +55,30 @@
                     Command="{Binding AC.RemoveFilterCommand}"
                     CommandParameter="{Binding ElementName=ComboBoxFilters,Path=SelectedItem}"
                     />
+            <ComboBox Grid.Row="1" 
+                      Grid.Column="5"
+                      ItemsSource="{Binding AVM.Categories}"
+                      Height="22"
+                      Name="ComboBoxCategories"
+                      />
+            <TextBox Grid.Row="3"
+                     Grid.Column="5"
+                     Name="NewCategory"
+                     Height="20"/>
+            <Button Grid.Row="4"
+                    Grid.Column="5"
+                    Content="Tilføj Category"
+                    Height="20"
+                    Command="{Binding AC.AddCategoryCommand}"
+                    CommandParameter="{Binding ElementName=NewCategory,Path=Text}"
+                    />
+            <Button Grid.Row="1"
+                    Grid.Column="7"
+                    Content="Fjern Category"
+                    Height="20"
+                    Command="{Binding AC.RemoveCategoryCommand}"
+                    CommandParameter="{Binding ElementName=ComboBoxCategories,Path=SelectedItem}"
+                    />
         </Grid>
     </Viewbox>
 </Window>

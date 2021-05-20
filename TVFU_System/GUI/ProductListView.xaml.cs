@@ -25,8 +25,8 @@ namespace GUI
     /// </summary>
     public partial class ProductListView : Window
     {
-        private readonly static IProductRepo _repo = new ProductRepo();
-        private readonly ProductListController _pLC = new ProductListController(_repo);
+        private readonly static IProductRepo _productRepo = new ProductRepo();
+        private readonly ProductListController _pLC = new ProductListController(_productRepo);
         public ProductListView()
         {
             //_pLC.ShowProductList();
@@ -39,6 +39,7 @@ namespace GUI
             _pLC.ResetRequested += ResetRequestedHandler;
             _pLC.ExceptionThrown += ExceptionHandler;
             _pLC.OpenAdminRequested += OpenAdminRequestHandler;
+            GetCategoiesAndFilters();
         }
 
         public ProductEventArgs NewProductRequestHandler()
@@ -530,8 +531,16 @@ namespace GUI
             AdminEventArgs args = new AdminEventArgs();
             AdminView AV = new AdminView();
             AV.ShowDialog();
+            args.Categories = AV.AVM.Categories;
             args.Filters = AV.AVM.Filters;
             return args;
+        }
+        private void GetCategoiesAndFilters()
+        {
+            AdminView AV = new AdminView();
+            _pLC.CurrentProductListVM.Filters = AV.AVM.Filters;
+            _pLC.CurrentProductListVM.Categories = AV.AVM.Categories;
+            AV.Close();
         }
     }
 }

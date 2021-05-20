@@ -23,18 +23,22 @@ namespace GUI
     public partial class AdminView : Window
     {
         private IFilterRepo _filterRepo = new FilterRepo();
+        private ICategoryRepo _categoryRepo = new CategoryRepo();
         public AdminViewModel AVM;
 
         public AdminView()
         {
-            AdminController AC = new AdminController(_filterRepo);
+            AdminController AC = new AdminController(_filterRepo, _categoryRepo);
             InitializeComponent();
             AVM = AC.CurrentAdminVM;
             AC.GetAll();
             DataContext = new { AVM, AC };
-            AC.ResetTextboxRequested += ResetTextboxRequestedHandler;
+            AC.ResetFilterTextboxRequested += ResetFilterTextboxRequestedHandler;
             AC.FilterExistsRequested += FilterExistsRequestedHandler;
             AC.MaxFiltersRequested += MaxFiltersRequestedHandler;
+            AC.ResetCategoryTextboxRequested += ResetCategoryTextboxRequestedHandler;
+            AC.CategoryExistsRequested += CategoryExistsRequestedHandler;
+            AC.MaxCategoriesRequested += MaxCategoriesRequestedHandler;
         }
 
         private void MaxFiltersRequestedHandler()
@@ -47,9 +51,23 @@ namespace GUI
             MessageBox.Show($"{NewFilter.Text} finders allerede som et filter", "Filter findes", MessageBoxButton.OK, MessageBoxImage.Information);
         }
 
-        public void ResetTextboxRequestedHandler()
+        public void ResetFilterTextboxRequestedHandler()
         {
             NewFilter.Text = "";
+        }
+        private void MaxCategoriesRequestedHandler()
+        {
+            MessageBox.Show("Der kan ikke tilføjes flere kategorier", "Kategorier fyldt", MessageBoxButton.OK, MessageBoxImage.Information);
+        }
+
+        private void CategoryExistsRequestedHandler()
+        {
+            MessageBox.Show($"{NewCategory.Text} finders allerede som en kategory", "Kategory findes", MessageBoxButton.OK, MessageBoxImage.Information);
+        }
+
+        public void ResetCategoryTextboxRequestedHandler()
+        {
+            NewCategory.Text = "";
         }
     }
 }

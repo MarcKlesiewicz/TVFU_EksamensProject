@@ -11,9 +11,12 @@ namespace Application.ViewModels
     {
         public ObservableCollection<string> Filters { get; set; }
 
+        public ObservableCollection<string> Categories { get; set; }
+
         public AdminViewModel()
         {
             Filters = new ObservableCollection<string>();
+            Categories = new ObservableCollection<string>();
         }
     }
 }
