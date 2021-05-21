@@ -44,6 +44,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="EventArgs\AdminEventArgs.cs" />
     <Compile Include="EventArgs\FilterEventArgs.cs" />
     <Compile Include="EventArgs\LFilterEventArgs.cs" />
     <Compile Include="EventArgs\ProductEventArgs.cs" />
