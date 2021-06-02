@@ -83,7 +83,7 @@
                 Margin="0,0,0,20"
                 Height="50">
                 <StackPanel>
-                    <Label Content="Vælg søgekategorie:" FontSize="16" Margin="0,-10,0,0" FontFamily="Segoe UI Semibold"/>
+                    <Label Content="Vælg søgekategori:" FontSize="16" Margin="0,-10,0,0" FontFamily="Segoe UI Semibold"/>
                     <ComboBox
                         ItemsSource="{Binding Source={StaticResource dataFromEnum}}"
                         x:Name="ComboBox_Søg"
@@ -155,320 +155,113 @@
             </StackPanel>
 
 
-            <Grid
-                Grid.Row="2"
-                Grid.Column="0"
-                Grid.RowSpan="6">
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="*"/>
-                    <ColumnDefinition Width="*"/>
-                </Grid.ColumnDefinitions>
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="2*"/>
-                    <RowDefinition Height="2*"/>
-                    <RowDefinition Height="4*"/>
-                    <RowDefinition Height="2*"/>
-                    <RowDefinition Height="4*"/>
-                    <RowDefinition Height="3*"/>
-                    <RowDefinition Height="3*"/>
-                    <RowDefinition Height="3*"/>
-                    <RowDefinition Height="3*"/>
-                    <RowDefinition Height="3*"/>
-                </Grid.RowDefinitions>
+            
                 <Label
                     Content="Filtre"
                     Grid.Column="0"
-                    Grid.ColumnSpan="2"
+                    Grid.Row="2"
                     HorizontalContentAlignment="Center"
-                    VerticalAlignment="Center"
+                    VerticalAlignment="Top"
                     FontSize="24" 
                     FontFamily="Segoe UI Semibold" 
                     Background="#96BAB8"
                     Foreground="White"/>
-                <Label
-                    Content="Træsort"
-                    Grid.Row="1"
-                    Grid.Column="0"
-                    Grid.ColumnSpan="2"
-                    HorizontalAlignment="Left"
-                    VerticalAlignment="Bottom"
-                    FontSize="24"
-                    Margin="2,0,0,0"
-                    FontFamily="Segoe UI Semibold"/>
-                <Grid
+            <StackPanel
                     Grid.Row="2"
+                    Grid.RowSpan="2"
+                    Grid.ColumnSpan="3"
                     Grid.Column="0"
-                    Grid.ColumnSpan="2">
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="*"/>
-                        <ColumnDefinition Width="*"/>
-                    </Grid.ColumnDefinitions>
-                    <Grid.RowDefinitions>
-                        <RowDefinition Height="*"/>
-                        <RowDefinition Height="*"/>
-                        <RowDefinition Height="*"/>
-                    </Grid.RowDefinitions>
-                    <Label
-                        Content="Birk"
-                        Grid.Row="0"
-                        Grid.Column="0"
-                        HorizontalAlignment="Left"
-                        VerticalAlignment="Center"
-                        Margin="25,0,0,0"
-                        FontSize="20"
-                        Padding="0"/>
-                    <CheckBox
-                        x:Name="CheckBox_Birk"
-                        Grid.Row="0"
-                        Grid.Column="0"
-                        HorizontalAlignment="Left"
-                        VerticalAlignment="Center"
-                        Margin="5,3,0,0"
-                        Command="{Binding _pLC.TreeSortCheckedCommand}"
-                        CommandParameter="Birk"
-                        Checked="TreeSortChecked"/>
+                    HorizontalAlignment="Left"
+                    VerticalAlignment="Center" Margin="19,0,0,0"
+                Width="185">
+                <Label
+                    Content="Farver" 
+                    FontSize="24" 
+                    FontFamily="Segoe UI Semibold"
+                    HorizontalAlignment="Center"
+                    />
 
-                    <Label
-                        Content="Eg"
-                        Grid.Row="0"
-                        Grid.Column="1"
-                        HorizontalAlignment="Left"
-                        VerticalAlignment="Center"
-                        Margin="25,0,0,0"
-                        FontSize="20"
-                        Padding="0"/>
-                    <CheckBox
-                        x:Name="CheckBox_Eg"
-                        Grid.Row="0"
-                        Grid.Column="1"
-                        HorizontalAlignment="Left"
-                        VerticalAlignment="Center"
-                        Margin="5,3,0,0"
-                        Command="{Binding _pLC.TreeSortCheckedCommand}"
-                        CommandParameter="Eg"
-                        Checked="TreeSortChecked"/>
-                    <Label
-                        Content="Akacie"
-                        Grid.Row="1"
-                        Grid.Column="0"
-                        HorizontalAlignment="Left"
-                        VerticalAlignment="Center"
-                        Margin="25,0,0,0"
-                        FontSize="20"
-                        Padding="0"/>
-                    <CheckBox
-                        x:Name="CheckBox_Akacie"
-                        Grid.Row="1"
-                        Grid.Column="0"
-                        HorizontalAlignment="Left"
-                        VerticalAlignment="Center"
-                        Margin="5,3,0,0"
-                        Command="{Binding _pLC.TreeSortCheckedCommand}"
-                        CommandParameter="Akacie"
-                        Checked="TreeSortChecked"/>
-                    <Label
-                        Content="Kirsebær"
-                        Grid.Row="1"
-                        Grid.Column="1"
-                         HorizontalAlignment="Left"
-                        VerticalAlignment="Center"
-                        Margin="25,0,0,0"
-                        FontSize="20"
-                        Padding="0"/>
-                    <CheckBox
-                        x:Name="CheckBox_Kirsebær"
-                        Grid.Row="1"
-                        Grid.Column="1"
-                       HorizontalAlignment="Left"
-                        VerticalAlignment="Center"
-                        Margin="5,3,0,0"
-                        Command="{Binding _pLC.TreeSortCheckedCommand}"
-                        CommandParameter="Kirsebær"
-                        Checked="TreeSortChecked"/>
-                    <Label
-                        Content="Bøg"
-                        Grid.Row="2"
-                        Grid.Column="0"
-                       HorizontalAlignment="Left"
-                        VerticalAlignment="Center"
-                        Margin="25,0,0,0"
-                        FontSize="20"
-                        Padding="0"/>
-                    <CheckBox
-                        x:Name="CheckBox_Bøg"
-                        Grid.Row="2"
-                        Grid.Column="0"
-                        HorizontalAlignment="Left"
-                        VerticalAlignment="Center"
-                        Margin="5,3,0,0"
-                        Command="{Binding _pLC.TreeSortCheckedCommand}"
-                        CommandParameter="Bøg"
-                        Checked="TreeSortChecked"/>
-                    <Label
-                        Content="Fyr"
-                        Grid.Row="2"
-                        Grid.Column="2"
-                         HorizontalAlignment="Left"
-                        VerticalAlignment="Center"
-                        Margin="25,0,0,0"
-                        FontSize="20"
-                        Padding="0"/>
-                    <CheckBox
-                        x:Name="CheckBox_Fyr"
-                        Grid.Row="2"
-                        Grid.Column="2"
-                        HorizontalAlignment="Left"
-                        VerticalAlignment="Center"
-                        Margin="5,3,0,0"
-                        Command="{Binding _pLC.TreeSortCheckedCommand}"
-                        CommandParameter="Fyr"
-                        Checked="TreeSortChecked"/>
-                </Grid>
+                    <Border Background="Black" BorderBrush="Black" BorderThickness="2">
+                        <ComboBox
+                    ItemsSource="{Binding Source={StaticResource dataFromProductCat}}"
+                    SelectedItem="{Binding PLVM.FilterCategory}"
+                    SelectionChanged="FilterAndSearchProductListRequestEventHandler"
+                    x:Name="Treesort_ComboBox"
+                    Height="30"
+                            
+                    FontSize="16" BorderBrush="Black">
+                        </ComboBox>
 
-                <StackPanel Orientation="Vertical" Grid.Row="3" Grid.ColumnSpan="2" Margin="0,7,0,0">
+                    </Border>
+                </StackPanel>
+
+            <StackPanel
+                    Grid.Row="3"
+                    Grid.RowSpan="2"
+                    Grid.ColumnSpan="3"
+                    Grid.Column="0"
+                    HorizontalAlignment="Left"
+                    VerticalAlignment="Center" Margin="19,0,0,0"
+                Width="185">
+                <Label
+                    Content="Materiale" 
+                    FontSize="24" 
+                    FontFamily="Segoe UI Semibold"
+                    HorizontalAlignment="Center"
+                    />
+
+                <Border Background="Black" BorderBrush="Black" BorderThickness="2">
+                    <ComboBox
+                    ItemsSource="{Binding Source={StaticResource dataFromProductCat}}"
+                    SelectedItem="{Binding PLVM.FilterCategory}"
+                    SelectionChanged="FilterAndSearchProductListRequestEventHandler"
+                    x:Name="Materiale_ComboBox"
+                    Height="30"
+                            
+                    FontSize="16" BorderBrush="Black">
+                    </ComboBox>
+
+                </Border>
+            </StackPanel>
+
+            <StackPanel
+                    Grid.Row="4"
+                    Grid.RowSpan="2"
+                    Grid.ColumnSpan="3"
+                    Grid.Column="0"
+                    HorizontalAlignment="Left"
+                    VerticalAlignment="Center" Margin="19,0,0,0"
+                Width="185">
+                <Label
+                    Content="Andet" 
+                    FontSize="24" 
+                    FontFamily="Segoe UI Semibold"
+                    HorizontalAlignment="Center"
+                    />
+
+                <Border Background="Black" BorderBrush="Black" BorderThickness="2">
+                    <ComboBox
+                    ItemsSource="{Binding Source={StaticResource dataFromProductCat}}"
+                    SelectedItem="{Binding PLVM.FilterCategory}"
+                    SelectionChanged="FilterAndSearchProductListRequestEventHandler"
+                    x:Name="Andet_ComboBox"
+                    Height="30"
+                            
+                    FontSize="16" BorderBrush="Black">
+                    </ComboBox>
+
+                </Border>
+            </StackPanel>
+
+
+
+
+
+            <StackPanel Orientation="Vertical" Grid.Row="3" Grid.ColumnSpan="3" Margin="0,7,0,0">
                     <Separator Style="{StaticResource {x:Static ToolBar.SeparatorStyleKey}}" />
                 </StackPanel>
-                <Label
-                    Content="Farve"
-                    Grid.Row="3"
-                    Grid.Column="0"
-                    Grid.ColumnSpan="2"
-                    HorizontalAlignment="Left"
-                    VerticalAlignment="Bottom"
-                    FontSize="24"
-                    Margin="2,6,0,0"
-                    FontFamily="Segoe UI Semibold"
-                    />
-                <Grid
-                    Grid.Row="4"
-                    Grid.Column="0"
-                    Grid.ColumnSpan="2">
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="*"/>
-                        <ColumnDefinition Width="*"/>
-                    </Grid.ColumnDefinitions>
-                    <Grid.RowDefinitions>
-                        <RowDefinition Height="*"/>
-                        <RowDefinition Height="*"/>
-                        <RowDefinition Height="*"/>
-                    </Grid.RowDefinitions>
-                    <Label
-                        Content="Sort"
-                        Grid.Row="0"
-                        Grid.Column="0"
-                        HorizontalAlignment="Left"
-                        VerticalAlignment="Center"
-                        Margin="25,0,0,0"
-                        FontSize="20"
-                        Padding="0"/>
-                    <CheckBox
-                        x:Name="CheckBox_Sort"
-                        Grid.Row="0"
-                        Grid.Column="0"
-                        HorizontalAlignment="Left"
-                        VerticalAlignment="Center"
-                        Margin="5,3,0,0"
-                        Command="{Binding _pLC.ColorCheckedCommand}"
-                        CommandParameter="Sort"
-                        Checked="ColorChecked"/>
-                    <Label
-                        Content="Grøn"
-                        Grid.Row="0"
-                        Grid.Column="1"
-                         HorizontalAlignment="Left"
-                        VerticalAlignment="Center"
-                        Margin="25,0,0,0"
-                        FontSize="20"
-                        Padding="0"
-                        />
-                    <CheckBox
-                        x:Name="CheckBox_Grøn"
-                        Grid.Row="0"
-                        Grid.Column="1"
-                        HorizontalAlignment="Left"
-                        VerticalAlignment="Center"
-                        Margin="5,3,0,0"
-                        Command="{Binding _pLC.ColorCheckedCommand}"
-                        CommandParameter="Grøn"
-                        Checked="ColorChecked"/>
-                    <Label
-                        Content="Hvid"
-                        Grid.Row="1"
-                        Grid.Column="0"
-                         HorizontalAlignment="Left"
-                        VerticalAlignment="Center"
-                        Margin="25,0,0,0"
-                        FontSize="20"
-                        Padding="0"/>
-                    <CheckBox
-                        x:Name="CheckBox_Hvid"
-                        Grid.Row="1"
-                        Grid.Column="0"
-                        HorizontalAlignment="Left"
-                        VerticalAlignment="Center"
-                        Margin="5,3,0,0"
-                        Command="{Binding _pLC.ColorCheckedCommand}"
-                        CommandParameter="Hvid"
-                        Checked="ColorChecked"/>
-                    <Label
-                        Content="Rød"
-                        Grid.Row="1"
-                        Grid.Column="1"
-                        HorizontalAlignment="Left"
-                        VerticalAlignment="Center"
-                        Margin="25,0,0,0"
-                        FontSize="20"
-                        Padding="0"/>
-                    <CheckBox
-                        x:Name="CheckBox_Rød"
-                        Grid.Row="1"
-                        Grid.Column="1"
-                       HorizontalAlignment="Left"
-                        VerticalAlignment="Center"
-                        Margin="5,3,0,0"
-                        Command="{Binding _pLC.ColorCheckedCommand}"
-                        CommandParameter="Rød"
-                        Checked="ColorChecked"/>
-                    <Label
-                        Content="Blå"
-                        Grid.Row="2"
-                        Grid.Column="0"
-                         HorizontalAlignment="Left"
-                        VerticalAlignment="Center"
-                        Margin="25,0,0,0"
-                        FontSize="20"
-                        Padding="0"/>
-                    <CheckBox
-                        x:Name="CheckBox_blå"
-                        Grid.Row="2"
-                        Grid.Column="0"
-                        HorizontalAlignment="Left"
-                        VerticalAlignment="Center"
-                        Margin="5,3,0,0"
-                        Command="{Binding _pLC.ColorCheckedCommand}"
-                        CommandParameter="Blå"
-                        Checked="ColorChecked"/>
-                    <Label
-                        Content="Gul"
-                        Grid.Row="2"
-                        Grid.Column="2"
-                        HorizontalAlignment="Left"
-                        VerticalAlignment="Center"
-                        Margin="25,0,0,0"
-                        FontSize="20"
-                        Padding="0"/>
-                    <CheckBox
-                        x:Name="CheckBox_Gul"
-                        Grid.Row="2"
-                        Grid.Column="2"
-                        HorizontalAlignment="Left"
-                        VerticalAlignment="Center"
-                        Margin="5,3,0,0"
-                        Command="{Binding _pLC.ColorCheckedCommand}"
-                        CommandParameter="Gul"
-                        Checked="ColorChecked"/>
-                </Grid>
-            </Grid>
+               
+                
 
             <StackPanel Orientation="Vertical" Grid.Row="5" Grid.ColumnSpan="2"  >
                 <Separator Style="{StaticResource {x:Static ToolBar.SeparatorStyleKey}}" />
@@ -760,9 +553,9 @@
                 Command="{Binding _pLC.ResetCommand}"
             >
                 <Button.Resources>
-                <Style TargetType="Border">
-                    <Setter Property="CornerRadius" Value="5"/>
-                </Style>
+                    <Style TargetType="Border">
+                        <Setter Property="CornerRadius" Value="5"/>
+                    </Style>
                 </Button.Resources>
             </Button>
             <Button
@@ -784,28 +577,7 @@
                     </Style>
                 </Button.Resources>
             </Button>
-            <Border Background="Black" 
-                    BorderBrush="Black" 
-                    BorderThickness="2"
-                    Grid.Row="5"
-                    VerticalAlignment="Top">
-                <ComboBox
-                    ItemsSource="{Binding PLVM.Filters}"
-                    Height="30"
-                    FontSize="16" BorderBrush="Black">
-                </ComboBox>
-            </Border>
-            <Border Background="Black" 
-                    BorderBrush="Black" 
-                    BorderThickness="2"
-                    Grid.Row="5"
-                    VerticalAlignment="Bottom">
-                <ComboBox
-                    ItemsSource="{Binding PLVM.Categories}"
-                    Height="30"
-                    FontSize="16" BorderBrush="Black">
-                </ComboBox>
-            </Border>
+
 
         </Grid>
     </Viewbox>
