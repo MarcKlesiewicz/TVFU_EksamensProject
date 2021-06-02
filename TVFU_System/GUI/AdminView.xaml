@@ -31,54 +31,284 @@
                 <RowDefinition Height="*"/>
                 <RowDefinition Height="*"/>
             </Grid.RowDefinitions>
-            <ComboBox Grid.Row="1" 
-                      Grid.Column="1"
-                      ItemsSource="{Binding AVM.Filters}"
-                      Height="22"
-                      Name="ComboBoxFilters"
-                      />
+
+            <Rectangle Grid.Row="0" Grid.Column="0" Fill="Black"/>
+
+            <Image 
+                Name="image_logo"
+                Grid.Column="0"
+                Grid.Row="0"
+                Source="/Images/TVFU_Logo.PNG">
+            </Image>
+
+            <Label 
+                Grid.Row="0"
+                Grid.Column="1"
+                Grid.ColumnSpan="10"
+                Content="Administration"
+                Background="#96BAB8"
+                Foreground="White"
+                HorizontalContentAlignment="Center"
+                VerticalContentAlignment="Center"
+                FontSize="30" 
+                FontFamily="Segoe UI Semibold"/>
+
+            <Label
+                Grid.Row="1"
+                Grid.Column="1"
+                Content="Farver"
+                FontSize="22" 
+                FontFamily="Segoe UI Semibold"
+                HorizontalAlignment="Center"
+                VerticalAlignment="Bottom"
+                Grid.ColumnSpan="2"/>
+            <Rectangle Grid.Row="2" Grid.RowSpan="2" Grid.Column="1" Grid.ColumnSpan="2" Fill="#FFDDDDDD"/>
+
+            <Border 
+                Background="Black" 
+                BorderBrush="Black" 
+                BorderThickness="1" 
+                Height="22" 
+                Grid.Row="2" 
+                Grid.Column="1"
+                Margin="5,0,0,0">
+                <ComboBox
+                    Grid.Row="2" 
+                    Grid.Column="1"
+                    Height="22"
+                    Name="ComboBoxColour">
+                </ComboBox>
+            </Border>
+
             <TextBox Grid.Row="3"
                      Grid.Column="1"
-                     Name="NewFilter"
-                     Height="20"/>
-            <Button Grid.Row="4"
-                    Grid.Column="1"
-                    Content="Tilføj filter"
+                     Name="NewColour"
+                     Height="20"
+                     Width="95"
+                     HorizontalAlignment="Right"/>
+            <Button Grid.Row="3"
+                    Grid.Column="2"
+                    Content="Tilføj farve"
                     Height="20"
-                    Command="{Binding AC.AddFilterCommand}"
-                    CommandParameter="{Binding ElementName=NewFilter,Path=Text}"
-                    />
-            <Button Grid.Row="1"
-                    Grid.Column="3"
-                    Content="Fjern filter"
-                    Height="20"
-                    Command="{Binding AC.RemoveFilterCommand}"
-                    CommandParameter="{Binding ElementName=ComboBoxFilters,Path=SelectedItem}"
-                    />
-            <ComboBox Grid.Row="1" 
-                      Grid.Column="5"
+                    Background="#96BAB8"
+                    Foreground="White"
+                    Width="90"
+                    FontFamily="Segoe UI Semibold">
+                <Button.Resources>
+                    <Style TargetType="Border">
+                        <Setter Property="CornerRadius" Value="2"/>
+                    </Style>
+                </Button.Resources>
+            </Button>
+            
+            <Button 
+                Grid.Row="2"
+                Grid.Column="2"
+                Width="90"
+                Content="Fjern farve"
+                Height="22"
+                FontFamily="Segoe UI Semibold"
+                Background="#FFDC9A9A"
+                Foreground="White">
+
+                <Button.Resources>
+                    <Style TargetType="Border">
+                        <Setter Property="CornerRadius" Value="2"/>
+                    </Style>
+                </Button.Resources>
+
+            </Button>
+
+            <Label
+                Grid.Row="1"
+                Grid.Column="4"
+                Content="Produktkategori"
+                FontSize="22" 
+                FontFamily="Segoe UI Semibold"
+                HorizontalAlignment="Center"
+                VerticalAlignment="Bottom"
+                Grid.ColumnSpan="2"/>
+
+            <Rectangle Grid.Row="2" Grid.RowSpan="2" Grid.Column="4" Grid.ColumnSpan="2" Fill="#FFDDDDDD"/>
+
+            <Border 
+                Background="Black" 
+                BorderBrush="Black" 
+                BorderThickness="1" 
+                Height="22" 
+                Grid.Row="2" 
+                Grid.Column="4"
+                Margin="5,0,0,0">
+                <ComboBox Grid.Row="2" 
+                      Grid.Column="4"
                       ItemsSource="{Binding AVM.Categories}"
                       Height="22"
                       Name="ComboBoxCategories"
                       />
+            </Border>
+          
             <TextBox Grid.Row="3"
-                     Grid.Column="5"
+                     Grid.Column="4"
                      Name="NewCategory"
-                     Height="20"/>
-            <Button Grid.Row="4"
+                     Height="20"
+                     Width="95"
+                     HorizontalAlignment="Right"/>
+            <Button Grid.Row="3"
                     Grid.Column="5"
-                    Content="Tilføj Category"
+                    Content="Tilføj Kategori"
                     Height="20"
                     Command="{Binding AC.AddCategoryCommand}"
                     CommandParameter="{Binding ElementName=NewCategory,Path=Text}"
-                    />
-            <Button Grid.Row="1"
-                    Grid.Column="7"
-                    Content="Fjern Category"
-                    Height="20"
+                    Background="#96BAB8"
+                    Foreground="White"
+                    Width="90"
+                    FontFamily="Segoe UI Semibold">
+                <Button.Resources>
+                    <Style TargetType="Border">
+                        <Setter Property="CornerRadius" Value="2"/>
+                    </Style>
+                </Button.Resources>
+            </Button>
+                    
+            <Button Grid.Row="2"
+                    Grid.Column="5"
+                    Content="Fjern Kategori"
+                    Width="90"
+                    Height="22"
+                    FontFamily="Segoe UI Semibold"
                     Command="{Binding AC.RemoveCategoryCommand}"
                     CommandParameter="{Binding ElementName=ComboBoxCategories,Path=SelectedItem}"
-                    />
+                    Background="#FFDC9A9A"
+                    Foreground="White">
+                <Button.Resources>
+                    <Style TargetType="Border">
+                        <Setter Property="CornerRadius" Value="2"/>
+                    </Style>
+                </Button.Resources>
+            </Button>
+
+            <Label
+                Grid.Row="1"
+                Grid.Column="7"
+                Content="Materiale"
+                FontSize="22" 
+                FontFamily="Segoe UI Semibold"
+                HorizontalAlignment="Center"
+                VerticalAlignment="Bottom"
+                Grid.ColumnSpan="2"/>
+
+            <Rectangle Grid.Row="2" Grid.RowSpan="2" Grid.Column="7" Grid.ColumnSpan="2" Fill="#FFDDDDDD"/>
+
+            <Border 
+                Background="Black" 
+                BorderBrush="Black" 
+                BorderThickness="1" 
+                Height="22" 
+                Grid.Row="2" 
+                Grid.Column="7"
+                Margin="5,0,0,0">
+                <ComboBox 
+                    Grid.Row="2" 
+                    Grid.Column="7"
+                    Height="22" />
+            </Border>
+
+            <TextBox Grid.Row="3"
+                     Grid.Column="7"
+                     Height="20"
+                     Width="95"
+                     HorizontalAlignment="Right"/>
+            <Button Grid.Row="3"
+                    Grid.Column="8"
+                    Content="Tilføj Materiale"
+                    Height="20"
+                    Background="#96BAB8"
+                    Foreground="White"
+                    Width="90"
+                    FontFamily="Segoe UI Semibold">
+                <Button.Resources>
+                    <Style TargetType="Border">
+                        <Setter Property="CornerRadius" Value="2"/>
+                    </Style>
+                </Button.Resources>
+            </Button>
+
+            <Button Grid.Row="2"
+                    Grid.Column="8"
+                    Content="Fjern Materiale"
+                    Width="90"
+                    Height="22"
+                    FontFamily="Segoe UI Semibold"
+                    Background="#FFDC9A9A"
+                    Foreground="White">
+                <Button.Resources>
+                    <Style TargetType="Border">
+                        <Setter Property="CornerRadius" Value="2"/>
+                    </Style>
+                </Button.Resources>
+            </Button>
+
+            <Label
+                Grid.Row="4"
+                Grid.Column="1"
+                Content="Andet"
+                FontSize="22" 
+                FontFamily="Segoe UI Semibold"
+                HorizontalAlignment="Center"
+                VerticalAlignment="Bottom"
+                Grid.ColumnSpan="2"/>
+
+            <Rectangle Grid.Row="5" Grid.RowSpan="2" Grid.Column="1" Grid.ColumnSpan="2" Fill="#FFDDDDDD"/>
+
+            <Border 
+                Background="Black" 
+                BorderBrush="Black" 
+                BorderThickness="1" 
+                Height="22" 
+                Grid.Row="5" 
+                Grid.Column="1"
+                Margin="5,0,0,0">
+                <ComboBox 
+                    Grid.Row="2" 
+                    Grid.Column="7"
+                    Height="22" />
+            </Border>
+
+            <TextBox Grid.Row="6"
+                     Grid.Column="1"
+                     Height="20"
+                     Width="95"
+                     HorizontalAlignment="Right"/>
+            <Button Grid.Row="6"
+                    Grid.Column="2"
+                    Content="Tilføj"
+                    Height="20"
+                    Background="#96BAB8"
+                    Foreground="White"
+                    Width="90"
+                    FontFamily="Segoe UI Semibold">
+                <Button.Resources>
+                    <Style TargetType="Border">
+                        <Setter Property="CornerRadius" Value="2"/>
+                    </Style>
+                </Button.Resources>
+            </Button>
+
+            <Button Grid.Row="5"
+                    Grid.Column="2"
+                    Content="Fjern"
+                    Width="90"
+                    Height="22"
+                    FontFamily="Segoe UI Semibold"
+                    Background="#FFDC9A9A"
+                    Foreground="White">
+                <Button.Resources>
+                    <Style TargetType="Border">
+                        <Setter Property="CornerRadius" Value="2"/>
+                    </Style>
+                </Button.Resources>
+            </Button>
+
         </Grid>
     </Viewbox>
 </Window>
