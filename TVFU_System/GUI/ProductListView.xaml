@@ -83,7 +83,7 @@
                 Margin="0,0,0,20"
                 Height="50">
                 <StackPanel>
-                    <Label Content="Vælg søgekategori:" FontSize="16" Margin="0,-10,0,0" FontFamily="Segoe UI Semibold"/>
+                    <Label Content="Vælg søgekategori:" FontSize="16" Margin="0,-14,0,0" FontFamily="Segoe UI Semibold"/>
                     <ComboBox
                         ItemsSource="{Binding Source={StaticResource dataFromEnum}}"
                         x:Name="ComboBox_Søg"
