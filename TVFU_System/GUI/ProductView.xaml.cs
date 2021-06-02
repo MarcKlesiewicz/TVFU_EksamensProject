@@ -34,7 +34,7 @@ namespace GUI
 
         public void ProductBlockedRequestHandler(object sender, EventArgs args)
         {
-            PVM.Blocked = BlockedCheckBox.IsChecked.Value;
+            //PVM.Blocked = BlockedCheckBox.IsChecked.Value;
         }
 
         public void AcceptProductRequestedHandler(object sender, EventArgs args)

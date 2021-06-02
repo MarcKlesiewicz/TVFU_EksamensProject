@@ -18,12 +18,11 @@ namespace Persistence.Repositories.Implementations
 
         private IGetAll<Product> _getAllService;
 
-        private Func<EventArgs, IEnumerable> FilterMethod;
+        // private Func<EventArgs, IEnumerable> FilterMethod;
 
-        public LProductRepo(IGetAll<Product> service, Func<EventArgs, IEnumerable> filterMethod)
+        public LProductRepo(IGetAll<Product> service)
         {
             _getAllService = service;
-            FilterMethod = filterMethod;
         }
 
         public void Add(EventArgs args)
@@ -36,7 +35,7 @@ namespace Persistence.Repositories.Implementations
             var filter = (args as FilterEventArgs); //This should be implemented as something else. Preferably a list of strings so we don't couple ourselves to a constant set of filters.
             GetAll();
 
-            return FilterMethod(args);
+            return firstFilterMethod(args);
         }
 
         public static IEnumerable firstFilterMethod(EventArgs args)

@@ -49,26 +49,26 @@ namespace UnitTests.RepositoryTests
         //    }
         //}
 
-        [TestMethod]
-        public void LinqRepo()
-        {
-            repo = new LProductRepo(GetAllImplementation, LProductRepo.firstFilterMethod);
+        //[TestMethod]
+        //public void LinqRepo()
+        //{
+        //    repo = new LProductRepo(GetAllImplementation, LProductRepo.firstFilterMethod);
 
-            for (int i = 0; i < 200; i++)
-            {
-                repo.FilterAndSearchProductList(args);
-            }
-        }
+        //    for (int i = 0; i < 200; i++)
+        //    {
+        //        repo.FilterAndSearchProductList(args);
+        //    }
+        //}
 
-        [TestMethod]
-        public void DatabaseRepo()
-        {
-            var repo = new ProductRepo();
+        //[TestMethod]
+        //public void DatabaseRepo()
+        //{
+        //    var repo = new ProductRepo();
 
-            for (int i = 0; i < 200; i++)
-            {
-                repo.FilterAndSearchProductList(args);
-            }
-        }
+        //    for (int i = 0; i < 200; i++)
+        //    {
+        //        repo.FilterAndSearchProductList(args);
+        //    }
+        //}
     }
 }

@@ -12,9 +12,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Persistence", "Persistence\
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DomainLayer", "Domain\DomainLayer.csproj", "{DF18FC9F-47E0-4E18-A52A-250E1B6949B4}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UnitTests", "UnitTests\UnitTests.csproj", "{EB9B1B90-678B-4A71-BAA4-D851F091B918}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GUI", "GUI\GUI.csproj", "{32A8528C-DDD1-497C-9E7C-16FC82BCBC9F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GUI", "GUI\GUI.csproj", "{32A8528C-DDD1-497C-9E7C-16FC82BCBC9F}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -34,10 +32,6 @@ Global
 		{DF18FC9F-47E0-4E18-A52A-250E1B6949B4}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{DF18FC9F-47E0-4E18-A52A-250E1B6949B4}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{DF18FC9F-47E0-4E18-A52A-250E1B6949B4}.Release|Any CPU.Build.0 = Release|Any CPU
-		{EB9B1B90-678B-4A71-BAA4-D851F091B918}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{EB9B1B90-678B-4A71-BAA4-D851F091B918}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{EB9B1B90-678B-4A71-BAA4-D851F091B918}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{EB9B1B90-678B-4A71-BAA4-D851F091B918}.Release|Any CPU.Build.0 = Release|Any CPU
 		{32A8528C-DDD1-497C-9E7C-16FC82BCBC9F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{32A8528C-DDD1-497C-9E7C-16FC82BCBC9F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{32A8528C-DDD1-497C-9E7C-16FC82BCBC9F}.Release|Any CPU.ActiveCfg = Release|Any CPU

@@ -1,6 +1,7 @@
 ﻿using Application.Controllers;
 using Application.ViewModels;
 using DomainLayer.EventArgs;
+using Persistence.Data;
 using Persistence.Repositories.Implementations;
 using Persistence.Repositories.Interfaces;
 using System;
@@ -25,10 +26,11 @@ namespace GUI
     /// </summary>
     public partial class ProductListView : Window
     {
-        private readonly static IProductRepo _productRepo = new ProductRepo();
+        private readonly static IProductRepo _productRepo = new LProductRepo(new ExcelGetAll());
         private readonly ProductListController _pLC = new ProductListController(_productRepo);
         public ProductListView()
         {
+            Encoding.RegisterProvider(System.Text.CodePagesEncodingProvider.Instance);
             //_pLC.ShowProductList();
             InitializeComponent();
             var PLVM = _pLC.CurrentProductListVM;
@@ -53,7 +55,6 @@ namespace GUI
                 if (dialogresult.Value)
                 {
                     result.ProductNumber = _pLC.CurrentProductVM.ProductNumber;
-                    result.ProductCategory = _pLC.CurrentProductVM.ProductCategory;
                     result.Id = _pLC.CurrentProductVM.Id;
                     result.Description = _pLC.CurrentProductVM.Description;
                     result.UnitPrice = _pLC.CurrentProductVM.UnitPrice;
@@ -62,7 +63,7 @@ namespace GUI
                     result.Blocked = _pLC.CurrentProductVM.Blocked;
                     result.UnitPerPackage = _pLC.CurrentProductVM.UnitPerPackage;
                     result.QuantityDiscount = _pLC.CurrentProductVM.QuantityDiscount;
-                    result.ConfirmedDeliveryDate = _pLC.CurrentProductVM.ConfirmedDeliveryDate;
+                    result.ConfirmedDeliveryDate = (_pLC.CurrentProductVM.ConfirmedDeliveryDate == String.Empty) ? default(DateTime) : DateTime.Parse(_pLC.CurrentProductVM.ConfirmedDeliveryDate);
                     result.CountryOfOrigin = _pLC.CurrentProductVM.CountryOfOrigin;
                     result.PurchasingManager = _pLC.CurrentProductVM.PurchasingManager;
 
@@ -86,7 +87,6 @@ namespace GUI
                 if (dialogresult.Value)
                 {
                     result.ProductNumber = _pLC.CurrentProductVM.ProductNumber;
-                    result.ProductCategory = _pLC.CurrentProductVM.ProductCategory;
                     result.Id = _pLC.CurrentProductVM.Id;
                     result.Description = _pLC.CurrentProductVM.Description;
                     result.UnitPrice = _pLC.CurrentProductVM.UnitPrice;
@@ -95,7 +95,7 @@ namespace GUI
                     result.Blocked = _pLC.CurrentProductVM.Blocked;
                     result.UnitPerPackage = _pLC.CurrentProductVM.UnitPerPackage;
                     result.QuantityDiscount = _pLC.CurrentProductVM.QuantityDiscount;
-                    result.ConfirmedDeliveryDate = _pLC.CurrentProductVM.ConfirmedDeliveryDate;
+                    result.ConfirmedDeliveryDate = (_pLC.CurrentProductVM.ConfirmedDeliveryDate == String.Empty) ? default(DateTime) : DateTime.Parse(_pLC.CurrentProductVM.ConfirmedDeliveryDate);
                     result.CountryOfOrigin = _pLC.CurrentProductVM.CountryOfOrigin;
                     result.PurchasingManager = _pLC.CurrentProductVM.PurchasingManager;
 
@@ -113,9 +113,9 @@ namespace GUI
         {
             ResetSortButtons(new object());
 
-            TreeSortChecked(null, null);
+            // TreeSortChecked(null, null);
 
-            ColorChecked(null, null);
+            // ColorChecked(null, null);
         }
 
         public bool DeleteProductRequestHandler()
@@ -142,7 +142,7 @@ namespace GUI
         /// Creates a temperary list of checkboxes and unchecks all added checkboxes expect for the chosen checkbox
         /// </summary>
         /// <param name="sender"> has to be the 'checked' checkbox</param>
-        public void TreeSortChecked(object sender, EventArgs args)
+        /* public void TreeSortChecked(object sender, EventArgs args)
         {
             List<CheckBox> temp = new List<CheckBox>();
 
@@ -162,14 +162,14 @@ namespace GUI
             {
                 item.IsChecked = false;
             }
-        }
+        } */
 
         /// <summary>
         /// Called by all color checkboxes.
         /// Creates a temperary list of checkboxes and unchecks all added checkboxes expect for the chosen checkbox
         /// </summary>
         /// <param name="sender"> has to be the 'checked' checkbox</param>
-        public void ColorChecked(object sender, EventArgs args)
+        /* public void ColorChecked(object sender, EventArgs args)
         {
             List<CheckBox> temp = new List<CheckBox>();
 
@@ -189,7 +189,7 @@ namespace GUI
             {
                 item.IsChecked = false;
             }
-        }
+        } */
 
         /// <summary>
         /// Called by all sorting columns from productlistbox.

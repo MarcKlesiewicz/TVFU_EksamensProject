@@ -29,7 +29,7 @@ namespace Application.Commands
 
             if (PVM != null)
             {
-                if (PVM.ProductNumber != 0 && PVM.Description != "" && PVM.CountryOfOrigin != "" && PVM.ConfirmedDeliveryDate != default(DateTime) && PVM.GuidingPrice != 0 && PVM.ProductCategory != "" && PVM.PurchasingManager != "" && PVM.UnitPerPackage != 0 && PVM.UnitPrice != 0)
+                if (PVM.ProductNumber != "" && PVM.Description != "" && PVM.CountryOfOrigin != "" && PVM.ConfirmedDeliveryDate != String.Empty && PVM.GuidingPrice != 0 && PVM.PurchasingManager != "" && PVM.UnitPerPackage != 0 && PVM.UnitPrice != 0)
                 {
                     return true;
                 }

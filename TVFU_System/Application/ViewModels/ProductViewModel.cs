@@ -11,46 +11,43 @@ namespace Application.ViewModels
 
         public string Id { get; }
 
+        private string _productNumber;
+        public string ProductNumber { get { return _productNumber; } set { _productNumber = value; OnPropertyChanged("ProductNumber"); } }
+
         private string _description;
         public string Description { get { return _description; } set { _description = value; OnPropertyChanged("Description"); } }
 
-        private float _unitPrice;
-        public float UnitPrice { get { return _unitPrice; } set { _unitPrice = value; OnPropertyChanged("UnitPrice"); } }
+        private double _unitPrice;
+        public double UnitPrice { get { return _unitPrice; } set { _unitPrice = value; OnPropertyChanged("UnitPrice"); } }
 
-        private float _guidingPrice;
-        public float GuidingPrice { get { return _guidingPrice; } set { _guidingPrice = value; OnPropertyChanged("GuidingPrice"); } }
+        private double _guidingPrice;
+        public double GuidingPrice { get { return _guidingPrice; } set { _guidingPrice = value; OnPropertyChanged("GuidingPrice"); } }
 
-        private int _totalStock;
-        public int TotalStock { get { return _totalStock; } set { _totalStock = value; OnPropertyChanged("TotalStock"); } }
+        private double _totalStock;
+        public double TotalStock { get { return _totalStock; } set { _totalStock = value; OnPropertyChanged("TotalStock"); } }
 
-        private bool _blocked;
-        public bool Blocked { get { return _blocked; } set { _blocked = value; OnPropertyChanged("Blocked"); } }
+        private string _blocked;
+        public string Blocked { get { return _blocked; } set { _blocked = value; OnPropertyChanged("Blocked"); } }
 
-        private int _unitPerPackage;
-        public int UnitPerPackage { get { return _unitPerPackage; } set { _unitPerPackage = value; OnPropertyChanged("UnitPerPackage"); } }
+        private double _unitPerPackage;
+        public double UnitPerPackage { get { return _unitPerPackage; } set { _unitPerPackage = value; OnPropertyChanged("UnitPerPackage"); } }
 
-        private float _quantityDiscount;
-        public float QuantityDiscount { get { return _quantityDiscount; } set { _quantityDiscount = value; OnPropertyChanged("QuantityDiscount"); } }
-
-        private DateTime _confirmedDeliveryDate;
-        public DateTime ConfirmedDeliveryDate
-        {
-            get { return _confirmedDeliveryDate; }
-            set
-            { _confirmedDeliveryDate = ((DateTime?)value).Value; OnPropertyChanged("ConfirmedDeliveryDate"); }
-        }
-
-        private int _productNumber;
-        public int ProductNumber { get { return _productNumber; } set { _productNumber = value; OnPropertyChanged("ProductNumber"); } }
-
-        private string _countryOfOrigin;
-        public string CountryOfOrigin { get { return _countryOfOrigin; } set { _countryOfOrigin = value; OnPropertyChanged("CountryOfOrigin"); } }
+        private double _quantityDiscount;
+        public double QuantityDiscount { get { return _quantityDiscount; } set { _quantityDiscount = value; OnPropertyChanged("QuantityDiscount"); } }
 
         private string _purchasingManager;
         public string PurchasingManager { get { return _purchasingManager; } set { _purchasingManager = value; OnPropertyChanged("PurchasingManager"); } }
 
-        private string _productCategory;
-        public string ProductCategory { get { return _productCategory; } set { _productCategory = value; OnPropertyChanged("ProductCategory"); } }
+        private string _confirmedDeliveryDate;
+        public string ConfirmedDeliveryDate
+        {
+            get { return _confirmedDeliveryDate; }
+            set
+            { _confirmedDeliveryDate = value; OnPropertyChanged("ConfirmedDeliveryDate"); }
+        }
+
+        private string _countryOfOrigin;
+        public string CountryOfOrigin { get { return _countryOfOrigin; } set { _countryOfOrigin = value; OnPropertyChanged("CountryOfOrigin"); } }
 
         public ProductViewModel()
         {
@@ -67,11 +64,10 @@ namespace Application.ViewModels
             _blocked = args.Blocked;
             _unitPerPackage = args.UnitPerPackage;
             _quantityDiscount = args.QuantityDiscount;
-            _confirmedDeliveryDate = args.ConfirmedDeliveryDate;
+            _confirmedDeliveryDate = (args.ConfirmedDeliveryDate == default(DateTime)) ? String.Empty : args.ConfirmedDeliveryDate.ToString("dd-MM-yyyy");
             _productNumber = args.ProductNumber;
             _countryOfOrigin = args.CountryOfOrigin;
             _purchasingManager = args.PurchasingManager;
-            _productCategory = args.ProductCategory;
         }
 
         public ProductViewModel(Product args)
@@ -84,11 +80,10 @@ namespace Application.ViewModels
             _blocked = args.Blocked;
             _unitPerPackage = args.UnitPerPackage;
             _quantityDiscount = args.QuantityDiscount;
-            _confirmedDeliveryDate = args.ConfirmedDeliveryDate;
+            _confirmedDeliveryDate = (args.ConfirmedDeliveryDate == default(DateTime)) ? String.Empty : args.ConfirmedDeliveryDate.ToString("dd-MM-yyyy");
             _productNumber = args.ProductNumber;
             _countryOfOrigin = args.CountryOfOrigin;
             _purchasingManager = args.PurchasingManager;
-            _productCategory = args.ProductCategory;
         }
 
         public ProductViewModel(ProductViewModel args)
@@ -105,7 +100,6 @@ namespace Application.ViewModels
             _productNumber = args.ProductNumber;
             _countryOfOrigin = args.CountryOfOrigin;
             _purchasingManager = args.PurchasingManager;
-            _productCategory = args.ProductCategory;
         }
 
         public void Update(ProductEventArgs args)
@@ -117,11 +111,10 @@ namespace Application.ViewModels
             _blocked = args.Blocked;
             _unitPerPackage = args.UnitPerPackage;
             _quantityDiscount = args.QuantityDiscount;
-            _confirmedDeliveryDate = args.ConfirmedDeliveryDate;
+            _confirmedDeliveryDate = (args.ConfirmedDeliveryDate == default(DateTime)) ? String.Empty : args.ConfirmedDeliveryDate.ToString("dd-MM-yyyy");
             _productNumber = args.ProductNumber;
             _countryOfOrigin = args.CountryOfOrigin;
             _purchasingManager = args.PurchasingManager;
-            _productCategory = args.ProductCategory;
         }
 
         public void Update(ProductViewModel args)
@@ -137,7 +130,6 @@ namespace Application.ViewModels
             _productNumber = args.ProductNumber;
             _countryOfOrigin = args.CountryOfOrigin;
             _purchasingManager = args.PurchasingManager;
-            _productCategory = args.ProductCategory;
         }
 
         protected void OnPropertyChanged(string propertyName)
@@ -152,7 +144,7 @@ namespace Application.ViewModels
         public override string ToString()
         {
             return $"{Description};{UnitPrice};{GuidingPrice};{TotalStock};{Blocked};{UnitPerPackage};{QuantityDiscount};" +
-                $"{ConfirmedDeliveryDate.ToString("dd/MM/yyyy")};{ProductNumber};{CountryOfOrigin};{PurchasingManager};{ProductCategory}";
+                $"{ConfirmedDeliveryDate};{ProductNumber};{CountryOfOrigin};{PurchasingManager}";
         }
     }
 }
