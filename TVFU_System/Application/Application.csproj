@@ -53,7 +53,10 @@
   <ItemGroup>
     <Compile Include="Commands\AcceptProductCmd.cs" />
     <Compile Include="Commands\AddCategoryCmd.cs" />
+    <Compile Include="Commands\AddColourCmd.cs" />
     <Compile Include="Commands\AddFilterCmd.cs" />
+    <Compile Include="Commands\AddMaterialCmd.cs" />
+    <Compile Include="Commands\AddOtherFilterCmd.cs" />
     <Compile Include="Commands\CancelProductCmd.cs" />
     <Compile Include="Commands\ChangeProductCmd.cs" />
     <Compile Include="Commands\ColorCheckedCmd.cs" />
@@ -62,7 +65,10 @@
     <Compile Include="Commands\OpenAdminCmd.cs" />
     <Compile Include="Commands\ProductBlockedCmd.cs" />
     <Compile Include="Commands\RemoveCategoryCmd.cs" />
+    <Compile Include="Commands\RemoveColourCmd.cs" />
     <Compile Include="Commands\RemoveFilterCmd.cs" />
+    <Compile Include="Commands\RemoveMaterialCmd.cs" />
+    <Compile Include="Commands\RemoveOtherFilterCmd.cs" />
     <Compile Include="Commands\ResetCmd.cs" />
     <Compile Include="Commands\SearchProductListCmd.cs" />
     <Compile Include="Commands\SortAfterCmd.cs" />

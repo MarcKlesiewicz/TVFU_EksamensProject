@@ -8,8 +8,12 @@ namespace DomainLayer.EventArgs
 {
     public class AdminEventArgs : System.EventArgs
     {
-        public IEnumerable<string> Filters { get; set; }
+        public IEnumerable<string> Colours { get; set; }
 
         public IEnumerable<string> Categories { get; set; }
+
+        public IEnumerable<string> Materials { get; set; }
+
+        public IEnumerable<string> OtherFilters { get; set; }
     }
 }

@@ -9,14 +9,20 @@ namespace Application.ViewModels
 {
     public class AdminViewModel
     {
-        public ObservableCollection<string> Filters { get; set; }
+        public ObservableCollection<string> Colours { get; set; }
 
         public ObservableCollection<string> Categories { get; set; }
 
+        public ObservableCollection<string> Materials { get; set; }
+
+        public ObservableCollection<string> OtherFilters { get; set; }
+
         public AdminViewModel()
         {
-            Filters = new ObservableCollection<string>();
+            Colours = new ObservableCollection<string>();
             Categories = new ObservableCollection<string>();
+            Materials = new ObservableCollection<string>();
+            OtherFilters = new ObservableCollection<string>();
         }
     }
 }
