@@ -12,7 +12,7 @@ namespace Persistence
     {
         public List<Product> SortByProductCategoryThenByProductNumber(List<Product> list)
         {
-            return list.OrderBy(s => s.ProductNumber).ToList();
+            return list.OrderBy(s => s.ProductCategory).ThenBy(s => s.ProductNumber).ToList();
         }
 
         /// <summary>
@@ -26,7 +26,7 @@ namespace Persistence
         /// <returns></returns>
         public List<Product> FilterCategory(List<Product> list, string filterCategory)
         {
-            return list.FindAll(s => s.Description.ToLower().Contains(filterCategory.ToLower()));
+            return list.FindAll(s => s.ProductCategory.Contains(filterCategory));
         }
 
         public List<Product> FilterOther(List<Product> list, List<string> filters)
@@ -52,7 +52,7 @@ namespace Persistence
             switch (searchCategory.ToLower())
             {
                 case "description":
-                    return list.FindAll(s => s.Description.ToLower().Contains(searchInput.ToLower()));
+                    return list.FindAll(s => s.Description.Contains(searchInput));
                 case "unitprice":
                     return list.FindAll(s => s.UnitPrice.ToString().Contains(searchInput));
                 case "guidingprice":
@@ -70,9 +70,9 @@ namespace Persistence
                 case "productnumber":
                     return list.FindAll(s => s.ProductNumber.ToString().Contains(searchInput));
                 case "countryoforigin":
-                    return list.FindAll(s => s.CountryOfOrigin.ToLower().Contains(searchInput.ToLower()));
+                    return list.FindAll(s => s.CountryOfOrigin.Contains(searchInput));
                 case "purchasingmanager":
-                    return list.FindAll(s => s.PurchasingManager.ToLower().Contains(searchInput.ToLower()));
+                    return list.FindAll(s => s.PurchasingManager.Contains(searchInput));
                 default:
                     throw new Exception("No such category was found, or it was an unsearchable category");
             }
