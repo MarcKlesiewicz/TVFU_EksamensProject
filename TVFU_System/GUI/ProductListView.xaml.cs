@@ -532,15 +532,22 @@ namespace GUI
             AdminView AV = new AdminView();
             AV.ShowDialog();
             args.Categories = AV.AVM.Categories;
-            args.Filters = AV.AVM.Filters;
+            args.Colours = AV.AVM.Colours;
+            args.Materials = AV.AVM.Materials;
+            args.OtherFilters = AV.AVM.OtherFilters;
+
             return args;
         }
+
         private void GetCategoiesAndFilters()
         {
             AdminView AV = new AdminView();
-            _pLC.CurrentProductListVM.Filters = AV.AVM.Filters;
             _pLC.CurrentProductListVM.Categories = AV.AVM.Categories;
+            _pLC.CurrentProductListVM.Colours = AV.AVM.Colours;
+            _pLC.CurrentProductListVM.Materials = AV.AVM.Materials;
+            _pLC.CurrentProductListVM.OtherFilters = AV.AVM.OtherFilters;
             AV.Close();
         }
+
     }
 }
