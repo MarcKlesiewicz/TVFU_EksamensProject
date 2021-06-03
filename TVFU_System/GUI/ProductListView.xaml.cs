@@ -113,9 +113,6 @@ namespace GUI
         {
             ResetSortButtons(new object());
 
-            TreeSortChecked(null, null);
-
-            ColorChecked(null, null);
         }
 
         public bool DeleteProductRequestHandler()
@@ -137,59 +134,7 @@ namespace GUI
             _pLC.ConfirmFilterAndSearch();
         }
 
-        /// <summary>
-        /// Called by all tree sort checkboxes.
-        /// Creates a temperary list of checkboxes and unchecks all added checkboxes expect for the chosen checkbox
-        /// </summary>
-        /// <param name="sender"> has to be the 'checked' checkbox</param>
-        public void TreeSortChecked(object sender, EventArgs args)
-        {
-            List<CheckBox> temp = new List<CheckBox>();
-
-            temp.Add(CheckBox_Birk);
-            temp.Add(CheckBox_Akacie);
-            temp.Add(CheckBox_Bøg);
-            temp.Add(CheckBox_Fyr);
-            temp.Add(CheckBox_Kirsebær);
-            temp.Add(CheckBox_Eg);
-
-            if (sender != null)
-            {
-                temp.Remove((CheckBox)sender);
-            }
-
-            foreach (var item in temp)
-            {
-                item.IsChecked = false;
-            }
-        }
-
-        /// <summary>
-        /// Called by all color checkboxes.
-        /// Creates a temperary list of checkboxes and unchecks all added checkboxes expect for the chosen checkbox
-        /// </summary>
-        /// <param name="sender"> has to be the 'checked' checkbox</param>
-        public void ColorChecked(object sender, EventArgs args)
-        {
-            List<CheckBox> temp = new List<CheckBox>();
-
-            temp.Add(CheckBox_blå);
-            temp.Add(CheckBox_Rød);
-            temp.Add(CheckBox_Gul);
-            temp.Add(CheckBox_Sort);
-            temp.Add(CheckBox_Hvid);
-            temp.Add(CheckBox_Grøn);
-
-            if (sender != null)
-            {
-                temp.Remove((CheckBox)sender);
-            }
-
-            foreach (var item in temp)
-            {
-                item.IsChecked = false;
-            }
-        }
+        
 
         /// <summary>
         /// Called by all sorting columns from productlistbox.
@@ -532,14 +477,19 @@ namespace GUI
             AdminView AV = new AdminView();
             AV.ShowDialog();
             args.Categories = AV.AVM.Categories;
-            args.Filters = AV.AVM.Filters;
+            args.Colours = AV.AVM.Colours;
+            args.Materials = AV.AVM.Materials;
+            args.OtherFilters = AV.AVM.OtherFilters;
+
             return args;
         }
         private void GetCategoiesAndFilters()
         {
             AdminView AV = new AdminView();
-            _pLC.CurrentProductListVM.Filters = AV.AVM.Filters;
             _pLC.CurrentProductListVM.Categories = AV.AVM.Categories;
+            _pLC.CurrentProductListVM.Colours = AV.AVM.Colours;
+            _pLC.CurrentProductListVM.Materials = AV.AVM.Materials;
+            _pLC.CurrentProductListVM.OtherFilters = AV.AVM.OtherFilters;
             AV.Close();
         }
     }

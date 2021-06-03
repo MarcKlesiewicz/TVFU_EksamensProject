@@ -114,7 +114,7 @@
                 Height="22"
                 FontFamily="Segoe UI Semibold"
                 Background="#FFDC9A9A"
-                Foreground="White" Click="Button_Click"
+                Foreground="White"
                 Command="{Binding AC.RemoveColourCommand}"
                 CommandParameter="{Binding ElementName=ComboBoxColour,Path=SelectedItem}">
 
