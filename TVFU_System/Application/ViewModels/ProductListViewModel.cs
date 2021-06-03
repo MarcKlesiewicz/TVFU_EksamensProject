@@ -40,9 +40,13 @@ namespace Application.ViewModels
 
         public ObservableCollection<ProductViewModel> ViewModels { get; set; }
 
-        public ObservableCollection<string> Filters { get; set; }
-
         public ObservableCollection<string> Categories { get; set; }
+
+        public ObservableCollection<string> Colours { get; set; }
+
+        public ObservableCollection<string> Materials { get; set; }
+
+        public ObservableCollection<string> OtherFilters { get; set; }
 
         private readonly List<Column> _columns = new List<Column>()
         {
@@ -64,8 +68,10 @@ namespace Application.ViewModels
         public ProductListViewModel()
         {
             ViewModels = new ObservableCollection<ProductViewModel>();
-            Filters = new ObservableCollection<string>();
             Categories = new ObservableCollection<string>();
+            Colours = new ObservableCollection<string>();
+            Materials = new ObservableCollection<string>();
+            OtherFilters = new ObservableCollection<string>();
         }
 
         public IEnumerable<ProductViewModel> SortAfter(string category)
