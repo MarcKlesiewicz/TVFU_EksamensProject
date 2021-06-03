@@ -10,7 +10,7 @@ namespace Persistence.Repositories.Implementations
 {
     public class OtherFilterRepo : IOtherFilterRepo
     {
-        public void add(string otherFilter)
+        public void Add(string otherFilter)
         {
             List<string> otherFilters = (List<string>)GetAll();
             otherFilters.Add(otherFilter);
@@ -27,6 +27,7 @@ namespace Persistence.Repositories.Implementations
         {
             throw new NotImplementedException();
         }
+
 
         public string Get(string guid)
         {

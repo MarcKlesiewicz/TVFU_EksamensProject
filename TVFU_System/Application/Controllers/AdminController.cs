@@ -14,7 +14,7 @@ namespace Application.Controllers
     public class AdminController
     {
         
-        private readonly IFilterRepo _filterRepo;
+        //private readonly IFilterRepo _filterRepo;
 
         private readonly ICategoryRepo _categoryRepo;
 
@@ -95,20 +95,42 @@ namespace Application.Controllers
 
         public event Action ColourExistsRequested;
 
+        public event Action ResetColourTextboxRequested;
+
+        public event Action MaxMaterialsRequested;
+
+        public event Action MaterialExistsRequested;
+
+        public event Action ResetMaterialTextboxRequested;
+
+        public event Action MaxOtherFiltersRequested;
+
+        public event Action OtherFilterExistsRequested;
+
+        public event Action ResetOtherFilterTextboxRequested;
+
         /// <summary>
         /// A controller used to control the ProductList view.
         /// Must be used as a singleton.
         /// </summary>
         /// <param name="filterRepo">Pass an implementation of IFilterRepo through the constructor</param>
-        public AdminController(IFilterRepo filterRepo, ICategoryRepo categoryRepo)
+        public AdminController(ICategoryRepo categoryRepo, IColourRepo colourRepo, IMaterialRepo materialRepo, IOtherFilterRepo otherFilterRepo)
         {
-            _filterRepo = filterRepo;
             _categoryRepo = categoryRepo;
+            _colourRepo = colourRepo;
+            _materialRepo = materialRepo;
+            _otherFilterRepo = otherFilterRepo;
             CurrentAdminVM = new AdminViewModel();
             //AddFilterCommand = new AddFilterCmd(AddFilter);
             //RemoveFilterCommand = new RemoveFilterCmd(RemoveFilter);
             AddCategoryCommand = new AddCategoryCmd(AddCategory);
             RemoveCategoryCommand = new RemoveCategoryCmd(RemoveCategory);
+            AddColourCommand = new AddColourCmd(AddColour);
+            RemoveColourCommand = new RemoveColourCmd(RemoveColour);
+            AddMaterialCommand = new AddMaterialCmd(AddMaterial);
+            RemoveMaterialCommand = new RemoveMaterialCmd(RemoveMaterial);
+            AddOtherFilterCommand = new AddOtherFilterCmd(AddOtherFilter);
+            RemoveOtherFilterCommand = new RemoveOtherFilterCmd(RemoveOtherFilter);
 
         }
         /// <summary>
@@ -117,16 +139,28 @@ namespace Application.Controllers
         public void GetAll()
         {
             CurrentAdminVM.Categories.Clear();
-            CurrentAdminVM.Filters.Clear();
+            CurrentAdminVM.Colours.Clear();
+            CurrentAdminVM.Materials.Clear();
+            CurrentAdminVM.OtherFilters.Clear();
 
             foreach (var item in _categoryRepo.GetAll())
             {
                 CurrentAdminVM.Categories.Add(item);
             }
 
-            foreach (var item in _filterRepo.GetAll())
+            foreach (var item in _colourRepo.GetAll())
             {
-                CurrentAdminVM.Filters.Add(item);
+                CurrentAdminVM.Colours.Add(item);
+            }
+
+            foreach (var item in _materialRepo.GetAll())
+            {
+                CurrentAdminVM.Materials.Add(item);
+            }
+
+            foreach (var item in _otherFilterRepo.GetAll())
+            {
+                CurrentAdminVM.Materials.Add(item);
             }
         }
         ///// <summary>
@@ -209,9 +243,9 @@ namespace Application.Controllers
             }
             if (CurrentAdminVM.Colours.Count <= 10)
             {
-                _categoryRepo.Add(colour);
-                CurrentAdminVM.Categories.Add(colour);
-                ResetCategoryTextboxRequested();
+                _colourRepo.Add(colour);
+                CurrentAdminVM.Colours.Add(colour);
+                ResetColourTextboxRequested();
                 GetAll();
             }
             else
@@ -222,10 +256,66 @@ namespace Application.Controllers
 
         public void RemoveColour(string colour)
         {
-            _categoryRepo.Remove(colour);
-            CurrentAdminVM.Categories.Remove(colour);
+            _colourRepo.Remove(colour);
+            CurrentAdminVM.Colours.Remove(colour);
         }
 
-        public void Add
+        public void AddMaterial(string material)
+        {
+            foreach (var item in CurrentAdminVM.Materials)
+            {
+                if (item.ToLower() == material.ToLower())
+                {
+                    MaterialExistsRequested();
+                    return;
+                }
+            }
+            if (CurrentAdminVM.Materials.Count <= 10)
+            {
+                _materialRepo.Add(material);
+                CurrentAdminVM.Materials.Add(material);
+                ResetMaterialTextboxRequested();
+                GetAll();
+            }
+            else
+            {
+                MaxMaterialsRequested();
+            }
+        }
+
+        public void RemoveMaterial(string material)
+        {
+            _materialRepo.Remove(material);
+            CurrentAdminVM.Colours.Remove(material);
+        }
+
+        public void AddOtherFilter(string otherFilter)
+        {
+            foreach (var item in CurrentAdminVM.OtherFilters)
+            {
+                if (item.ToLower() == otherFilter.ToLower())
+                {
+                    OtherFilterExistsRequested();
+                    return;
+                }
+            }
+            if (CurrentAdminVM.OtherFilters.Count <= 10)
+            {
+                _otherFilterRepo.Add(otherFilter);
+                CurrentAdminVM.OtherFilters.Add(otherFilter);
+                ResetOtherFilterTextboxRequested();
+                GetAll();
+            }
+            else
+            {
+                MaxOtherFiltersRequested();
+            }
+        }
+
+        public void RemoveOtherFilter(string otherFilter)
+        {
+            _otherFilterRepo.Remove(otherFilter);
+            CurrentAdminVM.Colours.Remove(otherFilter);
+        }
     }
 }

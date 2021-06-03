@@ -8,6 +8,6 @@ namespace Persistence.Repositories.Interfaces
 {
     public interface IOtherFilterRepo : IRepo<string>
     {
-        void add(string otherFilter);
+        void Add(string otherFilter);
     }
 }
