@@ -26,7 +26,7 @@ namespace Persistence.Data
         {
             var products = new List<Product>();
             
-            using (var stream = File.Open(@"B:\Downloads\Lagerliste kopi.xlsx", FileMode.Open, FileAccess.Read))
+            using (var stream = File.Open(_filePath, FileMode.Open, FileAccess.Read))
             {
                 using (IExcelDataReader reader = ExcelReaderFactory.CreateReader(stream))
                 {
