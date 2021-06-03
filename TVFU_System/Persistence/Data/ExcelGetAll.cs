@@ -25,7 +25,7 @@ namespace Persistence.Data
         public IEnumerable<Product> GetAll()
         {
             var products = new List<Product>();
-            
+
             using (var stream = File.Open(_filePath, FileMode.Open, FileAccess.Read))
             {
                 using (IExcelDataReader reader = ExcelReaderFactory.CreateReader(stream))
@@ -33,6 +33,10 @@ namespace Persistence.Data
                     reader.Read();
                     while (reader.Read())
                     {
+                        if (discardEntry(reader[1].ToString()))
+                        {
+                            continue;
+                        }
                         products.Add(new Product()
                         {
                             ProductNumber = reader[0].ToString(),
@@ -50,7 +54,18 @@ namespace Persistence.Data
                     }
                 }
             }
+
             return products;
+        }
+
+        private bool discardEntry(string description)
+        {
+            if (description.ToLower().Contains("ledig") || description.ToLower().Contains("ikke i brug") || description.ToLower().Contains("bruges ikke mere"))
+            {
+                return true;
+            }
+            return false;
         }
     }
 }
+

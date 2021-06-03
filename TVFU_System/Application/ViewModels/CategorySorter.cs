@@ -13,8 +13,7 @@ namespace Application.ViewModels
 
             if (order == ColumnOrder.Null)
             {
-                //return temp.OrderBy(s => s.ProductCategory).ThenBy(s => s.ProductNumber);
-                return temp;
+                return temp.OrderBy(s => s.ProductNumber);
             }
             else
             {
