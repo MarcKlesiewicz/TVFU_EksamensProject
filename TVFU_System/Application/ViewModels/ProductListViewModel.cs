@@ -38,6 +38,7 @@ namespace Application.ViewModels
             get { return _categories; }
             set
             {
+                _categories.Clear();
                 _categories.Add("Ingen");
                 foreach (var item in value)
                 {
@@ -55,6 +56,7 @@ namespace Application.ViewModels
             get { return _colours; }
             set
             {
+                _colours.Clear();
                 _colours.Add("Ingen");
                 foreach (var item in value)
                 {
@@ -72,6 +74,7 @@ namespace Application.ViewModels
             get { return _materials; }
             set
             {
+                _materials.Clear();
                 _materials.Add("Ingen");
                 foreach (var item in value)
                 {
@@ -89,6 +92,7 @@ namespace Application.ViewModels
             get { return _otherFilters; }
             set
             {
+                _otherFilters.Clear();
                 _otherFilters.Add("Ingen");
                 foreach (var item in value)
                 {

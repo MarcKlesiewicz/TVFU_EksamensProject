@@ -37,7 +37,7 @@ namespace Persistence.Repositories.Implementations
         public IEnumerable<string> GetAll()
         {
             List<string> otherFilters = new List<string>();
-            using (StreamReader sr = new StreamReader(@"Repositories\Implementations\OtherFilters.ini"))
+            using (StreamReader sr = new StreamReader(@"Repositories\Implementations\OtherFilters.ini", Encoding.GetEncoding("iso-8859-1")))
             {
                 while (!sr.EndOfStream)
                 {
@@ -60,7 +60,7 @@ namespace Persistence.Repositories.Implementations
         {
             List<string> otherFilters = (List<string>)GetAll();
             otherFilters.Remove(otherFílter);
-            using (StreamWriter sw = new StreamWriter(@"Repositories\Implementations\Colours.ini"))
+            using (StreamWriter sw = new StreamWriter(@"Repositories\Implementations\OtherFilters.ini"))
             {
                 foreach (var item in otherFilters)
                 {

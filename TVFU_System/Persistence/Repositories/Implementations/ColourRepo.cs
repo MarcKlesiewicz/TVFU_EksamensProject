@@ -37,7 +37,7 @@ namespace Persistence.Repositories.Implementations
         public IEnumerable<string> GetAll()
         {
             List<string> colours = new List<string>();
-            using (StreamReader sr = new StreamReader(@"Repositories\Implementations\Colours.ini"))
+            using (StreamReader sr = new StreamReader(@"Repositories\Implementations\Colours.ini", Encoding.GetEncoding("iso-8859-1")))
             {
                 while (!sr.EndOfStream)
                 {

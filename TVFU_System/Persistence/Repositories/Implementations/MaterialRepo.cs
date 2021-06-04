@@ -36,7 +36,7 @@ namespace Persistence.Repositories.Implementations
         public IEnumerable<string> GetAll()
         {
             List<string> materials = new List<string>();
-            using (StreamReader sr = new StreamReader(@"Repositories\Implementations\Materials.ini"))
+            using (StreamReader sr = new StreamReader(@"Repositories\Implementations\Materials.ini", Encoding.GetEncoding("iso-8859-1")))
             {
                 while (!sr.EndOfStream)
                 {

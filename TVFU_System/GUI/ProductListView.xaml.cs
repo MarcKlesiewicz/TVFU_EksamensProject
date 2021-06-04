@@ -532,17 +532,25 @@ namespace GUI
             MessageBox.Show(exceptionMessage, "Der gik noget galt", MessageBoxButton.OK, MessageBoxImage.Error);
         }
 
-        private AdminEventArgs OpenAdminRequestHandler()
+        private void OpenAdminRequestHandler()
         {
             AdminEventArgs args = new AdminEventArgs();
             AdminView AV = new AdminView();
             AV.ShowDialog();
-            args.Categories = AV.AVM.Categories;
-            args.Colours = AV.AVM.Colours;
-            args.Materials = AV.AVM.Materials;
-            args.OtherFilters = AV.AVM.OtherFilters;
 
-            return args;
+            _pLC.CurrentProductListVM.Categories = AV.AVM.Categories;
+            _pLC.CurrentProductListVM.Colours = AV.AVM.Colours;
+            _pLC.CurrentProductListVM.Materials = AV.AVM.Materials;
+            _pLC.CurrentProductListVM.OtherFilters = AV.AVM.OtherFilters;
+
+            ResetRequestedHandler();
+
+            //args.Categories = AV.AVM.Categories;
+            //args.Colours = AV.AVM.Colours;
+            //args.Materials = AV.AVM.Materials;
+            //args.OtherFilters = AV.AVM.OtherFilters;
+
+            //return args;
         }
 
         private void GetCategoiesAndFilters()

@@ -93,7 +93,7 @@ namespace Application.Controllers
         /// An event whose eventhandler is expected to be set from the GUI layer before calling the method 'OpenAdmin'
         /// within this class.
         /// </summary>
-        public event Func<AdminEventArgs> OpenAdminRequested;
+        public event Action OpenAdminRequested;
 
         /// <summary>
         /// A controller used to control the ProductList view.

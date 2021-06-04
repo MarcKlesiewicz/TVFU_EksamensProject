@@ -36,7 +36,7 @@ namespace Persistence.Repositories.Implementations
         public IEnumerable<string> GetAll()
         {
             List<string> categories = new List<string>();
-            using (StreamReader sr = new StreamReader(@"Repositories\Implementations\Categories.ini"))
+            using (StreamReader sr = new StreamReader(@"Repositories\Implementations\Categories.ini", Encoding.GetEncoding("iso-8859-1")))
             {
                 while (!sr.EndOfStream)
                 {

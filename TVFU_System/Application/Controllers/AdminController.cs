@@ -160,7 +160,7 @@ namespace Application.Controllers
 
             foreach (var item in _otherFilterRepo.GetAll())
             {
-                CurrentAdminVM.Materials.Add(item);
+                CurrentAdminVM.OtherFilters.Add(item);
             }
         }
         ///// <summary>
@@ -212,7 +212,7 @@ namespace Application.Controllers
                     return;
                 }
             }
-            if (CurrentAdminVM.Categories.Count <= 10)
+            if (CurrentAdminVM.Categories.Count <= 20)
             {
                 _categoryRepo.Add(category);
                 CurrentAdminVM.Categories.Add(category);
@@ -241,7 +241,7 @@ namespace Application.Controllers
                     return;
                 }
             }
-            if (CurrentAdminVM.Colours.Count <= 10)
+            if (CurrentAdminVM.Colours.Count <= 20)
             {
                 _colourRepo.Add(colour);
                 CurrentAdminVM.Colours.Add(colour);
@@ -270,7 +270,7 @@ namespace Application.Controllers
                     return;
                 }
             }
-            if (CurrentAdminVM.Materials.Count <= 10)
+            if (CurrentAdminVM.Materials.Count <= 20)
             {
                 _materialRepo.Add(material);
                 CurrentAdminVM.Materials.Add(material);
@@ -286,7 +286,7 @@ namespace Application.Controllers
         public void RemoveMaterial(string material)
         {
             _materialRepo.Remove(material);
-            CurrentAdminVM.Colours.Remove(material);
+            CurrentAdminVM.Materials.Remove(material);
         }
 
         public void AddOtherFilter(string otherFilter)
@@ -299,7 +299,7 @@ namespace Application.Controllers
                     return;
                 }
             }
-            if (CurrentAdminVM.OtherFilters.Count <= 10)
+            if (CurrentAdminVM.OtherFilters.Count <= 20)
             {
                 _otherFilterRepo.Add(otherFilter);
                 CurrentAdminVM.OtherFilters.Add(otherFilter);
@@ -315,7 +315,7 @@ namespace Application.Controllers
         public void RemoveOtherFilter(string otherFilter)
         {
             _otherFilterRepo.Remove(otherFilter);
-            CurrentAdminVM.Colours.Remove(otherFilter);
+            CurrentAdminVM.OtherFilters.Remove(otherFilter);
         }
     }
 }
