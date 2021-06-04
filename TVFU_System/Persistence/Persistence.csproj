@@ -63,7 +63,6 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repositories\Implementations\CategoryRepo.cs" />
     <Compile Include="Repositories\Implementations\ColourRepo.cs" />
-    <Compile Include="Repositories\Implementations\FilterRepo.cs" />
     <Compile Include="Repositories\Implementations\LProductRepo.cs" />
     <Compile Include="Repositories\Implementations\MaterialRepo.cs" />
     <Compile Include="Repositories\Implementations\OtherFilterRepo.cs" />
@@ -86,9 +85,6 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
     <None Include="Repositories\Implementations\Colours.ini">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Include="Repositories\Implementations\Filters.ini">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
     <None Include="Repositories\Implementations\Materials.ini">

@@ -42,6 +42,7 @@ namespace GUI
             _pLC.ExceptionThrown += ExceptionHandler;
             _pLC.OpenAdminRequested += OpenAdminRequestHandler;
             GetCategoiesAndFilters();
+            _pLC.ShowProductList();
         }
 
         public ProductEventArgs NewProductRequestHandler()

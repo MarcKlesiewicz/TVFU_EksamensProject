@@ -19,15 +19,9 @@
             </ObjectDataProvider.MethodParameters>
         </ObjectDataProvider>
 
-        <ObjectDataProvider x:Key="dataFromProductCat" MethodName="GetValues"
-                        ObjectType="{x:Type sys:Enum}">
-            <ObjectDataProvider.MethodParameters>
-                <x:Type TypeName="application:FilterCategory"/>
-            </ObjectDataProvider.MethodParameters>
-        </ObjectDataProvider>
     </Window.Resources>
 
-    <Viewbox>
+    <Viewbox Language="da-DK">
         <Grid Height="1060" Width="1920" Margin="0">
             <Grid.RowDefinitions>
                 <RowDefinition Height="*"/>
@@ -143,7 +137,8 @@
 
                 <Border Background="Black" BorderBrush="Black" BorderThickness="2">
                     <ComboBox
-                    ItemsSource="{Binding Source={StaticResource dataFromProductCat}}"
+                    Language="da-DK"
+                    ItemsSource="{Binding PLVM.Categories}"
                     SelectedItem="{Binding PLVM.FilterCategory}"
                     SelectionChanged="FilterAndSearchProductListRequestEventHandler"
                     x:Name="SortAfter"
@@ -183,10 +178,9 @@
 
                     <Border Background="Black" BorderBrush="Black" BorderThickness="2">
                         <ComboBox
-                    ItemsSource="{Binding Source={StaticResource dataFromProductCat}}"
-                    SelectedItem="{Binding PLVM.FilterCategory}"
+                    ItemsSource="{Binding PLVM.Colours}"
                     SelectionChanged="FilterAndSearchProductListRequestEventHandler"
-                    x:Name="Treesort_ComboBox"
+                    x:Name="Colours_ComboBox"
                     Height="30"
                             
                     FontSize="16" BorderBrush="Black">
@@ -212,10 +206,9 @@
 
                 <Border Background="Black" BorderBrush="Black" BorderThickness="2">
                     <ComboBox
-                    ItemsSource="{Binding Source={StaticResource dataFromProductCat}}"
-                    SelectedItem="{Binding PLVM.FilterCategory}"
+                    ItemsSource="{Binding PLVM.Materials}"
                     SelectionChanged="FilterAndSearchProductListRequestEventHandler"
-                    x:Name="Materiale_ComboBox"
+                    x:Name="Materials_ComboBox"
                     Height="30"
                             
                     FontSize="16" BorderBrush="Black">
@@ -241,10 +234,9 @@
 
                 <Border Background="Black" BorderBrush="Black" BorderThickness="2">
                     <ComboBox
-                    ItemsSource="{Binding Source={StaticResource dataFromProductCat}}"
-                    SelectedItem="{Binding PLVM.FilterCategory}"
+                    ItemsSource="{Binding PLVM.OtherFilters}"
                     SelectionChanged="FilterAndSearchProductListRequestEventHandler"
-                    x:Name="Andet_ComboBox"
+                    x:Name="OtherFilters_ComboBox"
                     Height="30"
                             
                     FontSize="16" BorderBrush="Black">

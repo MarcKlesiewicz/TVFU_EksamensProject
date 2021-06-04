@@ -5,6 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:GUI"
         mc:Ignorable="d"
+        WindowStartupLocation="CenterScreen"
         Height="600" Width="1000">
     <Viewbox>
         <Grid Height="580" Width="1000">
