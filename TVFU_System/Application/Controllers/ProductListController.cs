@@ -107,8 +107,6 @@ namespace Application.Controllers
             DeleteProductCommand = new DeleteProductCmd(DeleteProduct);
             SearchProductListCommand = new SearchProductListCmd(ConfirmFilterAndSearch);
             SortAfterCommand = new SortAfterCmd(SortAfter);
-            TreeSortCheckedCommand = new TreeSortCheckedCmd(SetTreeSort);
-            ColorCheckedCommand = new ColorCheckedCmd(SetColor);
             ResetCommand = new ResetCmd(Reset);
             OpenAdminCommand = new OpenAdminCmd(OpenAdmin);
             _productRepository = productRepo;
@@ -279,16 +277,10 @@ namespace Application.Controllers
         public void ConfirmFilterAndSearch()
         {
             FilterEventArgs args = new FilterEventArgs();
-            if (CurrentProductListVM.FilterCategory == FilterCategory.Ingen)
-            {
-                args.FilterCategory = "";
-            }
-            else
-            {
-                args.FilterCategory = CurrentProductListVM.FilterCategory.ToString();
-            }
-            args.FilterColour = CurrentProductListVM.FilterColor;
-            args.FilterTreeSort = CurrentProductListVM.FilterTreeSort;
+            args.FilterCategory = CurrentProductListVM.CurrentCategory;
+            args.FilterColour = CurrentProductListVM.CurrentColour;
+            args.FilterMaterial = CurrentProductListVM.CurrentMaterial;
+            args.FilterOther = CurrentProductListVM.CurrentOtherFilter;
             args.SearchCategory = new EnumConverter().Convert(CurrentProductListVM.SearchCategory.ToString());
             args.SearchWord = CurrentProductListVM.SearchWord;
             List<Product> temp = null;
@@ -302,7 +294,7 @@ namespace Application.Controllers
                 onExceptionThrown.Invoke(ex.ToString());
                 return;
             }
-            
+
 
             CloseProductList();
             for (int i = 0; i < temp.Count; i++)
@@ -315,43 +307,6 @@ namespace Application.Controllers
                 CurrentProductListVM.LastCategoryPreviousColumnOrder();
                 SortAfter(CurrentProductListVM.LastSortedCategory);
             }
-        }
-
-        /// <summary>
-        /// A method which is setting the current productlist's property (FilterTreeSort) to parameter.
-        /// </summary>
-        /// <param name="treeSort">Is expected to be a 'tree sorts declacred in XAML'</param>
-        public void SetTreeSort(string treeSort)
-        {
-            if (CurrentProductListVM.FilterTreeSort == treeSort)
-            {
-                CurrentProductListVM.FilterTreeSort = "";
-            }
-            else
-            {
-                CurrentProductListVM.FilterTreeSort = treeSort;
-            }
-
-            ConfirmFilterAndSearch();
-        }
-
-        /// <summary>
-        /// A method which is setting the current productlist's property (FilterColor) to parameter.
-        /// </summary>
-        /// <param name="color">Is expected to be a 'color declacred in XAML'</param>
-        public void SetColor(string color)
-        {
-            if (CurrentProductListVM.FilterColor == color)
-            {
-                CurrentProductListVM.FilterColor = "";
-            }
-            else
-            {
-                CurrentProductListVM.FilterColor = color;
-            }
-
-            ConfirmFilterAndSearch();
-
         }
 
         public void SortAfter(string sortCategory)

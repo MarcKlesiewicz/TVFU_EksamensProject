@@ -24,21 +24,27 @@ namespace Persistence
         /// <param name="searchInput"></param>
         /// <param name="filters"></param>
         /// <returns></returns>
-        public List<Product> FilterCategory(List<Product> list, string filterCategory)
-        {
-            return list.FindAll(s => s.Description.ToLower().Contains(filterCategory.ToLower()));
-        }
-
-        public List<Product> FilterOther(List<Product> list, List<string> filters)
+        public List<Product> FilterCategory(List<Product> list, List<string> filters)
         {
             List<Product> result = list;
             foreach (var item in filters)
             {
                 var temp = result;
-                result = temp.FindAll(s => s.Description.Contains(item));
+                result = temp.FindAll(s => s.Description.ToLower().Contains(item.ToLower()));
             }
             return result;
         }
+
+        //public List<Product> FilterMaterial(List<Product> list, List<string> filters)
+        //{
+        //    List<Product> result = list;
+        //    foreach (var item in filters)
+        //    {
+        //        var temp = result;
+        //        result = temp.FindAll(s => s.Description.Contains(item));
+        //    }
+        //    return result;
+        //}
 
         /// <summary>
         /// 

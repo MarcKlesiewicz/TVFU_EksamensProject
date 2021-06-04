@@ -139,9 +139,9 @@
                     <ComboBox
                     Language="da-DK"
                     ItemsSource="{Binding PLVM.Categories}"
-                    SelectedItem="{Binding PLVM.FilterCategory}"
+                    SelectedItem="{Binding PLVM.CurrentCategory, Mode=OneWayToSource}"
                     SelectionChanged="FilterAndSearchProductListRequestEventHandler"
-                    x:Name="SortAfter"
+                    x:Name="ProductCategory_ComboBox"
                     Height="30"
                     FontSize="16" BorderBrush="Black">
                     </ComboBox>
@@ -179,6 +179,7 @@
                     <Border Background="Black" BorderBrush="Black" BorderThickness="2">
                         <ComboBox
                     ItemsSource="{Binding PLVM.Colours}"
+                    SelectedItem="{Binding PLVM.CurrentColour, Mode=OneWayToSource}"
                     SelectionChanged="FilterAndSearchProductListRequestEventHandler"
                     x:Name="Colours_ComboBox"
                     Height="30"
@@ -207,6 +208,7 @@
                 <Border Background="Black" BorderBrush="Black" BorderThickness="2">
                     <ComboBox
                     ItemsSource="{Binding PLVM.Materials}"
+                    SelectedItem="{Binding PLVM.CurrentMaterial, Mode=OneWayToSource}"
                     SelectionChanged="FilterAndSearchProductListRequestEventHandler"
                     x:Name="Materials_ComboBox"
                     Height="30"
@@ -235,6 +237,7 @@
                 <Border Background="Black" BorderBrush="Black" BorderThickness="2">
                     <ComboBox
                     ItemsSource="{Binding PLVM.OtherFilters}"
+                    SelectedItem="{Binding PLVM.CurrentOtherFilter, Mode=OneWayToSource}"
                     SelectionChanged="FilterAndSearchProductListRequestEventHandler"
                     x:Name="OtherFilters_ComboBox"
                     Height="30"

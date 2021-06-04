@@ -43,6 +43,7 @@ namespace GUI
             _pLC.OpenAdminRequested += OpenAdminRequestHandler;
             GetCategoiesAndFilters();
             _pLC.ShowProductList();
+            ResetRequestedHandler();
         }
 
         public ProductEventArgs NewProductRequestHandler()
@@ -362,6 +363,10 @@ namespace GUI
         /// </summary>
         private void ResetSortButtons(object sender)
         {
+            ProductCategory_ComboBox.SelectedItem = _pLC.CurrentProductListVM.Categories[0];
+            Colours_ComboBox.SelectedItem = _pLC.CurrentProductListVM.Colours[0];
+            Materials_ComboBox.SelectedItem = _pLC.CurrentProductListVM.Materials[0];
+            OtherFilters_ComboBox.SelectedItem = _pLC.CurrentProductListVM.OtherFilters[0];
             if (sender.ToString().Contains("Nummer"))
             {
                 Btn_BeskrivelseSort.Content = "Beskrivelse";

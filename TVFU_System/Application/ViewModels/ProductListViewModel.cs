@@ -9,8 +9,6 @@ using System.Collections;
 namespace Application.ViewModels
 {
     public enum SearchCategory { Beskrivelse, Nummer, Enhedspris, Vejledende_pris, Total_lager, Spærret, Antal_pr_kolli, Mængderabat, Indkøbskode, Bekræftet_modtagelsesdato, Oprindelsesland }
-
-    public enum FilterCategory { Ingen, KUBIK, ABC, Møbler, Køkken, Have }
     public static class LinqExtensions
     {
         public static ObservableCollection<T> ToObservableCollection<T>(this IEnumerable<T> _linqResult)
@@ -27,26 +25,77 @@ namespace Application.ViewModels
         private string _searchWord = String.Empty;
         public string SearchWord { get { return _searchWord; } set { _searchWord = value; OnPropertyChanged("SearchWord"); } }
 
-        private FilterCategory _filterCategory;
-        public FilterCategory FilterCategory { get { return _filterCategory; } set { _filterCategory = value; OnPropertyChanged("FilterCategory"); } }
-
-        private string _filterTreeSort = String.Empty;
-        public string FilterTreeSort { get { return _filterTreeSort; } set { _filterTreeSort = value; OnPropertyChanged("FilterTreeSort"); } }
-
-        private string _filterColor = String.Empty;
-        public string FilterColor { get { return _filterColor; } set { _filterColor = value; OnPropertyChanged("FilterColor"); } }
-
         public string LastSortedCategory { get; set; }
 
         public ObservableCollection<ProductViewModel> ViewModels { get; set; }
 
-        public ObservableCollection<string> Categories { get; set; }
+        private string _currentCategory;
+        public string CurrentCategory { get { return _currentCategory; } set { _currentCategory = value; OnPropertyChanged("CurrentCategory"); } }
 
-        public ObservableCollection<string> Colours { get; set; }
+        private ObservableCollection<string> _categories;
+        public ObservableCollection<string> Categories
+        {
+            get { return _categories; }
+            set
+            {
+                _categories.Add("Ingen");
+                foreach (var item in value)
+                {
+                    _categories.Add(item);
+                }
+            }
+        }
 
-        public ObservableCollection<string> Materials { get; set; }
+        private string _currentColour;
+        public string CurrentColour { get { return _currentColour; } set { _currentColour = value; OnPropertyChanged("CurrentColour"); } }
 
-        public ObservableCollection<string> OtherFilters { get; set; }
+        private ObservableCollection<string> _colours;
+        public ObservableCollection<string> Colours
+        {
+            get { return _colours; }
+            set
+            {
+                _colours.Add("Ingen");
+                foreach (var item in value)
+                {
+                    _colours.Add(item);
+                }
+            }
+        }
+
+        private string _currentMaterial;
+        public string CurrentMaterial { get { return _currentMaterial; } set { _currentMaterial = value; OnPropertyChanged("CurrentMaterial"); } }
+
+        private ObservableCollection<string> _materials;
+        public ObservableCollection<string> Materials
+        {
+            get { return _materials; }
+            set
+            {
+                _materials.Add("Ingen");
+                foreach (var item in value)
+                {
+                    _materials.Add(item);
+                }
+            }
+        }
+
+        private string _currentOtherFilter;
+        public string CurrentOtherFilter { get { return _currentOtherFilter; } set { _currentOtherFilter = value; OnPropertyChanged("CurrentMaterial"); } }
+
+        private ObservableCollection<string> _otherFilters;
+        public ObservableCollection<string> OtherFilters
+        {
+            get { return _otherFilters; }
+            set
+            {
+                _otherFilters.Add("Ingen");
+                foreach (var item in value)
+                {
+                    _otherFilters.Add(item);
+                }
+            }
+        }
 
         private readonly List<Column> _columns = new List<Column>()
         {
@@ -68,10 +117,10 @@ namespace Application.ViewModels
         public ProductListViewModel()
         {
             ViewModels = new ObservableCollection<ProductViewModel>();
-            Categories = new ObservableCollection<string>();
-            Colours = new ObservableCollection<string>();
-            Materials = new ObservableCollection<string>();
-            OtherFilters = new ObservableCollection<string>();
+            _categories = new ObservableCollection<string>();
+            _colours = new ObservableCollection<string>();
+            _materials = new ObservableCollection<string>();
+            _otherFilters = new ObservableCollection<string>();
         }
 
         public IEnumerable<ProductViewModel> SortAfter(string category)
@@ -141,14 +190,8 @@ namespace Application.ViewModels
             ResetColumns();
             _searchCategory = SearchCategory.Beskrivelse;
             OnPropertyChanged("SearchCategory");
-            _filterCategory = FilterCategory.Ingen;
-            OnPropertyChanged("FilterCategory");
             _searchWord = String.Empty;
             OnPropertyChanged("SearchWord");
-            _filterTreeSort = String.Empty;
-            OnPropertyChanged("FilterTreeSort");
-            _filterColor = String.Empty;
-            OnPropertyChanged("FilterColor");
         }
 
         protected void OnPropertyChanged(string propertyName)

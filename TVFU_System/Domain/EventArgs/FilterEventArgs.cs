@@ -13,11 +13,13 @@ namespace DomainLayer.EventArgs
 
         public string SearchCategory { get; set; }
 
-        public string FilterTreeSort { get; set; }
+        public string FilterMaterial { get; set; }
 
         public string FilterCategory { get; set; }
 
         public string FilterColour { get; set; }
+
+        public string FilterOther { get; set; }
 
     }
 }
