@@ -249,16 +249,7 @@
             </StackPanel>
 
 
-
-
-
-            <StackPanel Orientation="Vertical" Grid.Row="3" Grid.ColumnSpan="3" Margin="0,7,0,0">
-                    <Separator Style="{StaticResource {x:Static ToolBar.SeparatorStyleKey}}" />
-                </StackPanel>
-               
-                
-
-            <StackPanel Orientation="Vertical" Grid.Row="5" Grid.ColumnSpan="2"  >
+            <StackPanel Orientation="Vertical" Grid.Row="6" Grid.ColumnSpan="2"  >
                 <Separator Style="{StaticResource {x:Static ToolBar.SeparatorStyleKey}}" />
             </StackPanel>
 

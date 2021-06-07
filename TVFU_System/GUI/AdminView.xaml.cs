@@ -84,7 +84,7 @@ namespace GUI
 
         public void ResetColourTextboxRequestedHandler()
         {
-            NewCategory.Text = "";
+            NewColour.Text = "";
         }
 
         private void MaxMaterialsRequestedHandler()
@@ -99,7 +99,7 @@ namespace GUI
 
         public void ResetMaterialTextboxRequestedHandler()
         {
-            NewCategory.Text = "";
+            NewMaterial.Text = "";
         }
 
         private void MaxOtherFiltersRequestedHandler()
@@ -114,7 +114,7 @@ namespace GUI
 
         public void ResetOtherFilterTextboxRequestedHandler()
         {
-            NewCategory.Text = "";
+            NewOtherFilter.Text = "";
         }
 
         private void CloseWindowBtn_Click(object sender, RoutedEventArgs e)
