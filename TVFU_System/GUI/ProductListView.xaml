@@ -11,16 +11,6 @@
         WindowStartupLocation="CenterScreen"
         WindowState="Maximized">
 
-    <Window.Resources>
-        <ObjectDataProvider x:Key="dataFromEnum" MethodName="GetValues"
-                        ObjectType="{x:Type sys:Enum}">
-            <ObjectDataProvider.MethodParameters>
-                <x:Type TypeName="application:SearchCategory"/>
-            </ObjectDataProvider.MethodParameters>
-        </ObjectDataProvider>
-
-    </Window.Resources>
-
     <Viewbox Language="da-DK">
         <Grid Height="1060" Width="1920" Margin="0">
             <Grid.RowDefinitions>
@@ -79,15 +69,15 @@
                 <StackPanel>
                     <Label Content="Vælg søgekategori:" FontSize="16" Margin="0,-14,0,0" FontFamily="Segoe UI Semibold"/>
                     <ComboBox
-                        ItemsSource="{Binding Source={StaticResource dataFromEnum}}"
+                        ItemsSource="{Binding PLVM.SearchCategories}"
                         x:Name="ComboBox_Søg"
-                        Width="200"
+                        Width="250"
                         Height="28"
                         Margin="0,0,10,0" 
                         FontSize="16"
                         HorizontalAlignment="Center"
-                        SelectedIndex="0"
-                        SelectedItem="{Binding PLVM.SearchCategory}"
+                        SelectedIndex="1"
+                        SelectedItem="{Binding PLVM.SearchCategory, Mode=OneWayToSource}"
                         >
                     </ComboBox>
                 </StackPanel>

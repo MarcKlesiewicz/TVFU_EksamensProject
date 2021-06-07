@@ -14,7 +14,7 @@ namespace Persistence.Repositories.Implementations
         {
             List<string> materials = (List<string>)GetAll();
             materials.Add(material);
-            using (StreamWriter sw = new StreamWriter(@"Repositories\Implementations\Materials.ini"))
+            using (StreamWriter sw = new StreamWriter(new FileStream(@"Repositories\Implementations\Materials.ini", FileMode.Open, FileAccess.Write), Encoding.GetEncoding("iso-8859-1")))
             {
                 foreach (var item in materials)
                 {
@@ -59,7 +59,7 @@ namespace Persistence.Repositories.Implementations
         {
             List<string> materials = (List<string>)GetAll();
             materials.Remove(material);
-            using (StreamWriter sw = new StreamWriter(@"Repositories\Implementations\Colours.ini"))
+            using (StreamWriter sw = new StreamWriter(new FileStream(@"Repositories\Implementations\Materials.ini", FileMode.Open, FileAccess.Write), Encoding.GetEncoding("iso-8859-1")))
             {
                 foreach (var item in materials)
                 {

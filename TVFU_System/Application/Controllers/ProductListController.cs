@@ -281,7 +281,7 @@ namespace Application.Controllers
             args.FilterColour = CurrentProductListVM.CurrentColour;
             args.FilterMaterial = CurrentProductListVM.CurrentMaterial;
             args.FilterOther = CurrentProductListVM.CurrentOtherFilter;
-            args.SearchCategory = new EnumConverter().Convert(CurrentProductListVM.SearchCategory.ToString());
+            args.SearchCategory = new EnumConverter().Convert(CurrentProductListVM.SearchCategory);
             args.SearchWord = CurrentProductListVM.SearchWord;
             List<Product> temp = null;
             try

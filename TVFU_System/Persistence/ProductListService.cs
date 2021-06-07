@@ -72,7 +72,7 @@ namespace Persistence
                 case "quantitydiscount":
                     return list.FindAll(s => s.QuantityDiscount.ToString().Contains(searchInput));
                 case "confirmeddeliverydate":
-                    return list.FindAll(s => s.ConfirmedDeliveryDate.ToString("dd/MM/yyyy").Contains(searchInput));
+                    return list.FindAll(s => s.ConfirmedDeliveryDate.ToString("dd-MM-yyyy").Contains(searchInput));
                 case "productnumber":
                     return list.FindAll(s => s.ProductNumber.ToString().Contains(searchInput));
                 case "countryoforigin":

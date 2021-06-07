@@ -363,6 +363,8 @@ namespace GUI
         /// </summary>
         private void ResetSortButtons(object sender)
         {
+            _pLC.CurrentProductListVM.SearchCategory = _pLC.CurrentProductListVM.SearchCategories[1];
+            ComboBox_Søg.SelectedIndex = 1;
             ProductCategory_ComboBox.SelectedItem = _pLC.CurrentProductListVM.Categories[0];
             Colours_ComboBox.SelectedItem = _pLC.CurrentProductListVM.Colours[0];
             Materials_ComboBox.SelectedItem = _pLC.CurrentProductListVM.Materials[0];

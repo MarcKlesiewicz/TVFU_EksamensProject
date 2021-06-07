@@ -14,7 +14,7 @@ namespace Persistence.Repositories.Implementations
         {
             List<string> colours = (List<string>)GetAll();
             colours.Add(colour);
-            using (StreamWriter sw = new StreamWriter(@"Repositories\Implementations\Colours.ini"))
+            using (StreamWriter sw = new StreamWriter(new FileStream(@"Repositories\Implementations\Colours.ini", FileMode.Open, FileAccess.Write), Encoding.GetEncoding("iso-8859-1")))
             {
                 foreach (var item in colours)
                 {
@@ -60,7 +60,7 @@ namespace Persistence.Repositories.Implementations
         {
             List<string> colours = (List<string>)GetAll();
             colours.Remove(colour);
-            using (StreamWriter sw = new StreamWriter(@"Repositories\Implementations\Colours.ini"))
+            using (StreamWriter sw = new StreamWriter(new FileStream(@"Repositories\Implementations\Colours.ini", FileMode.Open, FileAccess.Write), Encoding.GetEncoding("iso-8859-1")))
             {
                 foreach (var item in colours)
                 {

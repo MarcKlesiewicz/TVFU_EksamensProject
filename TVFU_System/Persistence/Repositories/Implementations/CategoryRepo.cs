@@ -19,7 +19,7 @@ namespace Persistence.Repositories.Implementations
         {
             List<string> categories = (List<string>)GetAll();
             categories.Add(category);
-            using (StreamWriter sw = new StreamWriter(@"Repositories\Implementations\Categories.ini"))
+            using (StreamWriter sw = new StreamWriter(new FileStream(@"Repositories\Implementations\Categories.ini", FileMode.Open, FileAccess.Write), Encoding.GetEncoding("iso-8859-1")))
             {
                 foreach (var item in categories)
                 {
@@ -59,7 +59,7 @@ namespace Persistence.Repositories.Implementations
         {
             List<string> categories = (List<string>)GetAll();
             categories.Remove(category);
-            using (StreamWriter sw = new StreamWriter(@"Repositories\Implementations\Categories.ini"))
+            using (StreamWriter sw = new StreamWriter(new FileStream(@"Repositories\Implementations\Categories.ini", FileMode.Open, FileAccess.Write), Encoding.GetEncoding("iso-8859-1")))
             {
                 foreach (var item in categories)
                 {

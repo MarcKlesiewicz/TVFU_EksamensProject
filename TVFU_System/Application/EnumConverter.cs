@@ -30,16 +30,16 @@ namespace Application
                 case "Enhedspris":
                     return "Unitprice";
 
-                case "Vejledende_pris":
+                case "Vejledende Pris":
                     return "Guidingprice";
 
-                case "Total_lager":
+                case "Total Lager":
                     return "TotalStock";
 
                 case "Spærret":
                     return "Blocked";
 
-                case "Antal_pr_kolli":
+                case "Antal pr Kolli":
                     return "UnitPerPackage";
 
                 case "Mængderabat":
@@ -48,7 +48,7 @@ namespace Application
                 case "Indkøbskode":
                     return "PurchasingManager";
 
-                case "Bekræftet_modtagelsesdatto":
+                case "Bekræftet Modtagelsesdato":
                     return "ConfirmedDeliveryDate";
 
                 case "Oprindelsesland":

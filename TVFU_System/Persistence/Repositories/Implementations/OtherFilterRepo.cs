@@ -14,7 +14,7 @@ namespace Persistence.Repositories.Implementations
         {
             List<string> otherFilters = (List<string>)GetAll();
             otherFilters.Add(otherFilter);
-            using (StreamWriter sw = new StreamWriter(@"Repositories\Implementations\OtherFilters.ini"))
+            using (StreamWriter sw = new StreamWriter(new FileStream(@"Repositories\Implementations\OtherFilters.ini", FileMode.Open, FileAccess.Write), Encoding.GetEncoding("iso-8859-1")))
             {
                 foreach (var item in otherFilters)
                 {
@@ -60,7 +60,7 @@ namespace Persistence.Repositories.Implementations
         {
             List<string> otherFilters = (List<string>)GetAll();
             otherFilters.Remove(otherFílter);
-            using (StreamWriter sw = new StreamWriter(@"Repositories\Implementations\OtherFilters.ini"))
+            using (StreamWriter sw = new StreamWriter(new FileStream(@"Repositories\Implementations\OtherFilters.ini", FileMode.Open, FileAccess.Write), Encoding.GetEncoding("iso-8859-1")))
             {
                 foreach (var item in otherFilters)
                 {

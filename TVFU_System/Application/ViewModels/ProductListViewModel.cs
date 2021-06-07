@@ -8,7 +8,6 @@ using System.Collections;
 
 namespace Application.ViewModels
 {
-    public enum SearchCategory { Beskrivelse, Nummer, Enhedspris, Vejledende_pris, Total_lager, Spærret, Antal_pr_kolli, Mængderabat, Indkøbskode, Bekræftet_modtagelsesdato, Oprindelsesland }
     public static class LinqExtensions
     {
         public static ObservableCollection<T> ToObservableCollection<T>(this IEnumerable<T> _linqResult)
@@ -19,8 +18,24 @@ namespace Application.ViewModels
 
     public class ProductListViewModel : INotifyPropertyChanged
     {
-        private SearchCategory _searchCategory;
-        public SearchCategory SearchCategory { get { return _searchCategory; } set { _searchCategory = value; OnPropertyChanged("SearchCategory"); } }
+        private string _searchCategory;
+        public string SearchCategory { get { return _searchCategory; } set { _searchCategory = value; OnPropertyChanged("SearchCategory"); } }
+
+        private ObservableCollection<string> _searchCategories = new ObservableCollection<string>()
+        {
+            "Nummer",
+            "Beskrivelse",
+            "Enhedspris",
+            "Vejledende Pris",
+            "Total Lager",
+            "Spærret",
+            "Antal pr Kolli",
+            "Mængderabat",
+            "Indkøbskode",
+            "Bekræftet Modtagelsesdato",
+            "Oprindelsesland"
+        };
+        public ObservableCollection<string> SearchCategories { get { return _searchCategories; } }
 
         private string _searchWord = String.Empty;
         public string SearchWord { get { return _searchWord; } set { _searchWord = value; OnPropertyChanged("SearchWord"); } }
@@ -192,7 +207,7 @@ namespace Application.ViewModels
         public void Reset()
         {
             ResetColumns();
-            _searchCategory = SearchCategory.Beskrivelse;
+            _searchCategory = SearchCategories[0];
             OnPropertyChanged("SearchCategory");
             _searchWord = String.Empty;
             OnPropertyChanged("SearchWord");
